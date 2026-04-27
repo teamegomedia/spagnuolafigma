@@ -1,0 +1,1001 @@
+:root {
+  --vsg-radius-card: 12px;
+}
+
+.wp-site-blocks {
+  background: radial-gradient(circle at 10% -10%, #ede8e3 0%, #f8f6f4 45%, #f8f6f4 100%);
+}
+
+.wp-block-group,
+.wp-block-columns,
+.wp-block-column {
+  box-sizing: border-box;
+}
+
+/* Guardrail: avoid ultra-narrow column collapse on mixed template/database layouts */
+.wp-block-columns {
+  flex-wrap: wrap !important;
+}
+
+.wp-block-columns > .wp-block-column {
+  min-width: min(100%, 280px);
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.wp-block-columns > .wp-block-column p,
+.wp-block-columns > .wp-block-column h1,
+.wp-block-columns > .wp-block-column h2,
+.wp-block-columns > .wp-block-column h3,
+.wp-block-columns > .wp-block-column h4,
+.wp-block-columns > .wp-block-column li,
+.wp-block-columns > .wp-block-column blockquote {
+  white-space: normal;
+  word-break: normal;
+}
+
+
+.vsg-intro-layout,
+.vsg-services-layout {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+  max-width: var(--wp--style--global--wide-size, 1344px);
+  margin-inline: auto;
+}
+
+.vsg-intro-layout {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+}
+
+.vsg-services-layout {
+  grid-template-columns: 1fr 1fr;
+}
+
+.vsg-intro,
+.vsg-services {
+  padding-inline: clamp(1.5rem, 3vw, 3rem);
+}
+
+.vsg-intro-main,
+.vsg-intro-aside,
+.vsg-services-intro,
+.vsg-services-content {
+  min-width: 0;
+}
+
+.vsg-services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.vsg-testimonial-grid,
+.vsg-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: var(--wp--style--global--wide-size, 1344px);
+  margin-inline: auto;
+}
+
+.vsg-testimonial-card-wrap,
+.vsg-card-shell {
+  min-width: 0;
+}
+
+
+.vsg-testimonial-grid > .wp-block-column {
+  min-width: min(100%, 320px);
+}
+
+.vsg-footer .wp-block-column {
+  min-width: min(100%, 220px);
+}
+
+.vsg-footer-mark {
+  display: block;
+  width: 110px;
+  aspect-ratio: 637 / 896;
+  margin-bottom: 1.5rem;
+  background: url("../images/logo-monogram-g.svg") center / contain no-repeat;
+}
+
+.vsg-hero {
+  position: relative;
+  min-height: 800px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+}
+
+.vsg-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.vsg-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(23, 51, 74, 0.15) 0%, rgba(23, 51, 74, 0) 30%, rgba(23, 51, 74, 0) 60%, rgba(23, 51, 74, 0.55) 100%);
+  z-index: 1;
+}
+
+.vsg-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1344px;
+  margin-inline: auto;
+  padding: 5rem clamp(1.5rem, 3vw, 3rem) 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.vsg-hero__brand {
+  align-self: center;
+  width: clamp(160px, 18vw, 260px);
+  aspect-ratio: 249 / 339;
+  margin: auto;
+  background: url("../images/logo-marchio-hero.svg") center / contain no-repeat;
+  filter: drop-shadow(0 2px 14px rgba(23, 51, 74, 0.4));
+}
+
+.vsg-hero-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.vsg-hero-nav__links {
+  display: flex;
+  gap: 2.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vsg-hero-nav__links a,
+.vsg-hero-nav__scroll {
+  color: #ffffff;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 0;
+}
+
+.vsg-hero-nav__links a:hover {
+  opacity: 0.8;
+}
+
+.vsg-hero-nav__scroll span {
+  margin-left: 0.5em;
+}
+
+.vsg-services-grid {
+  gap: 1.5rem;
+}
+
+.vsg-service-item h3 {
+  color: #17334a;
+  margin-bottom: 0.5rem;
+}
+
+.vsg-service-item p {
+  color: #6b6f74;
+  margin-top: 0;
+}
+
+.vsg-testimonial-card {
+  border-left: 2px solid #9dcbd7;
+  padding-left: 1.5rem;
+}
+
+.vsg-testimonial-card p {
+  color: #272727;
+  font-size: 1.125rem;
+}
+
+.vsg-testimonial-card cite {
+  color: #005d72;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vsg-contact-strip {
+  background-image: linear-gradient(135deg, #17334a 0%, #244761 100%);
+}
+
+.vsg-footer .wp-block-heading {
+  margin-bottom: 0.75rem;
+}
+
+.vsg-footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vsg-footer-links li {
+  color: #6b6f74;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+
+.vsg-footer-links li a {
+  color: #6b6f74;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.vsg-footer-links li a:hover {
+  color: #17334a;
+}
+
+.vsg-footer-note {
+  color: #6b6f74;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  max-width: 60rem;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.vsg-footer-bando {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+}
+
+.vsg-footer-cert {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.vsg-footer-cert li {
+  display: flex;
+  align-items: center;
+}
+
+.vsg-footer-cert li + li {
+  border-left: 1px solid #d8cfc4;
+  padding-left: 1.5rem;
+}
+
+.vsg-cert-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  min-width: 80px;
+  padding: 0 0.75rem;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #6b6f74;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: #ffffff;
+  border: 1px solid #d8cfc4;
+  border-radius: 2px;
+}
+
+@media (max-width: 781px) {
+  .vsg-footer-bando {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+}
+
+.wp-block-button__link {
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.wp-block-button__link:hover,
+.wp-block-button__link:focus-visible {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.wp-block-quote.is-style-plain p {
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: #314353;
+}
+
+@media (max-width: 781px) {
+  .vsg-intro-layout,
+  .vsg-services-layout,
+  .vsg-services-grid,
+  .vsg-testimonial-grid,
+  .vsg-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vsg-intro-layout,
+  .vsg-services-layout,
+  .vsg-services-grid,
+  .vsg-testimonial-grid,
+  .vsg-cards-grid {
+    gap: 1.5rem;
+  }
+
+  .vsg-hero {
+    min-height: 580px;
+  }
+
+  .vsg-hero__content {
+    min-height: 580px;
+  }
+
+  .vsg-hero-nav {
+    gap: 0.5rem;
+  }
+
+  .vsg-hero-nav p {
+    font-size: 0.75rem;
+  }
+
+  .vsg-services-grid {
+    gap: 1rem;
+  }
+
+  .vsg-testimonial-grid {
+    gap: 1rem;
+  }
+
+  .vsg-footer {
+    padding-top: 3rem !important;
+  }
+
+  .vsg-footer-note {
+    max-width: 100%;
+  }
+
+  .wp-block-heading.has-h1-font-size {
+    font-size: 2.25rem !important;
+    line-height: 1.25;
+  }
+
+  .wp-block-heading.has-h2-font-size {
+    font-size: 2rem !important;
+    line-height: 1.25;
+  }
+}
+
+/* ============================================================
+   SITE HEADER
+   ============================================================ */
+.vsg-site-header,
+.wp-block-template-part.vsg-site-header > * {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(23, 51, 74, 0.1);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.06);
+}
+
+.vsg-header-inner {
+  max-width: 100%;
+  position: relative;
+}
+
+/* Lang switcher (left) */
+.vsg-header-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #17334a;
+}
+
+.vsg-lang {
+  color: #17334a;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+
+.vsg-lang--active {
+  border-bottom: 1px solid currentColor;
+}
+
+.vsg-lang:hover {
+  opacity: 0.7;
+}
+
+.vsg-lang-sep {
+  color: #6b6f74;
+  opacity: 0.5;
+}
+
+/* Centered wordmark (SVG via background) */
+.vsg-header-brand {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: clamp(150px, 16vw, 200px);
+  aspect-ratio: 907 / 261;
+  background: url("../images/logo-wordmark.svg") center / contain no-repeat;
+  text-decoration: none;
+}
+
+/* Right-side MENU button (open icon) */
+.vsg-main-nav .wp-block-navigation__responsive-container-open {
+  font-family: "Figtree", sans-serif !important;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #17334a;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.vsg-main-nav .wp-block-navigation__responsive-container-open::before {
+  content: "Menu";
+}
+
+.vsg-main-nav .wp-block-navigation__responsive-container-open svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+/* Overlay menu items */
+.vsg-main-nav .wp-block-navigation__responsive-container.is-menu-open {
+  background: #ffffff;
+  padding: 6rem clamp(1.5rem, 5vw, 5rem) 4rem;
+}
+
+.vsg-main-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding-top: 2rem;
+}
+
+.vsg-main-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.25rem;
+}
+
+.vsg-main-nav .wp-block-navigation__container .wp-block-navigation-item__content {
+  font-family: "Lora", Georgia, serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em !important;
+  color: #17334a !important;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.vsg-main-nav .wp-block-navigation__container .wp-block-navigation-item__content:hover {
+  color: #005d72 !important;
+}
+
+/* Submenu (Matrimoni) — vertical accent line */
+.vsg-main-nav .wp-block-navigation__submenu-container {
+  position: static !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0.75rem 0 0.75rem 1.5rem !important;
+  margin-top: 0.5rem;
+  border-left: 1px solid #9dcbd7 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  min-width: 0 !important;
+}
+
+.vsg-main-nav .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+  padding: 0 !important;
+  font-size: 1.0625rem !important;
+}
+
+.vsg-main-nav .wp-block-navigation-submenu .wp-block-navigation__submenu-icon {
+  display: none;
+}
+
+@media (max-width: 781px) {
+  .vsg-header-brand {
+    width: clamp(120px, 30vw, 160px);
+  }
+}
+
+/* ============================================================
+   GALLERY STRIP
+   ============================================================ */
+.vsg-gallery-strip {
+  overflow-x: hidden;
+  width: 100%;
+  line-height: 0;
+  font-size: 0;
+}
+
+.vsg-gallery-inner {
+  display: flex;
+  height: 340px;
+  overflow-x: hidden;
+}
+
+.vsg-gallery-inner img {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 160px;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease, flex 0.45s ease;
+  cursor: pointer;
+}
+
+.vsg-gallery-inner img:hover {
+  flex: 1.4 1 0;
+}
+
+@media (max-width: 781px) {
+  .vsg-gallery-inner {
+    height: 220px;
+    overflow-x: auto;
+  }
+
+  .vsg-gallery-inner img {
+    min-width: 220px;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+
+  .vsg-gallery-inner img:hover {
+    flex: none;
+  }
+}
+
+/* ============================================================
+   CARDS TWO — Le anime della dimora
+   ============================================================ */
+.vsg-cards-two {
+  background: #ffffff;
+}
+
+/* Gradient overlay fixes for cover blocks inside cards */
+.vsg-card-cover.vsg-card-mare .wp-block-cover__background {
+  background: linear-gradient(180deg, rgba(33, 81, 92, 0) 0%, #457b88 100%) !important;
+  opacity: 1 !important;
+}
+
+.vsg-card-cover.vsg-card-villa .wp-block-cover__background {
+  background: linear-gradient(180deg, rgba(145, 71, 71, 0) 0%, rgb(145, 71, 71) 82%) !important;
+  opacity: 1 !important;
+}
+
+/* Card CTA button */
+.vsg-card-btn .wp-block-button__link {
+  background-color: #ffffff !important;
+  color: #17334a !important;
+  border-radius: 4px !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.vsg-card-btn .wp-block-button__link:hover,
+.vsg-card-btn .wp-block-button__link:focus-visible {
+  background-color: #f0ece7 !important;
+  transform: translateY(-1px);
+  opacity: 1 !important;
+}
+
+@media (max-width: 781px) {
+  .vsg-card-cover {
+    min-height: 420px !important;
+  }
+}
+
+/* ==========================================================
+   AMBIENTI INFO CARDS (intro-two-column)
+   ========================================================== */
+.vsg-ambienti-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.vsg-ambienti-card {
+  min-width: 0;
+}
+
+.vsg-ambienti-img img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.vsg-ambienti-caption {
+  padding-top: 0.75rem;
+  border-top: 1px solid #d8cfc4;
+  margin-top: 0.75rem;
+}
+
+.vsg-ambienti-title {
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.375rem;
+  font-weight: 400;
+  color: #17334a;
+  line-height: 1.25;
+  margin: 0 0 0.4rem;
+}
+
+.vsg-ambienti-desc {
+  color: #6b6f74;
+  font-size: 0.9375rem;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================
+   MATRIMONI FULLSCREEN COVER (services-grid)
+   ========================================================== */
+.vsg-matrimoni-cover {
+  position: relative;
+  min-height: 720px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.vsg-matrimoni-cover__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.vsg-matrimoni-cover__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(32.79deg, #005d72 2%, rgba(34, 97, 112, 0.5) 31.2%, rgba(100, 158, 172, 0) 63.6%);
+  z-index: 1;
+}
+
+.vsg-matrimoni-cover__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1344px;
+  margin-inline: auto;
+  padding: 5rem clamp(1.5rem, 3vw, 3rem) 3rem;
+}
+
+.vsg-matrimoni-text {
+  max-width: 400px;
+}
+
+.vsg-matrimoni-heading {
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(2.5rem, 4vw + 0.5rem, 3.75rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0 0 1rem;
+}
+
+.vsg-matrimoni-desc {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #ffffff;
+  margin: 0 0 1.5rem;
+}
+
+/* ==========================================================
+   CTA BUTTONS (shared vsg-cta-btn utility)
+   ========================================================== */
+.vsg-cta-btn {
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.vsg-cta-btn:hover,
+.vsg-cta-btn:focus-visible {
+  opacity: 0.85;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.vsg-cta-btn--white {
+  background-color: #ffffff;
+  color: #17334a;
+}
+
+.vsg-cta-btn--brand {
+  background-color: #17334a;
+  color: #ffffff;
+}
+
+/* ==========================================================
+   EVENTS SPLIT FULL-WIDTH 2-COL (cards-two)
+   ========================================================== */
+.vsg-events-split {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.vsg-event-col {
+  position: relative;
+  flex: 1 0 360px;
+  min-height: 720px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+}
+
+.vsg-event-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.vsg-event-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(23, 51, 74, 0.85) 0%, rgba(23, 51, 74, 0.5) 50%, rgba(23, 51, 74, 0.1) 100%);
+  z-index: 1;
+}
+
+.vsg-event-overlay--teal {
+  background: linear-gradient(180deg, #21515c 0%, rgba(33, 81, 92, 0.5) 50%, rgba(33, 81, 92, 0.1) 100%);
+}
+
+.vsg-event-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 440px;
+  width: 100%;
+  padding: 5rem clamp(1.5rem, 3vw, 3rem) 0;
+}
+
+.vsg-event-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0 0 0.875rem;
+}
+
+.vsg-event-heading {
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(2.5rem, 4vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0 0 0.875rem;
+}
+
+.vsg-event-desc {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #ffffff;
+  margin: 0 0 1.5rem;
+}
+
+/* ==========================================================
+   SOGGIORNI TEXT + COLLAGE (testimonials)
+   ========================================================== */
+.vsg-soggiorni-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.vsg-soggiorni-collage {
+  margin: 0;
+  width: 100%;
+}
+
+.vsg-soggiorni-collage img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.vsg-soggiorni-text {
+  max-width: 472px;
+}
+
+.vsg-soggiorni-overline,
+.vsg-storia-overline {
+  color: #005d72;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0 0 0.875rem;
+}
+
+.vsg-soggiorni-heading,
+.vsg-storia-heading {
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(2rem, 3vw + 0.5rem, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #17334a;
+  margin: 0 0 1.25rem;
+}
+
+.vsg-soggiorni-heading em,
+.vsg-storia-heading em,
+.vsg-ambienti-h2 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.vsg-soggiorni-desc,
+.vsg-storia-desc {
+  color: #272727;
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.55;
+  margin: 0 0 1rem;
+}
+
+.vsg-soggiorni-text .vsg-cta-btn,
+.vsg-storia-text .vsg-cta-btn {
+  margin-top: 0.75rem;
+}
+
+/* ==========================================================
+   STORIA DELLA VILLA TEXT + COLLAGE (contact-strip)
+   ========================================================== */
+.vsg-storia-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.vsg-storia-text {
+  max-width: 472px;
+}
+
+.vsg-storia-collage {
+  margin: 0;
+  width: 100%;
+}
+
+.vsg-storia-collage img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ==========================================================
+   GALLERY CTA "Esplora la gallery"
+   ========================================================== */
+.vsg-gallery-explore a {
+  color: #17334a;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+
+.vsg-gallery-explore a:hover {
+  opacity: 0.7;
+}
+
+/* ==========================================================
+   GALLERY SECTION — "Istantanee" heading + strip (gallery-strip)
+   ========================================================== */
+.vsg-gallery-section .wp-block-heading {
+  margin-bottom: 2.5rem;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 1024px) {
+  .vsg-ambienti-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 781px) {
+  .vsg-ambienti-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vsg-ambienti-img img {
+    height: 260px;
+  }
+
+  .vsg-event-col {
+    flex: 1 0 100%;
+    min-height: 500px;
+  }
+
+  .vsg-event-inner {
+    max-width: 100%;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+
+  .vsg-soggiorni-layout,
+  .vsg-storia-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .vsg-soggiorni-collage,
+  .vsg-storia-collage {
+    max-width: 540px;
+    margin-inline: auto;
+  }
+
+  .vsg-storia-text {
+    order: 1;
+  }
+
+  .vsg-storia-collage {
+    order: 2;
+  }
+}

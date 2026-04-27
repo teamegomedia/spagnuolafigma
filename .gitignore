@@ -1,0 +1,18 @@
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# WordPress core e configurazioni locali
+vari/
+wp-config.php
+*.zip
+
+# Claude
+.claude/

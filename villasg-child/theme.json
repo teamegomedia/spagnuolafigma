@@ -1,0 +1,143 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "color": {
+      "palette": [
+        { "slug": "bg", "name": "Background", "color": "#f8f6f4" },
+        { "slug": "text", "name": "Text", "color": "#272727" },
+        { "slug": "heading", "name": "Heading", "color": "#17334a" },
+        { "slug": "accent", "name": "Accent", "color": "#649eac" },
+        { "slug": "surface", "name": "Surface", "color": "#ffffff" },
+        { "slug": "inverse", "name": "Inverse", "color": "#ffffff" },
+        { "slug": "seablue1", "name": "Sea Blue", "color": "#005d72" },
+        { "slug": "seablue2", "name": "Sea Blue Mid", "color": "#649eac" },
+        { "slug": "seablue3", "name": "Sea Blue Light", "color": "#9dcbd7" },
+        { "slug": "text-secondary", "name": "Text Secondary", "color": "#6b6f74" },
+        { "slug": "neutral-sand", "name": "Neutral Sand", "color": "#f8f6f4" },
+        { "slug": "sand-dark", "name": "Sand Dark", "color": "#d8cfc4" },
+        { "slug": "morning-mist", "name": "Morning Mist", "color": "#e8eef2" },
+        { "slug": "villa-facade", "name": "Villa Facade", "color": "#914747" }
+      ]
+    },
+    "layout": {
+      "contentSize": "760px",
+      "wideSize": "1344px"
+    },
+    "spacing": {
+      "spacingScale": {
+        "operator": "*",
+        "increment": 1.5,
+        "steps": 6,
+        "mediumStep": "1rem",
+        "unit": "rem"
+      },
+      "units": ["px", "rem", "em", "vw", "vh", "%"]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "\"Lora\", Georgia, serif",
+          "name": "Lora",
+          "slug": "lora"
+        },
+        {
+          "fontFamily": "\"Figtree\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "name": "Figtree",
+          "slug": "figtree"
+        }
+      ],
+      "fontSizes": [
+        { "slug": "small", "name": "Small", "size": "0.875rem" },
+        { "slug": "body", "name": "Body", "size": "1.125rem" },
+        { "slug": "quote", "name": "Quote", "size": "1.25rem" },
+        { "slug": "h3", "name": "Heading Small", "size": "1.5rem" },
+        { "slug": "h2", "name": "Heading Medium", "size": "3rem" },
+        { "slug": "h1", "name": "Heading Large", "size": "clamp(2.5rem, 2vw + 2rem, 3.75rem)" }
+      ],
+      "lineHeight": true,
+      "fontStyle": true,
+      "fontWeight": true,
+      "letterSpacing": true,
+      "textTransform": true
+    },
+    "blocks": {
+      "core/button": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|figtree",
+          "fontSize": "0.875rem",
+          "fontWeight": "600",
+          "letterSpacing": "0.08em",
+          "textTransform": "uppercase"
+        },
+        "color": {
+          "text": "var:preset|color|inverse",
+          "background": "var:preset|color|heading"
+        },
+        "spacing": {
+          "padding": {
+            "top": "0.9rem",
+            "bottom": "0.9rem",
+            "left": "1.4rem",
+            "right": "1.4rem"
+          }
+        },
+        "border": {
+          "radius": "999px"
+        }
+      }
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var:preset|color|bg",
+      "text": "var:preset|color|text"
+    },
+    "typography": {
+      "fontFamily": "var:preset|font-family|figtree",
+      "fontSize": "var:preset|font-size|body",
+      "fontWeight": "300",
+      "lineHeight": "1.5"
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|lora",
+          "fontWeight": "400",
+          "lineHeight": "1.25"
+        },
+        "color": {
+          "text": "var:preset|color|heading"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "var:preset|color|heading"
+        }
+      },
+      "button": {
+        "spacing": {
+          "padding": {
+            "top": "0.9rem",
+            "bottom": "0.9rem",
+            "left": "1.4rem",
+            "right": "1.4rem"
+          }
+        }
+      }
+    }
+  },
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Footer",
+      "area": "footer"
+    }
+  ]
+}
