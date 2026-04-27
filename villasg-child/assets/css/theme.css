@@ -95,10 +95,10 @@
 
 .vsg-footer-mark {
   display: block;
-  width: 110px;
+  width: 140px;
   aspect-ratio: 637 / 896;
   margin-bottom: 1.5rem;
-  background: url("../images/logo-monogram-g.svg") center / contain no-repeat;
+  background: url("../images/logo-monogram-g.svg") left center / contain no-repeat;
 }
 
 .vsg-hero {
@@ -224,6 +224,14 @@
   margin-bottom: 0.75rem;
 }
 
+.vsg-footer-address {
+  color: #6b6f74;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 0;
+}
+
 .vsg-footer-links {
   list-style: none;
   margin: 0;
@@ -252,63 +260,32 @@
 
 .vsg-footer-note {
   color: #6b6f74;
-  font-size: 0.8125rem;
-  letter-spacing: 0.04em;
-  max-width: 60rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.07;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   margin: 0;
 }
 
 .vsg-footer-bando {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 2.5rem;
-  flex-wrap: wrap;
+  gap: 2rem;
   padding-top: 1rem;
 }
 
-.vsg-footer-cert {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-}
-
-.vsg-footer-cert li {
-  display: flex;
-  align-items: center;
-}
-
-.vsg-footer-cert li + li {
-  border-left: 1px solid #d8cfc4;
-  padding-left: 1.5rem;
-}
-
-.vsg-cert-placeholder {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 36px;
-  min-width: 80px;
-  padding: 0 0.75rem;
-  font-family: "Figtree", sans-serif;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  color: #6b6f74;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  background: #ffffff;
-  border: 1px solid #d8cfc4;
-  border-radius: 2px;
+.vsg-footer-bando__loghi {
+  width: 100%;
+  max-width: 670px;
+  aspect-ratio: 1340 / 82;
+  background: url("../images/footer-loghi-bando.png") left center / contain no-repeat;
 }
 
 @media (max-width: 781px) {
   .vsg-footer-bando {
-    flex-direction: column;
-    align-items: flex-start;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 }

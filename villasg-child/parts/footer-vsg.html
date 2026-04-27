@@ -1,6 +1,6 @@
 <!-- wp:group {"align":"full","className":"vsg-footer","style":{"color":{"background":"#f8f6f4"},"spacing":{"padding":{"top":"5rem","bottom":"3rem","right":"var:preset|spacing|40","left":"var:preset|spacing|40"}},"border":{"top":{"color":"#d8cfc4","width":"1px"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull vsg-footer" style="border-top-color:#d8cfc4;border-top-width:1px;background-color:#f8f6f4;padding-top:5rem;padding-right:var(--wp--preset--spacing--40);padding-bottom:3rem;padding-left:var(--wp--preset--spacing--40)">
-  <!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"2rem"}}}} -->
+  <!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"1.5rem"}}}} -->
   <div class="wp-block-columns">
     <!-- wp:column {"className":"vsg-footer-brand-col"} -->
     <div class="wp-block-column vsg-footer-brand-col">
@@ -12,8 +12,8 @@
       <h3 class="wp-block-heading has-h3-font-size">Genovedil s.r.l.</h3>
       <!-- /wp:heading -->
 
-      <!-- wp:paragraph {"fontSize":"small"} -->
-      <p class="has-small-font-size">VAT#: 03286220151<br>Via Nizza 58, 17100, Savona, Italy</p>
+      <!-- wp:paragraph {"className":"vsg-footer-address"} -->
+      <p class="vsg-footer-address">VAT#: 03286220151<br>Via Nizza 58, 17100, Savona, Italy</p>
       <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
@@ -63,7 +63,7 @@
       <!-- wp:list {"className":"vsg-footer-links"} -->
       <ul class="wp-block-list vsg-footer-links">
         <!-- wp:list-item --><li><a href="tel:+390101234567">+39 010 123 4567</a></li><!-- /wp:list-item -->
-        <!-- wp:list-item --><li><a href="https://wa.me/390101234567">WhatsApp</a></li><!-- /wp:list-item -->
+        <!-- wp:list-item --><li>Telefono | <a href="https://wa.me/390101234567">Whatsapp</a></li><!-- /wp:list-item -->
         <!-- wp:list-item --><li><a href="mailto:info@laspagnuola.com">info@laspagnuola.com</a></li><!-- /wp:list-item -->
         <!-- wp:list-item --><li><a href="https://www.instagram.com/laspagnuolagavotti/" rel="noopener noreferrer" target="_blank">Instagram</a></li><!-- /wp:list-item -->
       </ul>
@@ -79,12 +79,7 @@
 
   <!-- wp:html -->
   <div class="vsg-footer-bando">
-    <ul class="vsg-footer-cert" aria-label="Loghi cofinanziamento">
-      <li><span class="vsg-cert-placeholder vsg-cert-placeholder--liguria">Regione Liguria</span></li>
-      <li><span class="vsg-cert-placeholder vsg-cert-placeholder--eu">Unione Europea</span></li>
-      <li><span class="vsg-cert-placeholder vsg-cert-placeholder--italy">Repubblica Italiana</span></li>
-      <li><span class="vsg-cert-placeholder vsg-cert-placeholder--fesr">FESR Liguria</span></li>
-    </ul>
+    <div class="vsg-footer-bando__loghi" role="img" aria-label="Loghi cofinanziamento: Regione Liguria, Unione Europea, Repubblica Italiana, FESR Liguria"></div>
     <p class="vsg-footer-note">Spesa cofinanziata con risorse del PR FESR Liguria 2021/2027 del bando Azione 1.2.3. Supporto allo sviluppo di progetti di digitalizzazione nelle MPMI 2024</p>
   </div>
   <!-- /wp:html -->
