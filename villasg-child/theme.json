@@ -22,17 +22,19 @@
       ]
     },
     "layout": {
-      "contentSize": "760px",
+      "contentSize": "672px",
       "wideSize": "1344px"
     },
     "spacing": {
-      "spacingScale": {
-        "operator": "*",
-        "increment": 1.5,
-        "steps": 6,
-        "mediumStep": "1rem",
-        "unit": "rem"
-      },
+      "spacingSizes": [
+        { "slug": "20", "name": "Tiny",     "size": "0.5rem" },
+        { "slug": "30", "name": "X-Small",  "size": "1rem" },
+        { "slug": "40", "name": "Small",    "size": "1.5rem" },
+        { "slug": "50", "name": "Regular",  "size": "clamp(24px, 6vw - 12px, 48px)" },
+        { "slug": "60", "name": "Large",    "size": "clamp(32px, 8vw - 16px, 64px)" },
+        { "slug": "70", "name": "X-Large",  "size": "clamp(48px, 8vw, 80px)" },
+        { "slug": "80", "name": "XX-Large", "size": "clamp(72px, 14vw - 12px, 128px)" }
+      ],
       "units": ["px", "rem", "em", "vw", "vh", "%"]
     },
     "typography": {
@@ -49,12 +51,17 @@
         }
       ],
       "fontSizes": [
-        { "slug": "small", "name": "Small", "size": "0.875rem" },
-        { "slug": "body", "name": "Body", "size": "1.125rem" },
-        { "slug": "quote", "name": "Quote", "size": "1.25rem" },
-        { "slug": "h3", "name": "Heading Small", "size": "1.5rem" },
-        { "slug": "h2", "name": "Heading Medium", "size": "3rem" },
-        { "slug": "h1", "name": "Heading Large", "size": "clamp(2.5rem, 2vw + 2rem, 3.75rem)" }
+        { "slug": "small",         "name": "Small",                 "size": "1rem" },
+        { "slug": "medium",        "name": "Medium",                "size": "1.25rem" },
+        { "slug": "large",         "name": "Large",                 "size": "1.375rem" },
+        { "slug": "x-large",       "name": "Extra Large",           "size": "clamp(2rem, 1.25rem + 2vw, 3rem)", "fluid": { "min": "2rem", "max": "3rem" } },
+        { "slug": "xx-large",      "name": "Extra Extra Large",     "size": "clamp(2.25rem, 1.5rem + 2vw, 3.5rem)", "fluid": { "min": "2.25rem", "max": "3.5rem" } },
+        { "slug": "small-caps",    "name": "Custom Small Uppercase","size": "clamp(0.75rem, 0.65rem + 0.3vw, 0.875rem)", "fluid": { "min": "0.75rem", "max": "0.875rem" } },
+        { "slug": "buttons",       "name": "Custom Buttons Text",   "size": "0.875rem" },
+        { "slug": "small-title",   "name": "Custom Small Title",    "size": "1.5rem" },
+        { "slug": "medium-title",  "name": "Custom Medium Title",   "size": "clamp(1.5rem, 1.15rem + 1vw, 2rem)", "fluid": { "min": "1.5rem", "max": "2rem" } },
+        { "slug": "body",          "name": "Body",                  "size": "1.125rem" },
+        { "slug": "quote",         "name": "Quote",                 "size": "1.25rem" }
       ],
       "lineHeight": true,
       "fontStyle": true,
@@ -111,12 +118,47 @@
           "text": "var:preset|color|heading"
         }
       },
+      "h1": {
+        "typography": {
+          "fontSize": "var:preset|font-size|xx-large"
+        }
+      },
+      "h2": {
+        "typography": {
+          "fontSize": "var:preset|font-size|x-large"
+        }
+      },
+      "h3": {
+        "typography": {
+          "fontSize": "var:preset|font-size|small-title"
+        }
+      },
+      "caption": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|figtree",
+          "fontSize": "var:preset|font-size|small",
+          "fontWeight": "300",
+          "lineHeight": "1.5"
+        }
+      },
       "link": {
+        "typography": {
+          "fontWeight": "600",
+          "textDecoration": "underline"
+        },
         "color": {
           "text": "var:preset|color|heading"
         }
       },
       "button": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|figtree",
+          "fontSize": "var:preset|font-size|buttons",
+          "fontWeight": "600",
+          "letterSpacing": "0.08em",
+          "lineHeight": "1",
+          "textTransform": "uppercase"
+        },
         "spacing": {
           "padding": {
             "top": "0.9rem",
@@ -128,15 +170,32 @@
       }
     }
   },
+  "customTemplates": [
+    {
+      "name": "page-landing",
+      "title": "Landing (senza titolo)",
+      "postTypes": ["page"]
+    }
+  ],
   "templateParts": [
     {
+      "name": "header-vsg",
+      "title": "Header Villa SG",
+      "area": "header"
+    },
+    {
+      "name": "footer-vsg",
+      "title": "Footer Villa SG",
+      "area": "footer"
+    },
+    {
       "name": "header",
-      "title": "Header",
+      "title": "Header (default)",
       "area": "header"
     },
     {
       "name": "footer",
-      "title": "Footer",
+      "title": "Footer (default)",
       "area": "footer"
     }
   ]

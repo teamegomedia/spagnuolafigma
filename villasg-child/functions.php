@@ -59,7 +59,23 @@ function villasg_child_setup(): void
     if (function_exists('register_block_pattern_category')) {
         register_block_pattern_category(
             'villasg-sections',
-            array('label' => __('Villa SG Sections', 'villasg-child'))
+            array('label' => __('Villa SG – Sezioni', 'villasg-child'))
+        );
+        register_block_pattern_category(
+            'villasg-matrimoni',
+            array('label' => __('Villa SG – Matrimoni', 'villasg-child'))
+        );
+        register_block_pattern_category(
+            'villasg-home',
+            array('label' => __('Villa SG – Home', 'villasg-child'))
+        );
+        register_block_pattern_category(
+            'villasg-mare',
+            array('label' => __('Villa SG – Matrimoni Mare', 'villasg-child'))
+        );
+        register_block_pattern_category(
+            'villasg-blog',
+            array('label' => __('Villa SG – Blog', 'villasg-child'))
         );
     }
 }

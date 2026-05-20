@@ -10,23 +10,36 @@
   <!-- /wp:html -->
 
   <!-- wp:html -->
-  <a class="vsg-header-brand" href="/" role="img" aria-label="La Spagnuola — Marchesi Gavotti, home"></a>
+  <a class="vsg-header-brand" href="/" aria-label="La Spagnuola — Marchesi Gavotti, home"><span class="screen-reader-text">La Spagnuola</span></a>
   <!-- /wp:html -->
 
-  <!-- wp:navigation {"overlayMenu":"always","openSubmenusOnClick":true,"icon":"menu","layout":{"type":"flex","justifyContent":"right","flexWrap":"nowrap"},"fontFamily":"lora","style":{"typography":{"fontStyle":"normal","fontWeight":"400","fontSize":"1.125rem"},"spacing":{"blockGap":"1.25rem"},"elements":{"link":{"color":{"text":"var:preset|color|heading"},":hover":{"color":{"text":"#005d72"}}}}},"className":"vsg-main-nav"} -->
-    <!-- wp:navigation-submenu {"label":"Matrimoni","url":"/matrimoni","isTopLevelLink":false} -->
-      <!-- wp:navigation-link {"label":"Matrimoni al Mare","url":"/matrimoni/mare"} /-->
-      <!-- wp:navigation-link {"label":"Matrimoni in Villa","url":"/matrimoni/villa"} /-->
-      <!-- wp:navigation-link {"label":"Photo Gallery","url":"/matrimoni/gallery"} /-->
-      <!-- wp:navigation-link {"label":"Storie di Matrimoni","url":"/matrimoni/storie"} /-->
-    <!-- /wp:navigation-submenu -->
-    <!-- wp:navigation-link {"label":"FAQ","url":"/faq","isTopLevelLink":true} /-->
-    <!-- wp:navigation-link {"label":"Eventi Eleganti","url":"/eventi-eleganti","isTopLevelLink":true} /-->
-    <!-- wp:navigation-link {"label":"Eventi Aziendali","url":"/eventi-aziendali","isTopLevelLink":true} /-->
-    <!-- wp:navigation-link {"label":"Soggiornare alla Spagnuola","url":"/soggiorni","isTopLevelLink":true} /-->
-    <!-- wp:navigation-link {"label":"Storia della Villa","url":"/storia","isTopLevelLink":true} /-->
-    <!-- wp:navigation-link {"label":"Contatti","url":"/contatti","isTopLevelLink":true} /-->
-  <!-- /wp:navigation -->
+  <!-- wp:html -->
+  <nav class="vsg-main-nav" aria-label="Menu principale">
+    <input type="checkbox" id="vsg-nav-toggle" class="vsg-nav-toggle-input" hidden>
+    <label for="vsg-nav-toggle" class="vsg-nav-toggle" aria-label="Apri menu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </label>
+    <ul class="vsg-nav-list">
+      <li class="vsg-nav-item vsg-nav-item--has-children">
+        <a href="/matrimoni">Matrimoni</a>
+        <ul class="vsg-nav-submenu">
+          <li><a href="/matrimoni/mare">Matrimoni al Mare</a></li>
+          <li><a href="/matrimoni/villa">Matrimoni in Villa</a></li>
+          <li><a href="/matrimoni/gallery">Photo Gallery</a></li>
+          <li><a href="/matrimoni/storie">Storie di Matrimoni</a></li>
+        </ul>
+      </li>
+      <li class="vsg-nav-item"><a href="/faq">FAQ</a></li>
+      <li class="vsg-nav-item"><a href="/eventi-eleganti">Eventi Eleganti</a></li>
+      <li class="vsg-nav-item"><a href="/eventi-aziendali">Eventi Aziendali</a></li>
+      <li class="vsg-nav-item"><a href="/soggiorni">Soggiornare alla Spagnuola</a></li>
+      <li class="vsg-nav-item"><a href="/storia">Storia della Villa</a></li>
+      <li class="vsg-nav-item"><a href="/contatti">Contatti</a></li>
+    </ul>
+  </nav>
+  <!-- /wp:html -->
 
 </div>
 <!-- /wp:group -->

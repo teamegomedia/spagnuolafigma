@@ -355,16 +355,6 @@
   .vsg-footer-note {
     max-width: 100%;
   }
-
-  .wp-block-heading.has-h1-font-size {
-    font-size: 2.25rem !important;
-    line-height: 1.25;
-  }
-
-  .wp-block-heading.has-h2-font-size {
-    font-size: 2rem !important;
-    line-height: 1.25;
-  }
 }
 
 /* ============================================================
@@ -430,9 +420,19 @@
   text-decoration: none;
 }
 
-/* Right-side MENU button (open icon) */
-.vsg-main-nav .wp-block-navigation__responsive-container-open {
-  font-family: "Figtree", sans-serif !important;
+/* Right-side MENU button (hamburger toggle) */
+.vsg-main-nav {
+  position: relative;
+}
+
+.vsg-nav-toggle-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.vsg-nav-toggle {
+  font-family: "Figtree", sans-serif;
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.15em;
@@ -441,72 +441,106 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  border: 0;
+  padding: 0.25rem 0.5rem;
 }
 
-.vsg-main-nav .wp-block-navigation__responsive-container-open::before {
+.vsg-nav-toggle::before {
   content: "Menu";
 }
 
-.vsg-main-nav .wp-block-navigation__responsive-container-open svg {
-  width: 22px;
-  height: 22px;
-  fill: currentColor;
+.vsg-nav-toggle::after {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 12px;
+  background-image:
+    linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor);
+  background-size: 24px 2px;
+  background-position: 0 4px, 0 10px;
+  background-repeat: no-repeat;
 }
 
-/* Overlay menu items */
-.vsg-main-nav .wp-block-navigation__responsive-container.is-menu-open {
+.vsg-nav-toggle > span {
+  display: none;
+}
+
+/* Hidden by default — toggled via checkbox */
+.vsg-nav-list {
+  position: fixed;
+  inset: 0;
   background: #ffffff;
   padding: 6rem clamp(1.5rem, 5vw, 5rem) 4rem;
-}
-
-.vsg-main-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding-top: 2rem;
-}
-
-.vsg-main-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
+  margin: 0;
+  list-style: none;
+  display: none;
   flex-direction: column;
   align-items: flex-end;
   gap: 1.25rem;
+  z-index: 999;
+  overflow-y: auto;
 }
 
-.vsg-main-nav .wp-block-navigation__container .wp-block-navigation-item__content {
-  font-family: "Lora", Georgia, serif !important;
-  font-size: 1.25rem !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.01em !important;
-  color: #17334a !important;
+.vsg-nav-toggle-input:checked ~ .vsg-nav-list {
+  display: flex;
+}
+
+.vsg-nav-toggle-input:checked ~ .vsg-nav-toggle {
+  position: fixed;
+  top: 1.25rem;
+  right: clamp(1.5rem, 3vw, 3rem);
+  z-index: 1000;
+}
+
+.vsg-nav-toggle-input:checked ~ .vsg-nav-toggle::before {
+  content: "Chiudi";
+}
+
+.vsg-nav-item {
+  list-style: none;
+  text-align: right;
+}
+
+.vsg-nav-item > a {
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: #17334a;
   text-decoration: none;
   transition: color 0.2s;
 }
 
-.vsg-main-nav .wp-block-navigation__container .wp-block-navigation-item__content:hover {
-  color: #005d72 !important;
+.vsg-nav-item > a:hover {
+  color: #005d72;
 }
 
-/* Submenu (Matrimoni) — vertical accent line */
-.vsg-main-nav .wp-block-navigation__submenu-container {
-  position: static !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0.75rem 0 0.75rem 1.5rem !important;
-  margin-top: 0.5rem;
-  border-left: 1px solid #9dcbd7 !important;
+.vsg-nav-submenu {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0.75rem 0 0.75rem 1.5rem;
+  border-left: 1px solid #9dcbd7;
   display: flex;
   flex-direction: column;
   gap: 0.875rem;
-  min-width: 0 !important;
+  text-align: right;
 }
 
-.vsg-main-nav .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
-  padding: 0 !important;
-  font-size: 1.0625rem !important;
+.vsg-nav-submenu a {
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: #17334a;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-.vsg-main-nav .wp-block-navigation-submenu .wp-block-navigation__submenu-icon {
-  display: none;
+.vsg-nav-submenu a:hover {
+  color: #005d72;
 }
 
 @media (max-width: 781px) {
@@ -975,4 +1009,179 @@
   .vsg-storia-collage {
     order: 2;
   }
+}
+
+/* ==========================================================
+   GENERIC PAGE TEMPLATE
+   ========================================================== */
+.vsg-page {
+  min-height: 60vh;
+}
+
+.vsg-page-header .wp-block-post-title {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.vsg-page-content > * + * {
+  margin-top: 1.5rem;
+}
+
+/* ==========================================================
+   (Hero fullscreen / Stili / Quote strip / Overline – legacy
+    rimossi: ora gestiti dal modulo MATRIMONI sottostante.)
+   ========================================================== */
+
+/* ============================================================
+   MATRIMONI – Decorazioni che integrano i blocchi Gutenberg.
+   Padding, colori e tipografia sono già definiti da theme.json
+   e dagli attributi dei blocchi: qui solo decorazioni e griglie
+   non gestite nativamente.
+   ============================================================ */
+
+/* Overline (titoletto maiuscolo) */
+.vsg-overline{
+  font-family:var(--wp--preset--font-family--figtree);
+  font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--wp--preset--color--seablue1);line-height:2;margin:0;
+}
+.vsg-overline--light,
+.has-inverse-color .vsg-overline,
+.has-heading-background-color .vsg-overline{color:var(--wp--preset--color--inverse)}
+
+/* CTA inline link */
+.vsg-cta-link a,
+.vsg-cta-link{
+  font-family:var(--wp--preset--font-family--figtree);
+  font-weight:500;font-size:.875rem;letter-spacing:.08em;
+  text-transform:uppercase;text-decoration:none;color:var(--wp--preset--color--seablue1);
+}
+.vsg-cta-link a{border-bottom:1px solid currentColor;padding-bottom:.25rem}
+.vsg-cta-link a:hover{color:var(--wp--preset--color--heading)}
+.has-inverse-color .vsg-cta-link,
+.has-inverse-color .vsg-cta-link a,
+.wp-block-cover .vsg-cta-link a{color:#fff;border-color:#fff}
+
+/* HERO editoriale – strip 5 immagini */
+.vsg-page-hero__strip{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem;
+}
+.vsg-page-hero__strip .wp-block-image{margin:0}
+.vsg-page-hero__strip img{
+  width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px;display:block;
+}
+@media (max-width:782px){
+  .vsg-page-hero__strip{grid-template-columns:repeat(2,1fr)}
+  .vsg-page-hero__strip .wp-block-image:nth-child(5){display:none}
+}
+
+/* Sezione: titolo italic helper */
+.vsg-section__title em,
+.vsg-page-hero__title em{font-style:italic}
+
+/* SCENOGRAFIE – Cover card: gradient + content allineato in basso */
+.vsg-big-card{border-radius:3px;overflow:hidden;align-items:flex-end !important}
+.vsg-big-card::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,transparent 40%,rgba(23,51,74,.85) 100%);
+}
+.vsg-big-card .wp-block-cover__inner-container{position:relative;z-index:2;width:100%}
+.vsg-big-card__inner{padding:.5rem 1.5rem 1rem}
+@media (min-width:782px){
+  .vsg-big-card{min-height:600px}
+}
+
+/* SMALL CARD – immagine + titolo (luogo ideale) */
+.vsg-small-card img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;display:block;
+}
+
+/* PARTY – aspect ratio media */
+.vsg-party__media img{aspect-ratio:4/5;object-fit:cover;border-radius:2px;display:block;width:100%}
+
+/* ISPIRAZIONE – gallery 4 col + blog card */
+.vsg-ispirazione__gallery.wp-block-gallery{gap:.75rem}
+.vsg-ispirazione__gallery .wp-block-image img{
+  aspect-ratio:3/4;object-fit:cover;border-radius:2px;
+}
+.vsg-blog-card{
+  background:var(--wp--preset--color--surface);
+  border:1px solid var(--wp--preset--color--sand-dark);
+  padding:1.5rem;
+}
+.vsg-blog-card .wp-block-image{margin:0 0 .5rem}
+.vsg-blog-card img{aspect-ratio:16/9;object-fit:cover;width:100%;display:block}
+.vsg-blog-card__kicker{
+  color:var(--wp--preset--color--seablue1);
+  letter-spacing:.2em;text-transform:uppercase;font-weight:500;line-height:2;margin:0;
+}
+
+/* ECCELLENZA – lede italic */
+.vsg-eccellenza-dark__lede{font-family:var(--wp--preset--font-family--lora);font-style:italic}
+
+/* TESTIMONIAL – decoro bordo sinistro */
+.vsg-testimonial.wp-block-quote{
+  margin:0;padding:2rem;
+  background:var(--wp--preset--color--bg);
+  border-left:3px solid var(--wp--preset--color--seablue1);
+}
+.vsg-testimonial cite{
+  display:block;margin-top:1rem;
+  font-family:var(--wp--preset--font-family--figtree);
+  font-style:normal;font-weight:500;font-size:.875rem;
+  letter-spacing:.08em;color:var(--wp--preset--color--seablue1);
+}
+
+/* CTA finale – titolo italic helper */
+.vsg-cta-finale__title em{font-style:italic}
+
+/* ==========================================================
+   HOME PAGE – moduli
+   ========================================================== */
+.vsg-home-hero{position:relative}
+.vsg-home-hero .wp-block-cover__inner-container{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(24px,4vw,48px);text-align:center;width:100%}
+.vsg-home-hero__monogram img{filter:drop-shadow(0 2px 12px rgba(0,0,0,.25))}
+.vsg-home-hero__cta .wp-block-button.is-style-outline .wp-block-button__link{border:1px solid rgba(255,255,255,.9);background:transparent}
+.vsg-home-hero__cta .wp-block-button.is-style-outline .wp-block-button__link:hover{background:rgba(255,255,255,.12)}
+
+/* Big card half (Eventi duo) – stesso pattern di .vsg-big-card ma su colonne */
+.vsg-big-card--half{min-height:520px}
+.vsg-big-card--half h2 em{font-style:italic}
+
+/* Home ambienti grid – 4 colonne con gap regolare */
+.vsg-home-ambienti__grid{gap:clamp(16px,2.5vw,32px)}
+.vsg-home-ambienti__grid .vsg-small-card img{aspect-ratio:3/4;object-fit:cover;width:100%;height:auto}
+
+/* Home villeggiatura / storia – immagini collage */
+.vsg-villeggiatura__media img,
+.vsg-home-storia__media img{aspect-ratio:5/4;object-fit:cover;width:100%;height:auto}
+
+/* Istantanee – titolo italic */
+.vsg-home-istantanee h2{font-style:italic}
+
+/* ==========================================================
+   MARE PAGE – moduli specifici
+   ========================================================== */
+.vsg-mare-hero__photo img{aspect-ratio:21/9;object-fit:cover;width:100%;height:auto}
+.vsg-mare-rito__gallery img{aspect-ratio:4/5;object-fit:cover}
+.vsg-mare-eleganza__grid .vsg-small-card img{aspect-ratio:3/4;object-fit:cover;width:100%;height:auto}
+
+/* ==========================================================
+   BLOG SINGLE – tipografia editoriale
+   ========================================================== */
+.vsg-blog-header .vsg-overline a{color:inherit;text-decoration:none;border-bottom:1px solid currentColor}
+.vsg-blog-header .vsg-overline a:hover{opacity:.7}
+.vsg-blog-featured .wp-element-caption{font-family:"Figtree",sans-serif;font-weight:300;font-size:.875rem;color:var(--wp--preset--color--text-secondary);text-align:center;margin-top:.75rem}
+.vsg-blog-lead p{line-height:1.6}
+.vsg-blog-section p+p{margin-top:1rem}
+.vsg-blog-pullquote .wp-block-quote{border-left:3px solid var(--wp--preset--color--seablue1);padding:.5rem 0 .5rem 1.5rem;margin:0;background:transparent}
+.vsg-blog-pullquote .wp-block-quote p{color:var(--wp--preset--color--heading)}
+.vsg-blog-cta h2{color:var(--wp--preset--color--inverse)}
+
+/* Responsive helpers */
+@media (max-width:782px){
+	.vsg-home-ambienti__grid,
+	.vsg-mare-eleganza__grid{display:grid;grid-template-columns:repeat(2,1fr)}
+	.vsg-home-hero__cta{flex-direction:column;align-items:center}
+	.vsg-big-card--half{min-height:420px}
 }
