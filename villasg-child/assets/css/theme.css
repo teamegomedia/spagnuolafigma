@@ -1174,6 +1174,46 @@
   margin-inline:auto;
 }
 
+/* STORIA DARK – banda blu full-width: titolo + lede a sx, CTA a dx */
+.vsg-storia-dark{
+  color:#fff;
+}
+.vsg-storia-dark__title{
+  font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
+  font-weight:400;
+  font-size:32px;
+  line-height:1.25;
+  margin:0 0 1rem;
+  color:#fff;
+}
+.vsg-storia-dark__text{
+  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-weight:300;
+  font-size:18px;
+  line-height:1.5;
+  color:rgba(255,255,255,.9);
+  max-width:672px;
+  margin:0;
+}
+.vsg-storia-dark .vsg-cta-btn .wp-block-button__link{
+  background:#fff !important;
+  color:var(--wp--preset--color--heading, #17334a) !important;
+  border-radius:4px;
+  padding:1rem 1.5rem;
+  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  line-height:1;
+  transition:opacity .2s;
+}
+.vsg-storia-dark .vsg-cta-btn .wp-block-button__link:hover{opacity:.85}
+@media (max-width:781px){
+  .vsg-storia-dark__row .wp-block-column{flex-basis:100% !important}
+  .vsg-storia-dark .wp-block-buttons{justify-content:flex-start !important}
+}
+
 /* SCENOGRAFIE – Cover card: gradient + content allineato in basso */
 .vsg-big-card{border-radius:3px;overflow:hidden;align-items:flex-end !important}
 .vsg-big-card::after{
