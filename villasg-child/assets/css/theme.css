@@ -1285,8 +1285,54 @@
   width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;display:block;
 }
 
-/* PARTY – aspect ratio media */
-.vsg-party__media img{aspect-ratio:4/5;object-fit:cover;border-radius:2px;display:block;width:100%}
+/* PARTY – collage 3 immagini sovrapposte + testo dx */
+.vsg-party__collage{
+  position:relative;
+  width:100%;
+  aspect-ratio:5/4;
+  max-width:560px;
+}
+.vsg-party__collage .vsg-party__img{
+  position:absolute;
+  margin:0;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+  border-radius:2px;
+  overflow:hidden;
+}
+.vsg-party__collage .vsg-party__img img{
+  width:100%;height:100%;object-fit:cover;display:block;border-radius:2px;
+}
+/* Foto 1 — mare al centro-sx (sotto) */
+.vsg-party__collage .vsg-party__img--1{
+  top:18%;left:14%;width:55%;aspect-ratio:4/3;z-index:1;
+}
+/* Foto 2 — finestra in alto-dx (sopra) */
+.vsg-party__collage .vsg-party__img--2{
+  top:2%;left:38%;width:38%;aspect-ratio:3/4;z-index:3;
+}
+/* Foto 3 — camera in basso-sx */
+.vsg-party__collage .vsg-party__img--3{
+  top:50%;left:0;width:30%;aspect-ratio:3/4;z-index:2;
+}
+@media (max-width:781px){
+  .vsg-party__collage{max-width:100%;aspect-ratio:1/1;margin:0 auto}
+}
+
+.vsg-party__text{max-width:472px}
+.vsg-party__title{
+  font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
+  font-weight:400;font-size:48px;line-height:1.25;
+  color:var(--wp--preset--color--heading, #17334a);
+  margin:.5rem 0 1rem;
+}
+.vsg-party__title em{font-style:italic;font-weight:400}
+.vsg-party__lede{
+  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-weight:300;font-size:18px;line-height:1.5;
+  color:var(--wp--preset--color--text-primary, #272727);
+  margin:0 0 1rem;
+}
+.vsg-party__lede:last-child{margin-bottom:0}
 
 /* ISPIRAZIONE – gallery 4 col + blog card */
 .vsg-ispirazione__gallery.wp-block-gallery{gap:.75rem}
