@@ -1443,8 +1443,23 @@
 /* ==========================================================
    MARE PAGE – moduli specifici
    ========================================================== */
-.vsg-mare-hero__photo img{aspect-ratio:21/9;object-fit:cover;width:100%;height:auto}
-.vsg-mare-rito__gallery img{aspect-ratio:4/5;object-fit:cover}
+.vsg-mare-hero__photo{
+  margin:var(--wp--preset--spacing--50, 2rem) calc(var(--wp--preset--spacing--50) * -1) !important;
+  max-width:none !important;
+  width:auto !important;
+}
+.vsg-mare-hero__photo img{aspect-ratio:1600/900;object-fit:cover;width:100%;height:auto;display:block;border-radius:0}
+.vsg-mare-rito__intro{margin-right:auto}
+.vsg-mare-rito__gallery.wp-block-gallery.has-nested-images{gap:12px}
+.vsg-mare-rito__gallery.wp-block-gallery.has-nested-images figure.wp-block-image{flex-basis:calc(50% - 6px) !important;width:calc(50% - 6px) !important;margin:0}
+.vsg-mare-rito__gallery img{aspect-ratio:4/5;object-fit:cover;width:100%;height:auto;display:block;border-radius:0}
+.vsg-mare-rito__more{margin-top:1.25rem !important;letter-spacing:.15em}
+.vsg-mare-rito__more a{color:var(--wp--preset--color--seablue1);text-decoration:none}
+.vsg-mare-rito__more a:hover{text-decoration:underline}
+@media (max-width:781px){
+  .vsg-mare-rito .wp-block-columns{flex-direction:column}
+  .vsg-mare-rito .wp-block-column{flex-basis:100% !important;width:100% !important}
+}
 .vsg-mare-eleganza__grid .vsg-small-card img{aspect-ratio:3/4;object-fit:cover;width:100%;height:auto}
 
 /* ==========================================================
