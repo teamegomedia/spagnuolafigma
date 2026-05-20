@@ -1351,7 +1351,53 @@
   letter-spacing:.2em;text-transform:uppercase;font-weight:500;line-height:2;margin:0;
 }
 
-/* ECCELLENZA – lede italic */
+/* ECCELLENZA – versione chiara (sand bg, header sx + lista numerata dx) */
+.vsg-eccellenza__head{max-width:472px}
+.vsg-eccellenza__title{
+  font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
+  font-weight:400;font-size:48px;line-height:1.25;
+  color:var(--wp--preset--color--heading, #17334a);
+  margin:0 0 1rem;
+}
+.vsg-eccellenza__lede{
+  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-weight:300;font-size:18px;line-height:1.5;
+  color:var(--wp--preset--color--text-primary, #272727);
+  margin:0;
+}
+.vsg-eccellenza__list{flex-grow:2}
+.vsg-eccellenza__grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:24px;
+}
+.vsg-servizio{
+  display:flex;gap:.5rem;align-items:flex-start;min-width:0;
+}
+.vsg-servizio__num{
+  font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
+  font-weight:400;font-size:24px;line-height:1.25;
+  color:var(--wp--preset--color--seablue1, #005d72);
+  min-width:36px;flex-shrink:0;
+}
+.vsg-servizio__body{flex:1 1 0;min-width:0;padding-right:1rem;display:flex;flex-direction:column;gap:.5rem}
+.vsg-servizio__title{
+  font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
+  font-weight:400;font-size:24px;line-height:1.25;
+  color:var(--wp--preset--color--heading, #17334a);
+  margin:0;
+}
+.vsg-servizio__text{
+  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-weight:300;font-size:16px;line-height:1.5;
+  color:var(--wp--preset--color--textsecondary, #6b6f74);
+  margin:0;
+}
+@media (max-width:781px){
+  .vsg-eccellenza__grid{grid-template-columns:1fr}
+}
+
+/* ECCELLENZA dark (legacy) – lede italic */
 .vsg-eccellenza-dark__lede{font-family:var(--wp--preset--font-family--lora);font-style:italic}
 
 /* TESTIMONIAL – decoro bordo sinistro */
