@@ -1,9 +1,9 @@
 <?php
 /**
- * Title: Matrimoni – Hero: striscia galleria
+ * Title: Matrimoni – Hero: 4 immagini affiancate
  * Slug: villasg-child/matrimoni-hero-galleria
  * Categories: villasg-matrimoni
- * Description: Striscia di immagini a tutta larghezza (420x560) scrollabile orizzontalmente. Da inserire subito dopo "Hero Titolo".
+ * Description: Striscia full-width con 4 immagini affiancate (1 riga su desktop). Da inserire subito dopo "Hero Titolo".
  */
 $vsg_theme = get_stylesheet_directory_uri();
 ?>
@@ -11,13 +11,11 @@ $vsg_theme = get_stylesheet_directory_uri();
 <div class="wp-block-group alignfull vsg-hero-strip" style="padding-top:0;padding-right:0;padding-bottom:var(--wp--preset--spacing--60);padding-left:0">
 
 	<!-- wp:html -->
-	<div class="vsg-hero-strip__track" role="region" aria-label="Galleria matrimoni">
+	<div class="vsg-hero-strip__grid" role="region" aria-label="Galleria matrimoni">
 		<figure class="vsg-hero-strip__item"><img src="<?php echo esc_url( $vsg_theme ); ?>/assets/images/gallery-1.jpg" alt="" loading="lazy"/></figure>
 		<figure class="vsg-hero-strip__item"><img src="<?php echo esc_url( $vsg_theme ); ?>/assets/images/gallery-2.jpg" alt="" loading="lazy"/></figure>
 		<figure class="vsg-hero-strip__item"><img src="<?php echo esc_url( $vsg_theme ); ?>/assets/images/gallery-3.jpg" alt="" loading="lazy"/></figure>
 		<figure class="vsg-hero-strip__item"><img src="<?php echo esc_url( $vsg_theme ); ?>/assets/images/gallery-4.jpg" alt="" loading="lazy"/></figure>
-		<figure class="vsg-hero-strip__item"><img src="<?php echo esc_url( $vsg_theme ); ?>/assets/images/gallery-5.jpg" alt="" loading="lazy"/></figure>
-		<figure class="vsg-hero-strip__item"><img src="<?php echo esc_url( $vsg_theme ); ?>/assets/images/gallery-6.jpg" alt="" loading="lazy"/></figure>
 	</div>
 	<!-- /wp:html -->
 
