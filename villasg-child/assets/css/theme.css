@@ -1214,14 +1214,68 @@
   .vsg-storia-dark .wp-block-buttons{justify-content:flex-start !important}
 }
 
-/* SCENOGRAFIE – Cover card: gradient + content allineato in basso */
-.vsg-big-card{border-radius:3px;overflow:hidden;align-items:flex-end !important}
+/* SCENOGRAFIE – Header allineato a sinistra */
+.vsg-scenografie__head{max-width:672px;margin:0}
+.vsg-scenografie__head .vsg-overline{text-align:left;color:var(--wp--preset--color--seablue1, #005d72)}
+.vsg-scenografie__title{
+  font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
+  font-weight:400;font-size:48px;line-height:1.25;
+  color:var(--wp--preset--color--heading, #17334a);
+  text-align:left;margin:0;
+}
+.vsg-scenografie__lede{
+  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-weight:300;font-size:18px;line-height:1.5;
+  color:var(--wp--preset--color--text-primary, #272727);
+  text-align:left;margin:0;
+}
+
+/* Override anche per pagine già pubblicate con markup vecchio (.vsg-section__head dentro .vsg-scenografie) */
+/* Il head deve restare allineato al 1344px constrained come le colonne, ma il contenuto pinned a sinistra max 672px */
+.vsg-scenografie .vsg-section__head,
+.vsg-scenografie .vsg-scenografie__head{
+  max-width:1344px !important;
+  margin-left:auto !important;margin-right:auto !important;
+  text-align:left !important;
+}
+.vsg-scenografie .vsg-section__head > *,
+.vsg-scenografie .vsg-scenografie__head > *{
+  max-width:672px !important;
+  margin-left:0 !important;margin-right:auto !important;
+  text-align:left !important;
+}
+.vsg-scenografie .has-text-align-center{text-align:left !important}
+
+/* SCENOGRAFIE – Cover card con gradient di brand differenziato */
+.vsg-big-card{border-radius:4px;overflow:hidden;align-items:flex-end !important}
 .vsg-big-card::after{
   content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(180deg,transparent 40%,rgba(23,51,74,.85) 100%);
+  background:linear-gradient(180deg, rgba(33,81,92,0) 0%, #457b88 100%);
+}
+.vsg-big-card--villa::after{
+  background:linear-gradient(180deg, rgba(145,71,71,0) 0%, #914747 82%);
 }
 .vsg-big-card .wp-block-cover__inner-container{position:relative;z-index:2;width:100%}
-.vsg-big-card__inner{padding:.5rem 1.5rem 1rem}
+.vsg-big-card__inner{padding:2rem 3rem 3rem;max-width:400px}
+.vsg-big-card__title{
+  font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
+  font-weight:400;font-size:48px;line-height:1.25;
+  color:#fff !important;margin:0 0 .5rem;
+}
+.vsg-big-card__text{
+  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-weight:400;font-size:16px;line-height:1.5;
+  color:rgba(255,255,255,.9) !important;margin:0;
+}
+.vsg-big-card .vsg-card-btn .wp-block-button__link{
+  background:#fff !important;
+  color:var(--wp--preset--color--heading, #17334a) !important;
+  border-radius:4px;padding:1rem 1.5rem;
+  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-weight:600;font-size:14px;letter-spacing:.08em;
+  text-transform:uppercase;line-height:1;
+}
+.vsg-big-card .vsg-card-btn .wp-block-button__link:hover{opacity:.9}
 @media (min-width:782px){
   .vsg-big-card{min-height:600px}
 }
