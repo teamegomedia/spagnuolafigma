@@ -1163,6 +1163,17 @@
   .vsg-hero-strip__grid .wp-block-image{aspect-ratio:16/10}
 }
 
+/* HERO INTRO – paragrafo introduttivo centrato */
+.vsg-hero-intro__text{
+  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-weight:300;
+  font-size:18px;
+  line-height:1.5;
+  color:var(--wp--preset--color--text-primary, #272727);
+  max-width:672px;
+  margin-inline:auto;
+}
+
 /* SCENOGRAFIE – Cover card: gradient + content allineato in basso */
 .vsg-big-card{border-radius:3px;overflow:hidden;align-items:flex-end !important}
 .vsg-big-card::after{
