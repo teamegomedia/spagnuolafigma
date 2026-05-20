@@ -1450,6 +1450,9 @@
 }
 .vsg-mare-hero__photo img{aspect-ratio:1600/900;object-fit:cover;width:100%;height:auto;display:block;border-radius:0}
 .vsg-mare-rito__intro{margin-right:auto}
+.vsg-mare-rito > .wp-block-columns{display:flex !important;flex-wrap:nowrap !important;gap:clamp(2rem,4vw,4rem) !important;align-items:flex-start}
+.vsg-mare-rito > .wp-block-columns > .wp-block-column:first-child{flex:0 0 40% !important;max-width:40% !important}
+.vsg-mare-rito > .wp-block-columns > .wp-block-column:last-child{flex:0 0 calc(60% - clamp(2rem,4vw,4rem)) !important;max-width:60% !important}
 .vsg-mare-rito__gallery.wp-block-gallery.has-nested-images{gap:12px}
 .vsg-mare-rito__gallery.wp-block-gallery.has-nested-images figure.wp-block-image{flex-basis:calc(50% - 6px) !important;width:calc(50% - 6px) !important;margin:0}
 .vsg-mare-rito__gallery img{aspect-ratio:4/5;object-fit:cover;width:100%;height:auto;display:block;border-radius:0}
@@ -1457,8 +1460,8 @@
 .vsg-mare-rito__more a{color:var(--wp--preset--color--seablue1);text-decoration:none}
 .vsg-mare-rito__more a:hover{text-decoration:underline}
 @media (max-width:781px){
-  .vsg-mare-rito .wp-block-columns{flex-direction:column}
-  .vsg-mare-rito .wp-block-column{flex-basis:100% !important;width:100% !important}
+  .vsg-mare-rito > .wp-block-columns{flex-direction:column !important}
+  .vsg-mare-rito > .wp-block-columns > .wp-block-column{flex:1 1 100% !important;max-width:100% !important}
 }
 .vsg-mare-eleganza__grid .vsg-small-card img{aspect-ratio:3/4;object-fit:cover;width:100%;height:auto}
 
