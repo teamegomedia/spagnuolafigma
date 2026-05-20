@@ -1110,7 +1110,55 @@
 
 /* Sezione: titolo italic helper */
 .vsg-section__title em,
-.vsg-page-hero__title em{font-style:italic}
+.vsg-page-hero__title em,
+.vsg-hero-titolo__title em{font-style:italic}
+
+/* HERO TITOLO – titoletto + H1 centrati (Matrimoni Desk pattern) */
+.vsg-hero-titolo .vsg-overline{
+  color:var(--wp--preset--color--seablue1, #005d72);
+  letter-spacing:.2em;
+}
+.vsg-hero-titolo__title{
+  font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
+  font-weight:400;
+  line-height:1.2;
+  color:var(--wp--preset--color--heading, #17334a);
+  max-width:864px;
+  margin-inline:auto;
+}
+
+/* HERO STRIP – galleria full-bleed scrollabile orizzontale */
+.vsg-hero-strip{
+  overflow:hidden;
+}
+.vsg-hero-strip__track{
+  display:flex;
+  gap:0;
+  width:100%;
+  max-width:1920px;
+  margin-inline:auto;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+}
+.vsg-hero-strip__item{
+  flex:0 0 420px;
+  width:420px;
+  height:560px;
+  margin:0;
+  scroll-snap-align:start;
+}
+.vsg-hero-strip__item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+@media (max-width:782px){
+  .vsg-hero-strip__item{flex:0 0 280px;width:280px;height:380px}
+}
 
 /* SCENOGRAFIE – Cover card: gradient + content allineato in basso */
 .vsg-big-card{border-radius:3px;overflow:hidden;align-items:flex-end !important}
