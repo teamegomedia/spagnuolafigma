@@ -1535,6 +1535,13 @@
    (es. Matrimoni) — il pattern fa già da hero, deve toccare l'header */
 .vsg-page:has(> .vsg-hero-titolo:first-child){padding-top:0 !important}
 
+/* WP inietta `margin-block-start: 1.2rem` su :where(.wp-site-blocks) > *
+   creando spazio indesiderato tra header e primo pattern (es. Matrimoni hero-titolo).
+   Azzera il margine sul main quando il primo blocco interno è hero-titolo,
+   e anche sul gruppo hero-titolo stesso. */
+:where(.wp-site-blocks) > main.vsg-page:has(> .vsg-hero-titolo:first-child),
+:where(.wp-site-blocks) .vsg-hero-titolo{margin-block-start:0 !important}
+
 /* ==========================================================
    HOME — Cap di larghezza su schermi grandi (come Matrimoni)
    Limita i moduli fullwidth a 1344px centrati per evitare
