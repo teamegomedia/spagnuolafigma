@@ -1531,6 +1531,10 @@
 .vsg-blog-pullquote .wp-block-quote p{color:var(--wp--preset--color--heading)}
 .vsg-blog-cta h2{color:var(--wp--preset--color--inverse)}
 
+/* Azzera padding-top del main quando la pagina inizia con il pattern hero-titolo
+   (es. Matrimoni) — il pattern fa già da hero, deve toccare l'header */
+.vsg-page:has(> .vsg-hero-titolo:first-child){padding-top:0 !important}
+
 /* ==========================================================
    HOME — Cap di larghezza su schermi grandi (come Matrimoni)
    Limita i moduli fullwidth a 1344px centrati per evitare
