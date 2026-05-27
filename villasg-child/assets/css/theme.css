@@ -1477,6 +1477,20 @@
 .vsg-blog-pullquote .wp-block-quote p{color:var(--wp--preset--color--heading)}
 .vsg-blog-cta h2{color:var(--wp--preset--color--inverse)}
 
+/* ==========================================================
+   HOME — Cap di larghezza su schermi grandi (come Matrimoni)
+   Limita i moduli fullwidth a 1344px centrati per evitare
+   immagini stirate larghe e basse su monitor >1344px.
+   ========================================================== */
+.vsg-hero,
+.vsg-events-split,
+.vsg-gallery-strip,
+.vsg-gallery-inner{
+  max-width:1344px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
 /* Responsive helpers */
 @media (max-width:782px){
 	.vsg-home-ambienti__grid,
