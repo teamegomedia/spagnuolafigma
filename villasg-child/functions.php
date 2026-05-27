@@ -31,6 +31,14 @@ function villasg_child_enqueue_styles(): void
         array('villasg-child-style'),
         wp_get_theme()->get('Version')
     );
+
+    wp_enqueue_script(
+        'villasg-sticky-pill',
+        get_stylesheet_directory_uri() . '/assets/js/sticky-pill.js',
+        array(),
+        wp_get_theme()->get('Version'),
+        true
+    );
 }
 add_action('wp_enqueue_scripts', 'villasg_child_enqueue_styles');
 

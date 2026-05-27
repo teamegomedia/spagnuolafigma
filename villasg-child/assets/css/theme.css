@@ -1336,6 +1336,19 @@
   .vsg-storia-pill{width:100%;justify-content:space-between}
 }
 
+/* STICKY PILL (desktop ≥1024px) – mantiene il pill visibile durante lo scroll
+   tra la sezione storia-dark e quella successiva (cta-finale o footer). */
+@media (min-width:1024px){
+  .vsg-storia-pill.vsg-storia-pill--js.is-sticky{
+    position:fixed;
+    right:max(1.5rem, calc((100vw - 1344px) / 2 + 1.5rem));
+    top:24px;
+    z-index:50;
+    transition:box-shadow .2s ease;
+    box-shadow:0 8px 24px rgba(23,51,74,.18);
+  }
+}
+
 /* SCENOGRAFIE – Header allineato a sinistra */
 .vsg-scenografie__head{max-width:672px;margin:0}
 .vsg-scenografie__head .vsg-overline{text-align:left;color:var(--wp--preset--color--seablue1, #005d72)}
