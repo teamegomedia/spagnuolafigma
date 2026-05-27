@@ -24,20 +24,27 @@
 		// Mark element so CSS can position it
 		pill.classList.add('vsg-storia-pill--js');
 
+		function getHeaderHeight(){
+			var header = document.querySelector('.vsg-site-header, .wp-block-template-part header, header.wp-block-template-part, header');
+			return header ? header.offsetHeight : 0;
+		}
+
 		function update(){
 			ticking = false;
 			if (!mq.matches){
 				pill.classList.remove('is-sticky','is-stopped');
 				return;
 			}
+			var headerH = getHeaderHeight();
+			var offsetTop = headerH + 24; // distance from viewport top when stuck (below header)
 			var rect = storia.getBoundingClientRect();
 			var pillH = pill.offsetHeight;
-			var offsetTop = 24; // distance from viewport top when stuck
 			var stopRect = stopEl ? stopEl.getBoundingClientRect() : null;
 
-			// Start sticking once the storia section has scrolled past top
+			// Start sticking once the storia section has scrolled past the offset
 			var startSticky = rect.top <= offsetTop;
-			// Stop sticking when bottom of stopEl-top is above pill bottom
+			// Stop sticking when the next section (cta-finale) enters the viewport:
+			// hand-off the moment its top reaches the bottom edge of the sticky pill
 			var endSticky = stopRect ? (stopRect.top <= offsetTop + pillH + 16) : false;
 
 			if (startSticky && !endSticky){

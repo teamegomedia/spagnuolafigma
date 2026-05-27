@@ -1342,7 +1342,6 @@
   .vsg-storia-pill.vsg-storia-pill--js.is-sticky{
     position:fixed;
     right:max(1.5rem, calc((100vw - 1344px) / 2 + 1.5rem));
-    top:24px;
     z-index:50;
     transition:box-shadow .2s ease;
     box-shadow:0 8px 24px rgba(23,51,74,.18);
