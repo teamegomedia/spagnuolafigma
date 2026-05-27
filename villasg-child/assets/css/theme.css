@@ -1487,7 +1487,9 @@
 .vsg-gallery-strip,
 .vsg-gallery-inner,
 .vsg-matrimoni-cover,
-.vsg-ambienti-grid{
+.vsg-ambienti-grid,
+.vsg-soggiorni-layout,
+.vsg-storia-layout{
   max-width:1344px;
   margin-left:auto;
   margin-right:auto;
