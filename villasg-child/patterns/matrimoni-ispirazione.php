@@ -7,8 +7,8 @@
  */
 $vsg_theme = get_stylesheet_directory_uri();
 ?>
-<!-- wp:group {"align":"full","className":"vsg-section vsg-ispirazione","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80","left":"var:preset|spacing|50","right":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|60"}},"layout":{"type":"constrained","contentSize":"1344px"}} -->
-<div class="wp-block-group alignfull vsg-section vsg-ispirazione" style="padding-top:var(--wp--preset--spacing--80);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--80);padding-left:var(--wp--preset--spacing--50)">
+<!-- wp:group {"align":"full","className":"vsg-section vsg-ispirazione","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|50","right":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|60"}},"backgroundColor":"neutral-sand","layout":{"type":"constrained","contentSize":"1344px"}} -->
+<div class="wp-block-group alignfull vsg-section vsg-ispirazione has-neutral-sand-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--50)">
 
 	<!-- wp:group {"className":"vsg-section__head","style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"constrained","contentSize":"720px"}} -->
 	<div class="wp-block-group vsg-section__head">
