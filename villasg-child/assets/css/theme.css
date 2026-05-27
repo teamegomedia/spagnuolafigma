@@ -1144,7 +1144,21 @@
 .vsg-hero-titolo + .vsg-hero-strip,
 .vsg-hero-strip + .vsg-hero-intro,
 .vsg-hero-intro + .vsg-section,
+.vsg-hero-intro + .vsg-storia-dark,
+.vsg-hero-intro + .vsg-hero-strip,
+.vsg-hero-strip + .vsg-storia-dark,
+.vsg-hero-strip + .vsg-section,
+.vsg-storia-dark + .vsg-section,
+.vsg-section + .vsg-storia-dark,
 .vsg-section + .vsg-section{
+  margin-block-start:0 !important;
+}
+/* Hero strip vuoto/duplicato inserito tra paragrafo intro e storia: azzera spazio */
+.vsg-hero-intro + .vsg-hero-strip{
+  padding:0 !important;
+  min-height:0 !important;
+}
+.vsg-storia-dark{
   margin-block-start:0 !important;
 }
 .vsg-hero-intro{
