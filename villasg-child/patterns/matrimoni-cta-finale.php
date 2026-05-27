@@ -3,27 +3,29 @@
  * Title: Matrimoni – CTA finale
  * Slug: villasg-child/matrimoni-cta-finale
  * Categories: villasg-matrimoni
- * Description: Call to action conclusiva su fondo sabbia.
+ * Description: Banda full-width brand navy con titolo + lede a sinistra e pill chiaro (label + bottone navy Contattaci) a destra. Figma 671:8525 + 671:8526.
  */
 ?>
-<!-- wp:group {"align":"full","className":"vsg-cta-finale","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80","left":"var:preset|spacing|50","right":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|40"}},"backgroundColor":"bg","layout":{"type":"constrained","contentSize":"720px"}} -->
-<div class="wp-block-group alignfull vsg-cta-finale has-bg-background-color has-background" style="padding-top:var(--wp--preset--spacing--80);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--80);padding-left:var(--wp--preset--spacing--50)">
+<!-- wp:group {"align":"full","className":"vsg-storia-dark vsg-cta-finale","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"backgroundColor":"heading","textColor":"inverse","layout":{"type":"constrained","contentSize":"1344px"}} -->
+<div class="wp-block-group alignfull vsg-storia-dark vsg-cta-finale has-inverse-color has-heading-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--50)">
 
-	<!-- wp:heading {"textAlign":"center","className":"vsg-cta-finale__title","fontSize":"x-large"} -->
-	<h2 class="wp-block-heading has-text-align-center vsg-cta-finale__title has-x-large-font-size">Scriviamo insieme l'inizio<br>della vostra storia.</h2>
-	<!-- /wp:heading -->
-
-	<!-- wp:paragraph {"align":"center","className":"vsg-cta-finale__lede","fontSize":"body"} -->
-	<p class="has-text-align-center vsg-cta-finale__lede has-body-font-size">Contattaci per una consulenza e dai forma al vostro sogno.</p>
-	<!-- /wp:paragraph -->
-
-	<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
-	<div class="wp-block-buttons">
-		<!-- wp:button {"backgroundColor":"seablue1","textColor":"inverse"} -->
-		<div class="wp-block-button"><a class="wp-block-button__link has-inverse-color has-seablue1-background-color has-text-color has-background wp-element-button" href="/contatti">Parliamo del tuo matrimonio</a></div>
-		<!-- /wp:button -->
+	<!-- wp:html -->
+	<div class="vsg-storia-dark__row">
+		<div class="vsg-storia-dark__text-col">
+			<h2 class="vsg-storia-dark__title">Scriviamo insieme l'inizio della vostra storia.</h2>
+			<p class="vsg-storia-dark__text">Contattaci per una consulenza e dai forma al vostro sogno.</p>
+		</div>
+		<div class="vsg-storia-dark__cta-col">
+			<div class="vsg-storia-pill">
+				<span class="vsg-storia-pill__label">Parliamo del vostro matrimonio</span>
+				<a class="vsg-storia-pill__btn" href="/contatti">
+					<span>Contattaci</span>
+					<span class="vsg-storia-pill__arrow" aria-hidden="true">→</span>
+				</a>
+			</div>
+		</div>
 	</div>
-	<!-- /wp:buttons -->
+	<!-- /wp:html -->
 
 </div>
 <!-- /wp:group -->
