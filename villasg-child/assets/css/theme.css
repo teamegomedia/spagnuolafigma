@@ -1485,7 +1485,9 @@
 .vsg-hero,
 .vsg-events-split,
 .vsg-gallery-strip,
-.vsg-gallery-inner{
+.vsg-gallery-inner,
+.vsg-matrimoni-cover,
+.vsg-ambienti-grid{
   max-width:1344px;
   margin-left:auto;
   margin-right:auto;
