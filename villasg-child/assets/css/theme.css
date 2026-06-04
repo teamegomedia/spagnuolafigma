@@ -1691,6 +1691,25 @@
 /* CTA pill (riusa stile vsg-storia-dark) */
 .vsg-blog-cta-pill .vsg-storia-pill__btn-text{display:inline-block;padding-right:.5rem}
 
+/* Variante blog: pill = singolo bottone bianco con testo navy (Figma 671:8545) */
+.vsg-blog-cta-pill .vsg-storia-pill{
+  background:transparent !important;
+  border:0 !important;
+  padding:0 !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+.vsg-blog-cta-pill .vsg-storia-pill__label{display:none !important}
+.vsg-blog-cta-pill .vsg-storia-pill__btn{
+  background:#ffffff !important;
+  color:var(--wp--preset--color--heading, #17334a) !important;
+  padding:16px 24px !important;
+  border-radius:4px !important;
+  font-weight:600 !important;
+  font-size:14px !important;
+  letter-spacing:.08em !important;
+}
+
 /* Istantanee gallery: 5 immagini in fila su desktop */
 .vsg-home-istantanee .wp-block-gallery{grid-template-columns:repeat(5, 1fr) !important;display:grid !important;gap:1rem !important}
 .vsg-blog-istantanee .wp-block-gallery{grid-template-columns:repeat(5, 1fr) !important;display:grid !important;gap:1rem !important}
@@ -1806,6 +1825,18 @@
   max-height:560px;
   object-fit:cover;
   display:block;
+  border-radius:4px;
+}
+.vsg-blog-featured__caption{
+  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-weight:300;
+  font-size:16px;
+  line-height:1.5;
+  color:var(--wp--preset--color--text-secondary, #6b6f74);
+  text-align:center;
+  max-width:672px;
+  margin:1rem auto 0;
+  padding-inline:var(--wp--preset--spacing--50, 1.5rem);
 }
 
 /* Excerpt come sottotitolo */

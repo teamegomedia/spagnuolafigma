@@ -122,3 +122,24 @@ function villasg_child_register_block_styles(): void {
     ) );
 }
 add_action( 'init', 'villasg_child_register_block_styles' );
+
+/**
+ * Append featured image caption (from media library) under the post-featured-image block.
+ * The native block doesn't render the caption: we hook into render output.
+ */
+function villasg_child_append_featured_caption( $block_content, $block ) {
+    if ( ! is_singular( 'post' ) ) {
+        return $block_content;
+    }
+    $thumb_id = get_post_thumbnail_id();
+    if ( ! $thumb_id ) {
+        return $block_content;
+    }
+    $caption = wp_get_attachment_caption( $thumb_id );
+    if ( '' === (string) $caption ) {
+        return $block_content;
+    }
+    $caption_html = '<figcaption class="vsg-blog-featured__caption">' . wp_kses_post( $caption ) . '</figcaption>';
+    return $block_content . $caption_html;
+}
+add_filter( 'render_block_core/post-featured-image', 'villasg_child_append_featured_caption', 10, 2 );
