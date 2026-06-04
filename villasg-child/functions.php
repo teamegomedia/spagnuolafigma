@@ -18,25 +18,31 @@ function villasg_child_enqueue_styles(): void
         is_object($parent) ? $parent->get('Version') : null
     );
 
+    $theme_css_path = get_stylesheet_directory() . '/assets/css/theme.css';
+    $theme_css_ver  = file_exists( $theme_css_path ) ? filemtime( $theme_css_path ) : wp_get_theme()->get('Version');
+
     wp_enqueue_style(
         'villasg-child-style',
         get_stylesheet_uri(),
         array('villasg-parent-style'),
-        wp_get_theme()->get('Version')
+        $theme_css_ver
     );
 
     wp_enqueue_style(
         'villasg-theme-style',
         get_stylesheet_directory_uri() . '/assets/css/theme.css',
         array('villasg-child-style'),
-        wp_get_theme()->get('Version')
+        $theme_css_ver
     );
+
+    $sticky_js_path = get_stylesheet_directory() . '/assets/js/sticky-pill.js';
+    $sticky_js_ver  = file_exists( $sticky_js_path ) ? filemtime( $sticky_js_path ) : wp_get_theme()->get('Version');
 
     wp_enqueue_script(
         'villasg-sticky-pill',
         get_stylesheet_directory_uri() . '/assets/js/sticky-pill.js',
         array(),
-        wp_get_theme()->get('Version'),
+        $sticky_js_ver,
         true
     );
 }
