@@ -1608,12 +1608,13 @@
 .vsg-blog-breadcrumb{
   text-align:left !important;
   color:var(--wp--preset--color--text-secondary, #6b6f74);
-  letter-spacing:.08em;
+  letter-spacing:.12em;
   text-transform:uppercase;
+  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-weight:400;
   font-size:.75rem;
-  margin:0 0 var(--wp--preset--spacing--40, 32px);
+  margin:0 auto var(--wp--preset--spacing--40, 32px);
   max-width:1344px;
-  margin-inline:auto;
   padding-inline:0;
 }
 .vsg-blog-breadcrumb a{color:inherit;text-decoration:none;border:0}
@@ -1692,11 +1693,23 @@
 
 /* Istantanee gallery: 5 immagini in fila su desktop */
 .vsg-home-istantanee .wp-block-gallery{grid-template-columns:repeat(5, 1fr) !important;display:grid !important;gap:1rem !important}
+.vsg-blog-istantanee .wp-block-gallery{grid-template-columns:repeat(5, 1fr) !important;display:grid !important;gap:1rem !important}
+.vsg-blog-istantanee .wp-block-gallery .wp-block-image{margin:0}
+.vsg-blog-istantanee .wp-block-gallery .wp-block-image img{aspect-ratio:1/1;object-fit:cover;width:100%;height:100%;display:block}
+.vsg-blog-istantanee .wp-block-heading{
+  font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
+  font-style:normal;
+  font-weight:400;
+  font-size:clamp(1.75rem, 3vw, 2.25rem);
+  color:var(--wp--preset--color--heading, #17334a);
+}
 @media (max-width:1024px){
-  .vsg-home-istantanee .wp-block-gallery{grid-template-columns:repeat(3, 1fr) !important}
+  .vsg-home-istantanee .wp-block-gallery,
+  .vsg-blog-istantanee .wp-block-gallery{grid-template-columns:repeat(3, 1fr) !important}
 }
 @media (max-width:600px){
-  .vsg-home-istantanee .wp-block-gallery{grid-template-columns:repeat(2, 1fr) !important}
+  .vsg-home-istantanee .wp-block-gallery,
+  .vsg-blog-istantanee .wp-block-gallery{grid-template-columns:repeat(2, 1fr) !important}
 }
 
 /* Override antico .vsg-blog-cta (alcuni inserimenti in DB) */
@@ -1725,7 +1738,7 @@
 .vsg-blog-body .wp-block-post-content > h3{
   font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
   font-weight:400;
-  font-style:italic;
+  font-style:normal;
   color:var(--wp--preset--color--heading, #17334a);
   margin-top:2rem;
   margin-bottom:.75rem;
@@ -1808,7 +1821,7 @@
 .vsg-blog-header .wp-block-post-title{
   font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
   font-weight:400;
-  font-style:italic;
+  font-style:normal;
   font-size:clamp(2rem, 4vw, 3rem);
   line-height:1.15;
   color:var(--wp--preset--color--heading, #17334a);
