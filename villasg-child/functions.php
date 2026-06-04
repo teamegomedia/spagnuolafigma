@@ -108,3 +108,17 @@ function villasg_child_breadcrumb_post_title( $block_content, $block ) {
     return str_replace( 'Articolo corrente', esc_html( $title ), $block_content );
 }
 add_filter( 'render_block_core/paragraph', 'villasg_child_breadcrumb_post_title', 10, 2 );
+
+/**
+ * Register block styles available in the editor.
+ */
+function villasg_child_register_block_styles(): void {
+    if ( ! function_exists( 'register_block_style' ) ) {
+        return;
+    }
+    register_block_style( 'core/paragraph', array(
+        'name'  => 'lead',
+        'label' => __( 'Testo in evidenza', 'villasg-child' ),
+    ) );
+}
+add_action( 'init', 'villasg_child_register_block_styles' );

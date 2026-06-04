@@ -1736,13 +1736,18 @@
 
 /* Lead: primo paragrafo grande, italic, seablue1 (se classe .is-style-lead o .has-quote-font-size) */
 .vsg-blog-body .wp-block-post-content > p.has-quote-font-size,
-.vsg-blog-body .wp-block-post-content > p.is-style-lead{
-  font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
-  font-style:italic;
-  font-size:1.5rem;
-  line-height:1.45;
-  color:var(--wp--preset--color--seablue1, #005d72);
-  margin-bottom:2rem;
+.vsg-blog-body .wp-block-post-content > p.is-style-lead,
+.is-style-lead{
+  font-family:var(--wp--preset--font-family--lora, 'Lora', serif) !important;
+  font-style:normal !important;
+  font-weight:400 !important;
+  font-size:20px !important;
+  line-height:1.5 !important;
+  color:var(--wp--preset--color--seablue1, #005d72) !important;
+  max-width:864px;
+  margin-inline:auto !important;
+  margin-block:var(--wp--preset--spacing--40, 32px) !important;
+  text-align:left;
 }
 
 /* Pullquote inline (blockquote standard nel post) */
