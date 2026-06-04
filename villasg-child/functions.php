@@ -88,3 +88,23 @@ function villasg_child_setup(): void
     }
 }
 add_action('after_setup_theme', 'villasg_child_setup');
+
+/**
+ * Replace breadcrumb placeholder in single.html with the real post title.
+ * The template contains the literal string "Articolo corrente" which we
+ * substitute on the fly when viewing a single post.
+ */
+function villasg_child_breadcrumb_post_title( $block_content, $block ) {
+    if ( ! is_singular( 'post' ) ) {
+        return $block_content;
+    }
+    if ( false === strpos( $block_content, 'vsg-blog-breadcrumb' ) ) {
+        return $block_content;
+    }
+    $title = get_the_title();
+    if ( '' === $title ) {
+        return $block_content;
+    }
+    return str_replace( 'Articolo corrente', esc_html( $title ), $block_content );
+}
+add_filter( 'render_block_core/paragraph', 'villasg_child_breadcrumb_post_title', 10, 2 );

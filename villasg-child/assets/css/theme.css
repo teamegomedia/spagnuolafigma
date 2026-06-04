@@ -1702,6 +1702,114 @@
 /* Override antico .vsg-blog-cta (alcuni inserimenti in DB) */
 .vsg-blog-cta h2{color:var(--wp--preset--color--inverse)}
 
+/* ===== TEMPLATE single.html (post WordPress reali) =====
+   Il post-content rende paragrafi/heading/immagini direttamente.
+   Applichiamo l'offset destro 480px e tipografia editoriale. */
+.vsg-blog-body .wp-block-post-content{
+  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-weight:300;
+  font-size:1.0625rem;
+  line-height:1.65;
+  color:var(--wp--preset--color--text-primary, #272727);
+}
+.vsg-blog-body .wp-block-post-content > p,
+.vsg-blog-body .wp-block-post-content > h2,
+.vsg-blog-body .wp-block-post-content > h3,
+.vsg-blog-body .wp-block-post-content > ul,
+.vsg-blog-body .wp-block-post-content > ol,
+.vsg-blog-body .wp-block-post-content > blockquote{
+  max-width:720px;
+  margin-inline:auto;
+}
+.vsg-blog-body .wp-block-post-content > h2,
+.vsg-blog-body .wp-block-post-content > h3{
+  font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
+  font-weight:400;
+  font-style:italic;
+  color:var(--wp--preset--color--heading, #17334a);
+  margin-top:2rem;
+  margin-bottom:.75rem;
+}
+.vsg-blog-body .wp-block-post-content > h2{font-size:1.75rem;line-height:1.25}
+.vsg-blog-body .wp-block-post-content > h3{font-size:1.375rem;line-height:1.3}
+.vsg-blog-body .wp-block-post-content > p + p{margin-top:1rem}
+
+/* Lead: primo paragrafo grande, italic, seablue1 (se classe .is-style-lead o .has-quote-font-size) */
+.vsg-blog-body .wp-block-post-content > p.has-quote-font-size,
+.vsg-blog-body .wp-block-post-content > p.is-style-lead{
+  font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
+  font-style:italic;
+  font-size:1.5rem;
+  line-height:1.45;
+  color:var(--wp--preset--color--seablue1, #005d72);
+  margin-bottom:2rem;
+}
+
+/* Pullquote inline (blockquote standard nel post) */
+.vsg-blog-body .wp-block-post-content blockquote{
+  border-left:3px solid var(--wp--preset--color--seablue1, #005d72);
+  padding:.5rem 0 .5rem 1.5rem;
+  margin:2rem auto;
+  background:transparent;
+  font-style:italic;
+  color:var(--wp--preset--color--heading, #17334a);
+}
+
+/* Body offset 480px su desktop: spinge testo a destra come Figma */
+@media (min-width:961px){
+  .vsg-blog-body .wp-block-post-content > p,
+  .vsg-blog-body .wp-block-post-content > h2,
+  .vsg-blog-body .wp-block-post-content > h3,
+  .vsg-blog-body .wp-block-post-content > ul,
+  .vsg-blog-body .wp-block-post-content > ol,
+  .vsg-blog-body .wp-block-post-content > blockquote{
+    max-width:480px;
+    margin-left:auto;
+    margin-right:0;
+  }
+  /* Immagini, gallery e wide blocks restano centrati / wide */
+  .vsg-blog-body .wp-block-post-content > .wp-block-image,
+  .vsg-blog-body .wp-block-post-content > figure,
+  .vsg-blog-body .wp-block-post-content > .wp-block-gallery,
+  .vsg-blog-body .wp-block-post-content > .alignwide,
+  .vsg-blog-body .wp-block-post-content > .alignfull{
+    max-width:1100px;
+    margin-inline:auto;
+    margin-block:2rem;
+  }
+}
+
+/* Featured image styling */
+.vsg-blog-featured .wp-block-post-featured-image{margin:0}
+.vsg-blog-featured .wp-block-post-featured-image img{
+  width:100%;
+  height:auto;
+  max-height:560px;
+  object-fit:cover;
+  display:block;
+}
+
+/* Excerpt come sottotitolo */
+.vsg-blog-header .wp-block-post-excerpt__excerpt,
+.vsg-blog-header .wp-block-post-excerpt p{
+  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-weight:300;
+  font-size:1.125rem;
+  color:var(--wp--preset--color--text-secondary, #6b6f74);
+  margin-top:.5rem;
+}
+.vsg-blog-header .wp-block-post-excerpt__more-text{display:none}
+.vsg-blog-header .wp-block-post-title{
+  font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
+  font-weight:400;
+  font-style:italic;
+  font-size:clamp(2rem, 4vw, 3rem);
+  line-height:1.15;
+  color:var(--wp--preset--color--heading, #17334a);
+  margin:0;
+}
+.vsg-blog-header .wp-block-post-title a{color:inherit;text-decoration:none}
+
 /* Azzera padding-top e margin del main quando la pagina inizia con il pattern
    hero-titolo (es. Matrimoni) — il pattern fa già da hero, deve toccare l'header */
 main:has(> .vsg-hero-titolo:first-child),
