@@ -1744,7 +1744,8 @@
   font-size:20px !important;
   line-height:1.5 !important;
   color:var(--wp--preset--color--seablue1, #005d72) !important;
-  max-width:864px;
+  max-width:864px !important;
+  width:100%;
   margin-inline:auto !important;
   margin-block:var(--wp--preset--spacing--40, 32px) !important;
   text-align:left;
