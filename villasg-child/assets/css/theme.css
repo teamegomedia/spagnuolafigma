@@ -1708,8 +1708,8 @@
 .vsg-blog-body .wp-block-post-content{
   font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
   font-weight:300;
-  font-size:1.0625rem;
-  line-height:1.65;
+  font-size:18px;
+  line-height:1.5;
   color:var(--wp--preset--color--text-primary, #272727);
 }
 .vsg-blog-body .wp-block-post-content > p,
@@ -1718,7 +1718,7 @@
 .vsg-blog-body .wp-block-post-content > ul,
 .vsg-blog-body .wp-block-post-content > ol,
 .vsg-blog-body .wp-block-post-content > blockquote{
-  max-width:720px;
+  max-width:672px;
   margin-inline:auto;
 }
 .vsg-blog-body .wp-block-post-content > h2,
@@ -1761,7 +1761,7 @@
   color:var(--wp--preset--color--heading, #17334a);
 }
 
-/* Body offset 480px su desktop: spinge testo a destra come Figma */
+/* Body offset 672px su desktop: spinge testo a destra come Figma */
 @media (min-width:961px){
   .vsg-blog-body .wp-block-post-content > p,
   .vsg-blog-body .wp-block-post-content > h2,
@@ -1769,7 +1769,7 @@
   .vsg-blog-body .wp-block-post-content > ul,
   .vsg-blog-body .wp-block-post-content > ol,
   .vsg-blog-body .wp-block-post-content > blockquote{
-    max-width:480px;
+    max-width:672px;
     margin-left:auto;
     margin-right:0;
   }
