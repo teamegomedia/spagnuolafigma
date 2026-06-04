@@ -1712,9 +1712,11 @@
 
 /* Istantanee gallery: 5 immagini in fila su desktop */
 .vsg-home-istantanee .wp-block-gallery{grid-template-columns:repeat(5, 1fr) !important;display:grid !important;gap:1rem !important}
-.vsg-blog-istantanee .wp-block-gallery{grid-template-columns:repeat(5, 1fr) !important;display:grid !important;gap:1rem !important}
+.vsg-blog-istantanee .wp-block-gallery{grid-template-columns:repeat(4, 1fr) !important;display:grid !important;gap:1.5rem !important}
 .vsg-blog-istantanee .wp-block-gallery .wp-block-image{margin:0}
-.vsg-blog-istantanee .wp-block-gallery .wp-block-image img{aspect-ratio:1/1;object-fit:cover;width:100%;height:100%;display:block}
+.vsg-blog-istantanee .wp-block-gallery .wp-block-image,
+.vsg-blog-istantanee .wp-block-gallery .wp-block-image figure{width:100%;height:100%}
+.vsg-blog-istantanee .wp-block-gallery .wp-block-image img{aspect-ratio:3/4;object-fit:cover;width:100%;height:100%;display:block;border-radius:4px}
 .vsg-blog-istantanee .wp-block-heading{
   font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
   font-style:normal;
