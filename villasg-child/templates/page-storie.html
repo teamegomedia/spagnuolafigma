@@ -1,0 +1,62 @@
+<!-- wp:template-part {"slug":"header-vsg","tagName":"header","className":"vsg-site-header"} /-->
+
+<!-- wp:group {"tagName":"main","align":"full","className":"vsg-blog-archive","layout":{"type":"constrained","contentSize":"100%"}} -->
+<main class="wp-block-group alignfull vsg-blog-archive">
+
+	<!-- wp:group {"align":"full","className":"vsg-section vsg-blog-archive__header","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|30"}},"backgroundColor":"bg","layout":{"type":"constrained","contentSize":"1100px"}} -->
+	<div class="wp-block-group alignfull vsg-section vsg-blog-archive__header has-bg-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)">
+
+		<!-- wp:paragraph {"align":"center","className":"vsg-overline vsg-blog-breadcrumb has-small-caps-font-size"} -->
+		<p class="has-text-align-center vsg-overline vsg-blog-breadcrumb has-small-caps-font-size"><a href="/figma/">Home</a> / <span class="vsg-blog-breadcrumb__current">Storie</span></p>
+		<!-- /wp:paragraph -->
+
+		<!-- wp:heading {"textAlign":"center","level":1,"className":"vsg-blog-archive__title","fontSize":"xx-large"} -->
+		<h1 class="wp-block-heading has-text-align-center vsg-blog-archive__title has-xx-large-font-size">Storie</h1>
+		<!-- /wp:heading -->
+
+		<!-- wp:paragraph {"align":"center","className":"vsg-blog-archive__lede has-body-font-size"} -->
+		<p class="has-text-align-center vsg-blog-archive__lede has-body-font-size">Racconti, dietro le quinte e ispirazioni dalla Spagnuola Gavotti.</p>
+		<!-- /wp:paragraph -->
+
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"align":"full","className":"vsg-section vsg-blog-archive__list","style":{"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|80","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"backgroundColor":"bg","layout":{"type":"constrained","contentSize":"1344px"}} -->
+	<div class="wp-block-group alignfull vsg-section vsg-blog-archive__list has-bg-background-color has-background" style="padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--80);padding-left:var(--wp--preset--spacing--50)">
+
+		<!-- wp:query {"queryId":1,"query":{"perPage":9,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false},"className":"vsg-blog-archive__query"} -->
+		<div class="wp-block-query vsg-blog-archive__query">
+			<!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
+				<!-- wp:group {"className":"vsg-blog-card","style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"constrained"}} -->
+				<div class="wp-block-group vsg-blog-card">
+					<!-- wp:post-featured-image {"isLink":true,"className":"vsg-blog-card__image"} /-->
+					<!-- wp:post-title {"isLink":true,"level":2,"className":"vsg-blog-card__title","fontSize":"large"} /-->
+					<!-- wp:post-excerpt {"className":"vsg-blog-card__excerpt","excerptLength":20,"fontSize":"body"} /-->
+					<!-- wp:paragraph {"className":"vsg-cta-link vsg-blog-card__cta"} -->
+					<p class="vsg-cta-link vsg-blog-card__cta"><a href="#">Leggi articolo →</a></p>
+					<!-- /wp:paragraph -->
+				</div>
+				<!-- /wp:group -->
+			<!-- /wp:post-template -->
+
+			<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"},"className":"vsg-blog-archive__pagination"} -->
+			<!-- wp:query-pagination-previous /-->
+			<!-- wp:query-pagination-numbers /-->
+			<!-- wp:query-pagination-next /-->
+			<!-- /wp:query-pagination -->
+
+			<!-- wp:query-no-results -->
+				<!-- wp:paragraph {"align":"center"} -->
+				<p class="has-text-align-center">Nessun articolo ancora pubblicato.</p>
+				<!-- /wp:paragraph -->
+			<!-- /wp:query-no-results -->
+		</div>
+		<!-- /wp:query -->
+
+	</div>
+	<!-- /wp:group -->
+
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer-vsg","tagName":"footer","className":"vsg-site-footer"} /-->

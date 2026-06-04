@@ -175,6 +175,11 @@
       "name": "page-landing",
       "title": "Landing (senza titolo)",
       "postTypes": ["page"]
+    },
+    {
+      "name": "page-storie",
+      "title": "Storie – Archivio Blog",
+      "postTypes": ["page"]
     }
   ],
   "templateParts": [
