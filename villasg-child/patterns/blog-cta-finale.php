@@ -3,35 +3,26 @@
  * Title: Blog – CTA finale articolo
  * Slug: villasg-child/blog-cta-finale
  * Categories: villasg-blog
- * Description: Banner dark con CTA conclusivo a fine articolo.
+ * Description: Banner navy con titolo a sinistra e pill bianco con CTA a destra (stile storia-dark).
  */
 ?>
-<!-- wp:group {"align":"full","className":"vsg-section vsg-blog-cta","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|50","right":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|30"}},"backgroundColor":"heading","textColor":"inverse","layout":{"type":"constrained","contentSize":"1100px"}} -->
-<div class="wp-block-group alignfull vsg-section vsg-blog-cta has-inverse-color has-heading-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--50)">
-	<!-- wp:columns {"verticalAlignment":"center"} -->
-	<div class="wp-block-columns are-vertically-aligned-center">
-		<!-- wp:column {"verticalAlignment":"center","width":"66%"} -->
-		<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:66%">
-			<!-- wp:heading {"level":2,"fontSize":"large","style":{"typography":{"fontStyle":"italic","fontWeight":"400"}}} -->
-			<h2 class="wp-block-heading has-large-font-size" style="font-style:italic;font-weight:400">Scriviamo insieme l'inizio della vostra storia.</h2>
-			<!-- /wp:heading -->
-			<!-- wp:paragraph {"fontSize":"small"} -->
-			<p class="has-small-font-size">Contattaci per una consulenza e dai forma al vostro sogno.</p>
-			<!-- /wp:paragraph -->
+<!-- wp:group {"align":"full","className":"vsg-storia-dark vsg-blog-cta-pill","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"backgroundColor":"heading","textColor":"inverse","layout":{"type":"constrained","contentSize":"1344px"}} -->
+<div class="wp-block-group alignfull vsg-storia-dark vsg-blog-cta-pill has-inverse-color has-heading-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--50)">
+	<!-- wp:html -->
+	<div class="vsg-storia-dark__row">
+		<div class="vsg-storia-dark__text-col">
+			<h2 class="vsg-storia-dark__title">Scriviamo insieme l&rsquo;inizio della vostra storia.</h2>
+			<p class="vsg-storia-dark__text">Un matrimonio esclusivo, curato nei minimi dettagli e con cambio data gratuito. Contattaci per una consulenza e dai forma al vostro sogno.</p>
 		</div>
-		<!-- /wp:column -->
-		<!-- wp:column {"verticalAlignment":"center","width":"34%"} -->
-		<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:34%">
-			<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"right"}} -->
-			<div class="wp-block-buttons">
-				<!-- wp:button {"backgroundColor":"surface","textColor":"heading"} -->
-				<div class="wp-block-button"><a class="wp-block-button__link has-heading-color has-surface-background-color has-text-color has-background wp-element-button" href="/contatti">Richiedi informazioni</a></div>
-				<!-- /wp:button -->
+		<div class="vsg-storia-dark__cta-col">
+			<div class="vsg-storia-pill">
+				<a class="vsg-storia-pill__btn" href="/contatti">
+					<span class="vsg-storia-pill__btn-text">Richiedi informazioni</span>
+					<span class="vsg-storia-pill__arrow" aria-hidden="true">&rarr;</span>
+				</a>
 			</div>
-			<!-- /wp:buttons -->
 		</div>
-		<!-- /wp:column -->
 	</div>
-	<!-- /wp:columns -->
+	<!-- /wp:html -->
 </div>
 <!-- /wp:group -->

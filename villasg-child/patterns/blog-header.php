@@ -9,8 +9,8 @@
 <!-- wp:group {"align":"full","className":"vsg-section vsg-blog-header","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|40","left":"var:preset|spacing|50","right":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|30"}},"backgroundColor":"bg","layout":{"type":"constrained","contentSize":"760px"}} -->
 <div class="wp-block-group alignfull vsg-section vsg-blog-header has-bg-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--50)">
 
-	<!-- wp:paragraph {"className":"vsg-overline","fontSize":"small-caps"} -->
-	<p class="vsg-overline has-small-caps-font-size"><a href="/">Home</a> / <a href="/blog">Articoli</a> / Il segreto del Ponente</p>
+	<!-- wp:paragraph {"className":"vsg-overline vsg-blog-breadcrumb","fontSize":"small-caps"} -->
+	<p class="vsg-overline vsg-blog-breadcrumb has-small-caps-font-size"><a href="/">Home</a> / <a href="/figma/matrimoni">Matrimoni</a> / <a href="/blog">Storie</a> / <span class="vsg-blog-breadcrumb__current">Il segreto del Ponente</span></p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:heading {"textAlign":"center","level":1,"fontSize":"xx-large","style":{"typography":{"fontStyle":"italic","fontWeight":"400"}}} -->
