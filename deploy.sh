@@ -2,6 +2,7 @@
 # Deploy villasg-child theme to laspagnuola.com via rsync over SSH
 # Usage: ./deploy.sh
 set -e
+export PATH="/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 REMOTE_USER="w71uol0m"
 REMOTE_HOST="lhwp1054.webapps.net"
