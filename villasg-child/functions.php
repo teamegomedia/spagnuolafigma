@@ -149,3 +149,27 @@ function villasg_child_append_featured_caption( $block_content, $block ) {
     return $block_content . $caption_html;
 }
 add_filter( 'render_block_core/post-featured-image', 'villasg_child_append_featured_caption', 10, 2 );
+
+/**
+ * Inject the "Trovate la vostra ispirazione" pattern at the end of the Matrimoni page content.
+ * The page already lives in DB without the pattern; this avoids a manual edit in WP admin.
+ */
+function villasg_child_inject_matrimoni_ispirazione( $content ) {
+    if ( ! is_singular( 'page' ) || ! in_the_loop() || ! is_main_query() ) {
+        return $content;
+    }
+    if ( ! is_page( 'matrimoni' ) ) {
+        return $content;
+    }
+    $pattern_file = get_stylesheet_directory() . '/patterns/matrimoni-ispirazione.php';
+    if ( ! file_exists( $pattern_file ) ) {
+        return $content;
+    }
+    ob_start();
+    include $pattern_file;
+    $raw = ob_get_clean();
+    // Strip the pattern header docblock so only the block markup is processed.
+    $raw = preg_replace( '#^\s*<\?php.*?\?>\s*#s', '', $raw, 1 );
+    return $content . do_blocks( $raw );
+}
+add_filter( 'the_content', 'villasg_child_inject_matrimoni_ispirazione', 20 );
