@@ -6,16 +6,6 @@
  * Description: Sezione full-bleed sfondo Morning Mist con bordi seablue, galleria fotografica e card blog dinamiche dalle ultime storie WP.
  */
 $vsg_theme = get_stylesheet_directory_uri();
-
-// Ultime 4 storie pubblicate (post type: post). Fallback su placeholder se vuoto.
-$vsg_posts = get_posts(
-    array(
-        'posts_per_page' => 4,
-        'post_status'    => 'publish',
-        'orderby'        => 'date',
-        'order'          => 'DESC',
-    )
-);
 ?>
 <!-- wp:group {"align":"full","className":"vsg-section vsg-ispirazione","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80","left":"0","right":"0"},"blockGap":"var:preset|spacing|60"},"border":{"top":{"color":"var:preset|color|seablue3","style":"solid","width":"1px"},"bottom":{"color":"var:preset|color|seablue3","style":"solid","width":"1px"}}},"backgroundColor":"morning-mist","layout":{"type":"constrained","contentSize":"100%"}} -->
 <div class="wp-block-group alignfull vsg-section vsg-ispirazione has-morning-mist-background-color has-background" style="border-top-color:var(--wp--preset--color--seablue3);border-top-style:solid;border-top-width:1px;border-bottom-color:var(--wp--preset--color--seablue3);border-bottom-style:solid;border-bottom-width:1px;padding-top:var(--wp--preset--spacing--80);padding-right:0;padding-bottom:var(--wp--preset--spacing--80);padding-left:0">
@@ -89,46 +79,9 @@ $vsg_posts = get_posts(
 		</div>
 		<!-- /wp:group -->
 
-		<!-- wp:html -->
-		<div class="vsg-ispirazione__journal-wrap">
-			<div class="vsg-ispirazione__journal">
-				<?php if ( ! empty( $vsg_posts ) ) : ?>
-					<?php foreach ( $vsg_posts as $vsg_p ) :
-						$vsg_thumb = get_the_post_thumbnail_url( $vsg_p->ID, 'medium_large' );
-						if ( ! $vsg_thumb ) {
-							$vsg_thumb = $vsg_theme . '/assets/images/card-villa.jpg';
-						}
-						$vsg_excerpt = wp_trim_words( wp_strip_all_tags( $vsg_p->post_excerpt ? $vsg_p->post_excerpt : $vsg_p->post_content ), 28, '…' );
-					?>
-					<a class="vsg-journal-card" href="<?php echo esc_url( get_permalink( $vsg_p->ID ) ); ?>">
-						<span class="vsg-journal-card__media" style="background-image:url('<?php echo esc_url( $vsg_thumb ); ?>')" aria-hidden="true"></span>
-						<span class="vsg-journal-card__body">
-							<span class="vsg-journal-card__title"><?php echo esc_html( get_the_title( $vsg_p->ID ) ); ?></span>
-							<span class="vsg-journal-card__excerpt"><?php echo esc_html( $vsg_excerpt ); ?></span>
-						</span>
-					</a>
-					<?php endforeach; ?>
-				<?php else : ?>
-					<?php
-					$vsg_placeholders = array(
-						array( 'gallery-1.jpg', 'Il segreto del Ponente', "Perché le coppie più raffinate scelgono la Riviera autentica." ),
-						array( 'gallery-2.jpg', 'Villa La Spagnuola', "Il gioiello nascosto riportato in vita dai Marchesi Gavotti." ),
-						array( 'gallery-3.jpg', 'Convivialità anziché folla', "Una nuova visione per i matrimoni in Italia." ),
-						array( 'gallery-4.jpg', 'Luxury Hidden', "Il movimento del lusso silenzioso nel Ponente Ligure." ),
-					);
-					foreach ( $vsg_placeholders as $vsg_pl ) : ?>
-					<a class="vsg-journal-card" href="/figma/storie/">
-						<span class="vsg-journal-card__media" style="background-image:url('<?php echo esc_url( $vsg_theme . '/assets/images/' . $vsg_pl[0] ); ?>')" aria-hidden="true"></span>
-						<span class="vsg-journal-card__body">
-							<span class="vsg-journal-card__title"><?php echo esc_html( $vsg_pl[1] ); ?></span>
-							<span class="vsg-journal-card__excerpt"><?php echo esc_html( $vsg_pl[2] ); ?></span>
-						</span>
-					</a>
-					<?php endforeach; ?>
-				<?php endif; ?>
-			</div>
-		</div>
-		<!-- /wp:html -->
+		<!-- wp:shortcode -->
+		[vsg_journal count="4"]
+		<!-- /wp:shortcode -->
 
 	</div>
 	<!-- /wp:group -->

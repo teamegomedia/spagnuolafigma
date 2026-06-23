@@ -292,3 +292,72 @@ function villasg_child_testimonianze_shortcode( $atts ): string {
     return $out;
 }
 add_shortcode( 'vsg_testimonianze', 'villasg_child_testimonianze_shortcode' );
+
+/**
+ * Shortcode [vsg_journal] – renders the latest blog posts as journal cards.
+ * Uses WP_Query (not get_posts) so WPML language filtering applies at render time.
+ *
+ * Attributes:
+ *   count="4"   Number of posts to display (default 4).
+ */
+function villasg_child_journal_shortcode( $atts ): string {
+    $atts = shortcode_atts( array(
+        'count' => 4,
+    ), $atts, 'vsg_journal' );
+
+    $theme = get_stylesheet_directory_uri();
+
+    $query = new WP_Query( array(
+        'post_type'      => 'post',
+        'post_status'    => 'publish',
+        'posts_per_page' => (int) $atts['count'],
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+        'no_found_rows'  => true,
+    ) );
+
+    ob_start();
+    ?>
+    <div class="vsg-ispirazione__journal-wrap">
+        <div class="vsg-ispirazione__journal">
+            <?php if ( $query->have_posts() ) : ?>
+                <?php while ( $query->have_posts() ) : $query->the_post();
+                    $vsg_thumb = get_the_post_thumbnail_url( get_the_ID(), 'medium_large' );
+                    if ( ! $vsg_thumb ) {
+                        $vsg_thumb = $theme . '/assets/images/card-villa.jpg';
+                    }
+                    $vsg_excerpt = wp_trim_words( wp_strip_all_tags( get_the_excerpt() ), 28, '…' );
+                ?>
+                <a class="vsg-journal-card" href="<?php echo esc_url( get_permalink() ); ?>">
+                    <span class="vsg-journal-card__media" style="background-image:url('<?php echo esc_url( $vsg_thumb ); ?>')" aria-hidden="true"></span>
+                    <span class="vsg-journal-card__body">
+                        <span class="vsg-journal-card__title"><?php echo esc_html( get_the_title() ); ?></span>
+                        <span class="vsg-journal-card__excerpt"><?php echo esc_html( $vsg_excerpt ); ?></span>
+                    </span>
+                </a>
+                <?php endwhile; ?>
+                <?php wp_reset_postdata(); ?>
+            <?php else : ?>
+                <?php
+                $vsg_placeholders = array(
+                    array( 'gallery-1.jpg', 'Il segreto del Ponente', "Perché le coppie più raffinate scelgono la Riviera autentica." ),
+                    array( 'gallery-2.jpg', 'Villa La Spagnuola', "Il gioiello nascosto riportato in vita dai Marchesi Gavotti." ),
+                    array( 'gallery-3.jpg', 'Convivialità anziché folla', "Una nuova visione per i matrimoni in Italia." ),
+                    array( 'gallery-4.jpg', 'Luxury Hidden', "Il movimento del lusso silenzioso nel Ponente Ligure." ),
+                );
+                foreach ( $vsg_placeholders as $vsg_pl ) : ?>
+                <a class="vsg-journal-card" href="/figma/storie/">
+                    <span class="vsg-journal-card__media" style="background-image:url('<?php echo esc_url( $theme . '/assets/images/' . $vsg_pl[0] ); ?>')" aria-hidden="true"></span>
+                    <span class="vsg-journal-card__body">
+                        <span class="vsg-journal-card__title"><?php echo esc_html( $vsg_pl[1] ); ?></span>
+                        <span class="vsg-journal-card__excerpt"><?php echo esc_html( $vsg_pl[2] ); ?></span>
+                    </span>
+                </a>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php
+    return (string) ob_get_clean();
+}
+add_shortcode( 'vsg_journal', 'villasg_child_journal_shortcode' );
