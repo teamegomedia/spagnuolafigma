@@ -1,9 +1,9 @@
 <?php
 /**
- * Title: Matrimoni – La vostra storia inizia qui (banda blu)
+ * Title: Matrimoni – Banda CTA navy con pill sticky
  * Slug: villasg-child/matrimoni-storia
  * Categories: villasg-matrimoni
- * Description: Banda full-width brand navy con titolo + lede a sinistra e pill chiaro (label + bottone navy Contattaci) a destra. Figma 671:8519 + 671:8520.
+ * Description: Banda full-width brand navy con titolo + lede a sinistra e pill chiaro (label + bottone navy Contattaci) a destra. Inseribile più volte nella stessa pagina: il pill resta sticky a destra durante lo scroll e si "passa il testimone" alla banda successiva quando questa entra nel viewport. Figma 671:8519 + 671:8520.
  */
 ?>
 <!-- wp:group {"align":"full","className":"vsg-storia-dark","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"backgroundColor":"heading","textColor":"inverse","layout":{"type":"constrained","contentSize":"1344px"}} -->

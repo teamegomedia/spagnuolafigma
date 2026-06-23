@@ -45,9 +45,31 @@
           "slug": "lora"
         },
         {
-          "fontFamily": "\"Figtree\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
-          "name": "Figtree",
-          "slug": "figtree"
+          "fontFamily": "\"Museo Sans\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "name": "Museo Sans",
+          "slug": "figtree",
+          "fontFace": [
+            {
+              "fontFamily": "Museo Sans",
+              "fontStyle": "normal",
+              "fontWeight": "300 400",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/MuseoSans_300-webfont.woff2",
+                "file:./assets/fonts/MuseoSans_300-webfont.woff"
+              ]
+            },
+            {
+              "fontFamily": "Museo Sans",
+              "fontStyle": "normal",
+              "fontWeight": "500 600",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/MuseoSans_500-webfont.woff2",
+                "file:./assets/fonts/MuseoSans_500-webfont.woff"
+              ]
+            }
+          ]
         }
       ],
       "fontSizes": [

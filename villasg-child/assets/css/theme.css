@@ -2,6 +2,32 @@
   --vsg-radius-card: 12px;
 }
 
+/* ==========================================================
+   FONTS – Museo Sans (Fontspring webfont, hosted locally).
+   Two cuts available (300, 500). The 300-weight face also
+   covers requests for weight 400, and the 500-weight face
+   covers requests for 600, via font-weight ranges so the
+   browser auto-maps unavailable weights without a synthetic
+   bold from the OS.
+   Lora is served via Google Fonts (see functions.php).
+   ========================================================== */
+@font-face {
+  font-family: "Museo Sans";
+  font-style: normal;
+  font-weight: 300 400;
+  font-display: swap;
+  src: url("../fonts/MuseoSans_300-webfont.woff2") format("woff2"),
+       url("../fonts/MuseoSans_300-webfont.woff") format("woff");
+}
+@font-face {
+  font-family: "Museo Sans";
+  font-style: normal;
+  font-weight: 500 600;
+  font-display: swap;
+  src: url("../fonts/MuseoSans_500-webfont.woff2") format("woff2"),
+       url("../fonts/MuseoSans_500-webfont.woff") format("woff");
+}
+
 .wp-site-blocks {
   background: radial-gradient(circle at 10% -10%, #ede8e3 0%, #f8f6f4 45%, #f8f6f4 100%);
 }
@@ -199,7 +225,7 @@
 .vsg-hero-nav__links a,
 .vsg-hero-nav__scroll {
   color: #ffffff;
-  font-family: "Figtree", sans-serif;
+  font-family: "Museo Sans", sans-serif;
   font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -413,7 +439,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  font-family: "Figtree", sans-serif;
+  font-family: "Museo Sans", sans-serif;
   font-size: 0.9375rem;
   font-weight: 500;
   color: #17334a;
@@ -465,7 +491,7 @@
 }
 
 .vsg-nav-toggle {
-  font-family: "Figtree", sans-serif;
+  font-family: "Museo Sans", sans-serif;
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.15em;
@@ -1228,7 +1254,7 @@
 
 /* HERO INTRO – paragrafo introduttivo centrato */
 .vsg-hero-intro__text{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;
   font-size:18px;
   line-height:1.5;
@@ -1269,7 +1295,7 @@
   color:#fff;
 }
 .vsg-storia-dark__text{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;
   font-size:18px;
   line-height:1.5;
@@ -1289,7 +1315,7 @@
   padding:8px;
 }
 .vsg-storia-pill__label{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:600;
   font-size:14px;
   line-height:1.25;
@@ -1308,7 +1334,7 @@
   text-decoration:none;
   border-radius:4px;
   padding:1rem 1.5rem;
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:600;
   font-size:14px;
   letter-spacing:.08em;
@@ -1336,7 +1362,8 @@
 @media (min-width:1024px){
   .vsg-storia-pill.vsg-storia-pill--js.is-sticky{
     position:fixed;
-    right:max(1.5rem, calc((100vw - 1344px) / 2 + 1.5rem));
+    /* `top` and `right` are set inline by sticky-pill.js so the sticky pill
+       matches the in-flow horizontal position of its band's __row. */
     z-index:50;
     transition:box-shadow .2s ease;
     box-shadow:0 8px 24px rgba(23,51,74,.18);
@@ -1353,7 +1380,7 @@
   text-align:left;margin:0;
 }
 .vsg-scenografie__lede{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;font-size:18px;line-height:1.5;
   color:var(--wp--preset--color--text-primary, #272727);
   text-align:left;margin:0;
@@ -1392,7 +1419,7 @@
   color:#fff !important;margin:0 0 .5rem;
 }
 .vsg-big-card__text{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:400;font-size:16px;line-height:1.5;
   color:rgba(255,255,255,.9) !important;margin:0;
 }
@@ -1400,7 +1427,7 @@
   background:#fff !important;
   color:var(--wp--preset--color--heading, #17334a) !important;
   border-radius:4px;padding:1rem 1.5rem;
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:600;font-size:14px;letter-spacing:.08em;
   text-transform:uppercase;line-height:1;
 }
@@ -1456,7 +1483,7 @@
 }
 .vsg-party__title em{font-style:italic;font-weight:400}
 .vsg-party__lede{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;font-size:18px;line-height:1.5;
   color:var(--wp--preset--color--text-primary, #272727);
   margin:0 0 1rem;
@@ -1474,7 +1501,7 @@
   padding-right:0 !important;
 }
 .vsg-ispirazione__kicker.vsg-overline{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:500;
   font-size:14px;
   letter-spacing:.2em;
@@ -1492,7 +1519,7 @@
   margin:.5rem 0 0;
 }
 .vsg-ispirazione__lede{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;
   font-size:18px;
   line-height:1.5;
@@ -1522,7 +1549,7 @@
   display:inline-flex;
   align-items:center;
   gap:1rem;
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:500;
   font-size:14px;
   letter-spacing:.08em;
@@ -1632,7 +1659,7 @@
   color:var(--wp--preset--color--heading, #17334a);
 }
 .vsg-journal-card__excerpt{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;
   font-size:16px;
   line-height:1.5;
@@ -1668,7 +1695,7 @@
   margin:0 0 1rem;
 }
 .vsg-eccellenza__lede{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;font-size:18px;line-height:1.5;
   color:var(--wp--preset--color--text-primary, #272727);
   margin:0;
@@ -1696,7 +1723,7 @@
   margin:0;
 }
 .vsg-servizio__text{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;font-size:16px;line-height:1.5;
   color:var(--wp--preset--color--textsecondary, #6b6f74);
   margin:0;
@@ -1719,6 +1746,55 @@
   font-family:var(--wp--preset--font-family--figtree);
   font-style:normal;font-weight:500;font-size:.875rem;
   letter-spacing:.08em;color:var(--wp--preset--color--seablue1);
+}
+
+/* TESTIMONIALS – slider (CPT testimonianze) */
+.vsg-testimonials__slider{
+  --vsg-ts-gap:var(--wp--preset--spacing--40, 32px);
+  display:flex;flex-direction:column;gap:2rem;width:100%;
+}
+.vsg-testimonials__viewport{
+  display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+  gap:var(--vsg-ts-gap);scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.vsg-testimonials__viewport::-webkit-scrollbar{display:none}
+.vsg-testimonials__track{display:flex;gap:var(--vsg-ts-gap);width:100%}
+.vsg-testimonials__slide{
+  flex:0 0 calc((100% - var(--vsg-ts-gap)) / 2);
+  scroll-snap-align:start;display:flex;
+}
+.vsg-testimonials__slide > .vsg-testimonial{width:100%}
+/* When the set fits without scrolling, center it like the old 2-col layout. */
+.vsg-testimonials__slider.is-static .vsg-testimonials__viewport{justify-content:center}
+
+.vsg-testimonials__controls{
+  display:flex;align-items:center;justify-content:center;gap:1.25rem;
+}
+.vsg-testimonials__controls[aria-hidden="true"]{display:none}
+.vsg-testimonials__arrow{
+  width:44px;height:44px;border-radius:999px;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:1.25rem;line-height:1;
+  background:var(--wp--preset--color--bg);
+  border:1px solid var(--wp--preset--color--seablue1);
+  color:var(--wp--preset--color--seablue1);
+  transition:background .2s ease,color .2s ease,opacity .2s ease;
+}
+.vsg-testimonials__arrow:hover:not(:disabled){
+  background:var(--wp--preset--color--seablue1);color:#fff;
+}
+.vsg-testimonials__arrow:disabled{opacity:.35;cursor:default}
+.vsg-testimonials__dots{display:flex;align-items:center;gap:.5rem}
+.vsg-testimonials__dot{
+  width:9px;height:9px;padding:0;border:0;border-radius:999px;cursor:pointer;
+  background:var(--wp--preset--color--seablue1);opacity:.3;
+  transition:opacity .2s ease,transform .2s ease;
+}
+.vsg-testimonials__dot.is-active{opacity:1;transform:scale(1.25)}
+
+@media (max-width:781px){
+  .vsg-testimonials__slide{flex-basis:100%}
 }
 
 /* CTA finale – titolo italic helper */
@@ -1784,7 +1860,7 @@
   color:var(--wp--preset--color--text-secondary, #6b6f74);
   letter-spacing:.12em;
   text-transform:uppercase;
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:400;
   font-size:.75rem;
   margin:0 auto var(--wp--preset--spacing--40, 32px);
@@ -1804,7 +1880,7 @@
   margin:0;
 }
 .vsg-blog-header .wp-block-heading + p{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;
   font-size:1.125rem;
   color:var(--wp--preset--color--text-secondary, #6b6f74);
@@ -1821,7 +1897,7 @@
   object-fit:cover;
   border-radius:0;
 }
-.vsg-blog-featured .wp-element-caption{font-family:"Figtree",sans-serif;font-weight:300;font-size:.875rem;color:var(--wp--preset--color--text-secondary);text-align:center;margin-top:.75rem;padding-inline:var(--wp--preset--spacing--50, 1.5rem)}
+.vsg-blog-featured .wp-element-caption{font-family:"Museo Sans",sans-serif;font-weight:300;font-size:.875rem;color:var(--wp--preset--color--text-secondary);text-align:center;margin-top:.75rem;padding-inline:var(--wp--preset--spacing--50, 1.5rem)}
 
 /* Body offset a destra (lead, sezioni, pullquote) — ~480px su desktop, full sotto */
 .vsg-blog-lead p{line-height:1.6;font-style:normal}
@@ -1838,7 +1914,7 @@
 .vsg-blog-pullquote .wp-block-quote p{color:var(--wp--preset--color--heading);font-style:italic}
 .vsg-blog-inline-img{max-width:480px;margin-inline:auto !important}
 .vsg-blog-inline-img img{width:100%;height:auto;display:block}
-.vsg-blog-inline-img .wp-element-caption{font-family:"Figtree",sans-serif;font-weight:300;font-size:.875rem;color:var(--wp--preset--color--text-secondary);text-align:center;margin-top:.75rem}
+.vsg-blog-inline-img .wp-element-caption{font-family:"Museo Sans",sans-serif;font-weight:300;font-size:.875rem;color:var(--wp--preset--color--text-secondary);text-align:center;margin-top:.75rem}
 
 @media (min-width:961px){
   .vsg-blog-lead > *,
@@ -1938,7 +2014,7 @@
   margin:0;
 }
 .vsg-blog-archive__header .vsg-blog-archive__lede{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;
   color:var(--wp--preset--color--text-secondary, #6b6f74);
   max-width:560px;
@@ -1978,7 +2054,7 @@
 .vsg-blog-card__title a{color:inherit;text-decoration:none}
 .vsg-blog-card__title a:hover{text-decoration:underline;text-underline-offset:3px}
 .vsg-blog-card__excerpt{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;
   font-size:1rem;
   line-height:1.5;
@@ -1988,7 +2064,7 @@
 .vsg-blog-card__cta{margin:0 !important}
 .vsg-blog-archive__pagination{
   margin-top:3rem;
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-size:14px;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -2015,7 +2091,7 @@
    Il post-content rende paragrafi/heading/immagini direttamente.
    Applichiamo l'offset destro 480px e tipografia editoriale. */
 .vsg-blog-body .wp-block-post-content{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;
   font-size:18px;
   line-height:1.5;
@@ -2105,7 +2181,7 @@
   border-radius:4px;
 }
 .vsg-blog-featured__caption{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;
   font-size:16px;
   line-height:1.5;
@@ -2119,7 +2195,7 @@
 /* Excerpt come sottotitolo */
 .vsg-blog-header .wp-block-post-excerpt__excerpt,
 .vsg-blog-header .wp-block-post-excerpt p{
-  font-family:var(--wp--preset--font-family--figtree, 'Figtree', sans-serif);
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;
   font-size:1.125rem;
   color:var(--wp--preset--color--text-secondary, #6b6f74);

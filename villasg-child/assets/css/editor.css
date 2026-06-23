@@ -1,11 +1,29 @@
 /* Editor styles to keep visual parity with frontend. */
+
+@font-face {
+  font-family: "Museo Sans";
+  font-style: normal;
+  font-weight: 300 400;
+  font-display: swap;
+  src: url("../fonts/MuseoSans_300-webfont.woff2") format("woff2"),
+       url("../fonts/MuseoSans_300-webfont.woff") format("woff");
+}
+@font-face {
+  font-family: "Museo Sans";
+  font-style: normal;
+  font-weight: 500 600;
+  font-display: swap;
+  src: url("../fonts/MuseoSans_500-webfont.woff2") format("woff2"),
+       url("../fonts/MuseoSans_500-webfont.woff") format("woff");
+}
+
 .editor-styles-wrapper {
   background: #f6f4f1;
 }
 
 .editor-styles-wrapper p,
 .editor-styles-wrapper li {
-  font-family: "Figtree", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Museo Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .editor-styles-wrapper h1,
