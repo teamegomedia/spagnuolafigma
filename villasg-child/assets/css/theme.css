@@ -1313,6 +1313,17 @@
   border:1px solid #d8cfc4;
   border-radius:8px;
   padding:8px;
+  /* Typography fallback applied to the pill itself: WPML may strip the inner
+     <span class="vsg-storia-pill__label"> when translating, leaving a bare text
+     node. Styling the container guarantees the label keeps its grey uppercase
+     look (instead of inheriting the white inverse text of the dark band). */
+  font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
+  font-weight:600;
+  font-size:14px;
+  line-height:1.25;
+  letter-spacing:.085em;
+  text-transform:uppercase;
+  color:#6b6f74;
 }
 .vsg-storia-pill__label{
   font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
