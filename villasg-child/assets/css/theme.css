@@ -484,6 +484,12 @@
   position: relative;
 }
 
+/* Neutralize empty paragraphs injected by wpautop around shortcode output. */
+.vsg-site-header p:empty,
+.vsg-main-nav p:empty {
+  display: none;
+}
+
 .vsg-nav-toggle-input {
   position: absolute;
   opacity: 0;
