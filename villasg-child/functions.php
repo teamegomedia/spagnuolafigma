@@ -5,22 +5,6 @@ if (! defined('ABSPATH')) {
 }
 
 /**
- * One-time cache flush to clear stale block template / template part caches
- * after the header was made dynamic. Bump the version string to run again.
- */
-add_action('init', function (): void {
-    $flush_version = 'header-dynamic-1';
-    if (get_option('vsg_cache_flush') === $flush_version) {
-        return;
-    }
-    wp_cache_flush();
-    if (function_exists('clean_block_template_cache')) {
-        clean_block_template_cache();
-    }
-    update_option('vsg_cache_flush', $flush_version);
-}, 1);
-
-/**
  * Load parent and child styles.
  */
 function villasg_child_enqueue_styles(): void
@@ -456,7 +440,9 @@ function villasg_child_main_menu_shortcode(): string {
         ?>
     </nav>
     <?php
-    return (string) ob_get_clean();
+    $html = (string) ob_get_clean();
+    // Collapse whitespace between tags so wpautop does not inject <br>/<p>.
+    return (string) preg_replace( '/>\s+</', '><', $html );
 }
 add_shortcode( 'vsg_main_menu', 'villasg_child_main_menu_shortcode' );
 
