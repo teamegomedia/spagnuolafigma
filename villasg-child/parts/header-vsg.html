@@ -1,45 +1,20 @@
 <!-- wp:group {"className":"vsg-header-inner","layout":{"type":"flex","justifyContent":"space-between","verticalAlignment":"center","flexWrap":"nowrap"},"style":{"spacing":{"padding":{"top":"1.25rem","bottom":"1.25rem","left":"clamp(1.5rem, 3vw, 3rem)","right":"clamp(1.5rem, 3vw, 3rem)"}},"color":{"background":"#ffffff"}}} -->
 <div class="wp-block-group vsg-header-inner" style="background-color:#ffffff;padding-top:1.25rem;padding-bottom:1.25rem;padding-right:clamp(1.5rem, 3vw, 3rem);padding-left:clamp(1.5rem, 3vw, 3rem)">
 
-  <!-- wp:html -->
-  <div class="vsg-header-lang" aria-label="Selettore lingua">
-    <a href="/" class="vsg-lang vsg-lang--active" aria-current="page">IT</a>
-    <span class="vsg-lang-sep" aria-hidden="true">|</span>
-    <a href="/en/" class="vsg-lang">EN</a>
-  </div>
-  <!-- /wp:html -->
+  <!-- wp:shortcode -->
+  [vsg_lang_switcher]
+  <!-- /wp:shortcode -->
 
   <!-- wp:html -->
   <a class="vsg-header-brand" href="/" aria-label="La Spagnuola — Marchesi Gavotti, home"><span class="screen-reader-text">La Spagnuola</span></a>
   <!-- /wp:html -->
 
-  <!-- wp:html -->
-  <nav class="vsg-main-nav" aria-label="Menu principale">
-    <input type="checkbox" id="vsg-nav-toggle" class="vsg-nav-toggle-input" hidden>
-    <label for="vsg-nav-toggle" class="vsg-nav-toggle" aria-label="Apri menu">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </label>
-    <ul class="vsg-nav-list">
-      <li class="vsg-nav-item vsg-nav-item--has-children">
-        <a href="/matrimoni">Matrimoni</a>
-        <ul class="vsg-nav-submenu">
-          <li><a href="/matrimoni/mare">Matrimoni al Mare</a></li>
-          <li><a href="/matrimoni/villa">Matrimoni in Villa</a></li>
-          <li><a href="/matrimoni/gallery">Photo Gallery</a></li>
-          <li><a href="/matrimoni/storie">Storie di Matrimoni</a></li>
-        </ul>
-      </li>
-      <li class="vsg-nav-item"><a href="/faq">FAQ</a></li>
-      <li class="vsg-nav-item"><a href="/eventi-eleganti">Eventi Eleganti</a></li>
-      <li class="vsg-nav-item"><a href="/eventi-aziendali">Eventi Aziendali</a></li>
-      <li class="vsg-nav-item"><a href="/soggiorni">Soggiornare alla Spagnuola</a></li>
-      <li class="vsg-nav-item"><a href="/storia">Storia della Villa</a></li>
-      <li class="vsg-nav-item"><a href="/contatti">Contatti</a></li>
-    </ul>
-  </nav>
-  <!-- /wp:html -->
+  <!-- wp:shortcode -->
+  [vsg_main_menu]
+  <!-- /wp:shortcode -->
+
+</div>
+<!-- /wp:group -->
 
 </div>
 <!-- /wp:group -->

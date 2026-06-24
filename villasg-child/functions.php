@@ -108,6 +108,16 @@ function villasg_child_setup(): void
 add_action('after_setup_theme', 'villasg_child_setup');
 
 /**
+ * Register the header navigation menu location.
+ */
+function villasg_child_register_menus(): void {
+    register_nav_menus( array(
+        'vsg-primary' => __( 'Menu principale (header)', 'villasg-child' ),
+    ) );
+}
+add_action( 'after_setup_theme', 'villasg_child_register_menus' );
+
+/**
  * Replace breadcrumb placeholder in single.html with the real post title.
  * The template contains the literal string "Articolo corrente" which we
  * substitute on the fly when viewing a single post.
@@ -361,3 +371,106 @@ function villasg_child_journal_shortcode( $atts ): string {
     return (string) ob_get_clean();
 }
 add_shortcode( 'vsg_journal', 'villasg_child_journal_shortcode' );
+
+/**
+ * Custom nav walker that reproduces the header markup classes
+ * (vsg-nav-item, vsg-nav-item--has-children, vsg-nav-submenu) so the native
+ * WordPress menu inherits the existing CSS without changes.
+ */
+class VSG_Nav_Walker extends Walker_Nav_Menu {
+
+    public function start_lvl( &$output, $depth = 0, $args = null ) {
+        $output .= '<ul class="vsg-nav-submenu">';
+    }
+
+    public function end_lvl( &$output, $depth = 0, $args = null ) {
+        $output .= '</ul>';
+    }
+
+    public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+        $has_children = in_array( 'menu-item-has-children', (array) $item->classes, true );
+
+        if ( 0 === $depth ) {
+            $li_class = 'vsg-nav-item' . ( $has_children ? ' vsg-nav-item--has-children' : '' );
+            $output  .= '<li class="' . esc_attr( $li_class ) . '">';
+        } else {
+            $output .= '<li>';
+        }
+
+        $url   = ! empty( $item->url ) ? $item->url : '#';
+        $title = apply_filters( 'the_title', $item->title, $item->ID );
+        $rel   = ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) . '"' : '';
+        $target = ! empty( $item->target ) ? ' target="' . esc_attr( $item->target ) . '"' : '';
+
+        $output .= '<a href="' . esc_url( $url ) . '"' . $target . $rel . '>' . esc_html( $title ) . '</a>';
+    }
+
+    public function end_el( &$output, $item, $depth = 0, $args = null ) {
+        $output .= '</li>';
+    }
+}
+
+/**
+ * Shortcode [vsg_main_menu] – renders the header nav from the WP menu assigned
+ * to the "vsg-primary" location, keeping the hamburger toggle and current style.
+ */
+function villasg_child_main_menu_shortcode(): string {
+    ob_start();
+    ?>
+    <nav class="vsg-main-nav" aria-label="<?php esc_attr_e( 'Menu principale', 'villasg-child' ); ?>">
+        <input type="checkbox" id="vsg-nav-toggle" class="vsg-nav-toggle-input" hidden>
+        <label for="vsg-nav-toggle" class="vsg-nav-toggle" aria-label="<?php esc_attr_e( 'Apri menu', 'villasg-child' ); ?>">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </label>
+        <?php
+        if ( has_nav_menu( 'vsg-primary' ) ) {
+            wp_nav_menu( array(
+                'theme_location' => 'vsg-primary',
+                'container'      => false,
+                'items_wrap'     => '<ul class="vsg-nav-list">%3$s</ul>',
+                'fallback_cb'    => false,
+                'walker'         => new VSG_Nav_Walker(),
+                'depth'          => 2,
+            ) );
+        } else {
+            echo '<ul class="vsg-nav-list"><li class="vsg-nav-item"><a href="' . esc_url( home_url( '/' ) ) . '">Home</a></li></ul>';
+        }
+        ?>
+    </nav>
+    <?php
+    return (string) ob_get_clean();
+}
+add_shortcode( 'vsg_main_menu', 'villasg_child_main_menu_shortcode' );
+
+/**
+ * Shortcode [vsg_lang_switcher] – renders WPML language links keeping the
+ * existing header style. Falls back to a static link if WPML is not active.
+ */
+function villasg_child_lang_switcher_shortcode(): string {
+    $langs = apply_filters( 'wpml_active_languages', null, array( 'skip_missing' => 0 ) );
+
+    $open  = '<div class="vsg-header-lang" aria-label="' . esc_attr__( 'Selettore lingua', 'villasg-child' ) . '">';
+    $close = '</div>';
+
+    if ( empty( $langs ) || ! is_array( $langs ) ) {
+        return $open
+            . '<a href="' . esc_url( home_url( '/' ) ) . '" class="vsg-lang vsg-lang--active" aria-current="page">IT</a>'
+            . $close;
+    }
+
+    $items = array();
+    foreach ( $langs as $lang ) {
+        $code   = strtoupper( $lang['language_code'] );
+        $active = ! empty( $lang['active'] );
+        $class  = 'vsg-lang' . ( $active ? ' vsg-lang--active' : '' );
+        $aria   = $active ? ' aria-current="page"' : '';
+        $items[] = '<a href="' . esc_url( $lang['url'] ) . '" class="' . esc_attr( $class ) . '"' . $aria . '>' . esc_html( $code ) . '</a>';
+    }
+
+    return $open
+        . implode( '<span class="vsg-lang-sep" aria-hidden="true">|</span>', $items )
+        . $close;
+}
+add_shortcode( 'vsg_lang_switcher', 'villasg_child_lang_switcher_shortcode' );
