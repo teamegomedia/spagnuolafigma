@@ -21,6 +21,13 @@
   background: #f6f4f1;
 }
 
+/* Grassetto manuale: peso assoluto così la B (bold) è visibile anche
+   sul testo a peso leggero (evita il bolder relativo dell'UA). */
+.editor-styles-wrapper strong,
+.editor-styles-wrapper b {
+  font-weight: 700;
+}
+
 .editor-styles-wrapper p,
 .editor-styles-wrapper li {
   font-family: "Museo Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;

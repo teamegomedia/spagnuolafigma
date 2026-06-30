@@ -28,8 +28,16 @@
        url("../fonts/MuseoSans_500-webfont.woff") format("woff");
 }
 
+/* Grassetto manuale: l'UA stylesheet usa font-weight:bolder (relativo),
+   che su testo a 300 produce solo 400 (non bold). Forziamo un peso assoluto
+   così il grassetto inline (B) e <strong>/<b> sono sempre visibili. */
+strong,
+b {
+  font-weight: 700;
+}
+
 .wp-site-blocks {
-  background: #ffffff;
+  background: var(--wp--preset--color--bg, #f8f6f4);
 }
 
 .wp-block-group,
