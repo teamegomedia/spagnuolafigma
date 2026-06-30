@@ -17,8 +17,8 @@ $vsg_theme = get_stylesheet_directory_uri();
 
 <!-- wp:pattern {"slug":"villasg-child/blog-image-duo"} /-->
 
-<!-- wp:group {"align":"full","className":"vsg-section vsg-blog-section","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|50","right":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|30"}},"backgroundColor":"bg","layout":{"type":"constrained","contentSize":"672px"}} -->
-<div class="wp-block-group alignfull vsg-section vsg-blog-section has-bg-background-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--50)">
+<!-- wp:group {"align":"full","className":"vsg-section vsg-blog-section","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|50","right":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|30"}},"layout":{"type":"constrained","contentSize":"672px"}} -->
+<div class="wp-block-group alignfull vsg-section vsg-blog-section" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--50)">
 	<!-- wp:heading {"level":2,"fontSize":"large","style":{"typography":{"fontStyle":"italic","fontWeight":"400"}}} -->
 	<h2 class="wp-block-heading has-large-font-size" style="font-style:italic;font-weight:400">Il movimento del &#8220;Lusso Nascosto&#8221;</h2>
 	<!-- /wp:heading -->
@@ -33,8 +33,8 @@ $vsg_theme = get_stylesheet_directory_uri();
 
 <!-- wp:pattern {"slug":"villasg-child/blog-pullquote"} /-->
 
-<!-- wp:group {"align":"full","className":"vsg-section vsg-blog-section","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|50","right":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|30"}},"backgroundColor":"bg","layout":{"type":"constrained","contentSize":"672px"}} -->
-<div class="wp-block-group alignfull vsg-section vsg-blog-section has-bg-background-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--50)">
+<!-- wp:group {"align":"full","className":"vsg-section vsg-blog-section","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|50","right":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|30"}},"layout":{"type":"constrained","contentSize":"672px"}} -->
+<div class="wp-block-group alignfull vsg-section vsg-blog-section" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--50)">
 	<!-- wp:heading {"level":2,"fontSize":"large","style":{"typography":{"fontStyle":"italic","fontWeight":"400"}}} -->
 	<h2 class="wp-block-heading has-large-font-size" style="font-style:italic;font-weight:400">La libertà di scegliere</h2>
 	<!-- /wp:heading -->

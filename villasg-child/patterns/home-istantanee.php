@@ -7,8 +7,8 @@
  */
 $vsg_theme = get_stylesheet_directory_uri();
 ?>
-<!-- wp:group {"align":"full","className":"vsg-section vsg-home-istantanee","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70","left":"var:preset|spacing|50","right":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|40"}},"backgroundColor":"bg","layout":{"type":"constrained","contentSize":"1344px"}} -->
-<div class="wp-block-group alignfull vsg-section vsg-home-istantanee has-bg-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--50)">
+<!-- wp:group {"align":"full","className":"vsg-section vsg-home-istantanee","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70","left":"var:preset|spacing|50","right":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|40"}},"layout":{"type":"constrained","contentSize":"1344px"}} -->
+<div class="wp-block-group alignfull vsg-section vsg-home-istantanee" style="padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--50)">
 
 	<!-- wp:heading {"level":2,"fontSize":"large","style":{"typography":{"fontStyle":"italic","fontWeight":"400"}}} -->
 	<h2 class="wp-block-heading has-large-font-size" style="font-style:italic;font-weight:400">Istantanee</h2>

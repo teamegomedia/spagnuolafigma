@@ -6,8 +6,8 @@
  * Description: Sezione chiara su sand: header sx (titolo + lede) + 6 servizi numerati a destra.
  */
 ?>
-<!-- wp:group {"align":"full","className":"vsg-section vsg-eccellenza","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|50","right":"var:preset|spacing|50"},"blockGap":"0"}},"backgroundColor":"bg","layout":{"type":"constrained","contentSize":"1344px"}} -->
-<div class="wp-block-group alignfull vsg-section vsg-eccellenza has-bg-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--50)">
+<!-- wp:group {"align":"full","className":"vsg-section vsg-eccellenza","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|50","right":"var:preset|spacing|50"},"blockGap":"0"}},"layout":{"type":"constrained","contentSize":"1344px"}} -->
+<div class="wp-block-group alignfull vsg-section vsg-eccellenza" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--50)">
 
 	<!-- wp:columns {"className":"vsg-eccellenza__row","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
 	<div class="wp-block-columns vsg-eccellenza__row">
