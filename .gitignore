@@ -17,3 +17,6 @@ wp-config.php
 # Claude
 .claude/
 claude
+
+# Documenti grafico / binari locali
+*.docx
