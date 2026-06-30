@@ -46,6 +46,28 @@ b {
   box-sizing: border-box;
 }
 
+/* Larghezze custom (punto 4.2 grafico): i blocchi usano i 3 standard Gutenberg
+   (content 672 / wide 1344 / full). Le larghezze diverse sono ottenute con queste
+   classi utility che impostano solo il max-width sui figli diretti, escludendo i
+   blocchi wide/full. Specificita' (0,3,0) per vincere su `> *` generato da WP. */
+.vsg-maxw-864 > :not(.alignwide):not(.alignfull),
+.vsg-maxw-472 > :not(.alignwide):not(.alignfull),
+.vsg-maxw-400 > :not(.alignwide):not(.alignfull) {
+  margin-inline: auto;
+}
+
+.vsg-maxw-864 > :not(.alignwide):not(.alignfull) {
+  max-width: 864px;
+}
+
+.vsg-maxw-472 > :not(.alignwide):not(.alignfull) {
+  max-width: 472px;
+}
+
+.vsg-maxw-400 > :not(.alignwide):not(.alignfull) {
+  max-width: 400px;
+}
+
 /* Guardrail: avoid ultra-narrow column collapse on mixed template/database layouts */
 .wp-block-columns {
   flex-wrap: wrap !important;
