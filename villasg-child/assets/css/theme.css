@@ -1204,24 +1204,24 @@
   padding-bottom:var(--wp--preset--spacing--80, 96px) !important;
 }
 .vsg-luogo{
-  background:var(--wp--preset--color--neutral-sand, #f8f6f4) !important;
+  background:var(--wp--preset--color--bg, #f8f6f4) !important;
   padding-top:var(--wp--preset--spacing--80, 96px) !important;
   padding-bottom:var(--wp--preset--spacing--60, 56px) !important;
 }
 .vsg-party{
-  background:var(--wp--preset--color--neutral-sand, #f8f6f4) !important;
+  background:var(--wp--preset--color--bg, #f8f6f4) !important;
   padding-top:var(--wp--preset--spacing--60, 56px) !important;
   padding-bottom:var(--wp--preset--spacing--60, 56px) !important;
 }
 .vsg-eccellenza{
-  background:var(--wp--preset--color--neutral-sand, #f8f6f4) !important;
+  background:var(--wp--preset--color--bg, #f8f6f4) !important;
   border-top:0 !important;
   border-bottom:0 !important;
   padding-top:var(--wp--preset--spacing--60, 56px) !important;
   padding-bottom:var(--wp--preset--spacing--60, 56px) !important;
 }
 .vsg-testimonials{
-  background:var(--wp--preset--color--neutral-sand, #f8f6f4) !important;
+  background:var(--wp--preset--color--bg, #f8f6f4) !important;
   padding-top:var(--wp--preset--spacing--60, 56px) !important;
   padding-bottom:var(--wp--preset--spacing--80, 96px) !important;
 }
@@ -1693,7 +1693,7 @@
 
 /* ISPIRAZIONE – gallery 4 col + blog card (LEGACY: pagine inserite prima del refactor) */
 .vsg-ispirazione .vsg-blog-card{
-  background:var(--wp--preset--color--surface);
+  background:var(--wp--preset--color--inverse, #ffffff);
   border:1px solid var(--wp--preset--color--sand-dark);
   padding:1.5rem;
 }

@@ -5,19 +5,17 @@
     "appearanceTools": true,
     "color": {
       "palette": [
-        { "slug": "bg", "name": "Background", "color": "#f8f6f4" },
-        { "slug": "text", "name": "Text", "color": "#272727" },
-        { "slug": "heading", "name": "Heading", "color": "#17334a" },
-        { "slug": "surface", "name": "Surface", "color": "#ffffff" },
-        { "slug": "inverse", "name": "Inverse", "color": "#ffffff" },
-        { "slug": "seablue1", "name": "Sea Blue", "color": "#005d72" },
-        { "slug": "seablue2", "name": "Sea Blue Mid", "color": "#649eac" },
-        { "slug": "seablue3", "name": "Sea Blue Light", "color": "#9dcbd7" },
+        { "slug": "bg", "name": "Neutral Sand", "color": "#f8f6f4" },
+        { "slug": "text", "name": "Text Primary", "color": "#272727" },
+        { "slug": "heading", "name": "Brand", "color": "#17334a" },
+        { "slug": "inverse", "name": "White", "color": "#ffffff" },
+        { "slug": "seablue1", "name": "Sea Blue 1", "color": "#005d72" },
+        { "slug": "seablue2", "name": "Sea Blue 2", "color": "#649eac" },
+        { "slug": "seablue3", "name": "Sea Blue 3", "color": "#9dcbd7" },
         { "slug": "text-secondary", "name": "Text Secondary", "color": "#6b6f74" },
-        { "slug": "neutral-sand", "name": "Neutral Sand", "color": "#f8f6f4" },
-        { "slug": "sand-dark", "name": "Sand Dark", "color": "#d8cfc4" },
-        { "slug": "morning-mist", "name": "Morning Mist", "color": "#e8eef2" },
-        { "slug": "villa-facade", "name": "Villa Facade", "color": "#914747" }
+        { "slug": "sand-dark", "name": "Divisore", "color": "#d8cfc4" },
+        { "slug": "morning-mist", "name": "Airy BG", "color": "#e8eef2" },
+        { "slug": "villa-facade", "name": "Villa Muro", "color": "#914747" }
       ]
     },
     "layout": {
