@@ -2213,13 +2213,15 @@
 
 /* Excerpt come sottotitolo */
 .vsg-blog-header .wp-block-post-excerpt__excerpt,
-.vsg-blog-header .wp-block-post-excerpt p{
+.vsg-blog-header .wp-block-post-excerpt p,
+.vsg-blog-header .vsg-blog-subtitle{
   font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
   font-weight:300;
   font-size:1.125rem;
   color:var(--wp--preset--color--text-secondary, #6b6f74);
   margin-top:.5rem;
 }
+.vsg-blog-header .vsg-blog-subtitle:empty{display:none}
 .vsg-blog-header .wp-block-post-excerpt__more-text{display:none}
 .vsg-blog-header .wp-block-post-title{
   font-family:var(--wp--preset--font-family--lora, 'Lora', serif);

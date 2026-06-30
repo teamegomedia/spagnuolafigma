@@ -476,3 +476,74 @@ function villasg_child_lang_switcher_shortcode(): string {
         . $close;
 }
 add_shortcode( 'vsg_lang_switcher', 'villasg_child_lang_switcher_shortcode' );
+
+/**
+ * ============================================================
+ * Sottotitolo articolo — campo custom (sostituisce l'excerpt)
+ * ============================================================
+ * Registra il meta `vsg_sottotitolo`, aggiunge un campo nell'editor
+ * e lo rende disponibile ai Block Bindings (core/post-meta) usati nel
+ * template single.html.
+ */
+function villasg_child_register_sottotitolo_meta(): void {
+    register_post_meta( 'post', 'vsg_sottotitolo', array(
+        'type'              => 'string',
+        'single'            => true,
+        'default'           => '',
+        'show_in_rest'      => true,
+        'sanitize_callback' => 'sanitize_text_field',
+        'auth_callback'     => function () {
+            return current_user_can( 'edit_posts' );
+        },
+    ) );
+}
+add_action( 'init', 'villasg_child_register_sottotitolo_meta' );
+
+/**
+ * Meta box per inserire il sottotitolo (compatibile con l'editor a blocchi).
+ */
+function villasg_child_add_sottotitolo_metabox(): void {
+    add_meta_box(
+        'vsg_sottotitolo_box',
+        __( 'Sottotitolo articolo', 'villasg-child' ),
+        'villasg_child_render_sottotitolo_metabox',
+        'post',
+        'side',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'villasg_child_add_sottotitolo_metabox' );
+
+function villasg_child_render_sottotitolo_metabox( WP_Post $post ): void {
+    $value = get_post_meta( $post->ID, 'vsg_sottotitolo', true );
+    wp_nonce_field( 'vsg_sottotitolo_save', 'vsg_sottotitolo_nonce' );
+    echo '<p><label for="vsg_sottotitolo_field" class="screen-reader-text">'
+        . esc_html__( 'Sottotitolo', 'villasg-child' ) . '</label>';
+    echo '<textarea id="vsg_sottotitolo_field" name="vsg_sottotitolo_field" rows="3" style="width:100%" '
+        . 'placeholder="' . esc_attr__( 'Sottotitolo mostrato sotto il titolo', 'villasg-child' ) . '">'
+        . esc_textarea( $value ) . '</textarea></p>';
+    echo '<p class="description">'
+        . esc_html__( "Sostituisce il riassunto come sottotitolo nell'header dell'articolo.", 'villasg-child' )
+        . '</p>';
+}
+
+function villasg_child_save_sottotitolo_meta( int $post_id ): void {
+    if ( ! isset( $_POST['vsg_sottotitolo_nonce'] )
+        || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['vsg_sottotitolo_nonce'] ) ), 'vsg_sottotitolo_save' ) ) {
+        return;
+    }
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+    if ( ! current_user_can( 'edit_post', $post_id ) ) {
+        return;
+    }
+    if ( isset( $_POST['vsg_sottotitolo_field'] ) ) {
+        update_post_meta(
+            $post_id,
+            'vsg_sottotitolo',
+            sanitize_text_field( wp_unslash( $_POST['vsg_sottotitolo_field'] ) )
+        );
+    }
+}
+add_action( 'save_post_post', 'villasg_child_save_sottotitolo_meta' );
