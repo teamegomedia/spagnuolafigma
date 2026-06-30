@@ -14,7 +14,7 @@ $vsg_theme = get_stylesheet_directory_uri();
 
 		<!-- wp:column {"verticalAlignment":"center","width":"45%"} -->
 		<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:45%">
-			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"constrained","contentSize":"480px"}} -->
+			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"constrained","contentSize":"472px"}} -->
 			<div class="wp-block-group">
 				<!-- wp:paragraph {"className":"vsg-overline","fontSize":"small-caps"} -->
 				<p class="vsg-overline has-small-caps-font-size">La storia della Villa</p>

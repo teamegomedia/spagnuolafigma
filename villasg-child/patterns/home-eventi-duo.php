@@ -19,7 +19,7 @@ $vsg_theme = get_stylesheet_directory_uri();
 				<span aria-hidden="true" class="wp-block-cover__background has-heading-background-color has-background-dim-40 has-background-dim"></span>
 				<img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( $vsg_theme ); ?>/assets/images/eventi-eleganti.jpg" data-object-fit="cover"/>
 				<div class="wp-block-cover__inner-container">
-					<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30","padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"layout":{"type":"constrained","contentSize":"420px","justifyContent":"left"}} -->
+					<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30","padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"layout":{"type":"constrained","contentSize":"400px","justifyContent":"left"}} -->
 					<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)">
 						<!-- wp:paragraph {"className":"vsg-overline vsg-overline--light","fontSize":"small-caps"} -->
 						<p class="vsg-overline vsg-overline--light has-small-caps-font-size">Atmosfere private</p>
@@ -52,7 +52,7 @@ $vsg_theme = get_stylesheet_directory_uri();
 				<span aria-hidden="true" class="wp-block-cover__background has-heading-background-color has-background-dim-40 has-background-dim"></span>
 				<img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( $vsg_theme ); ?>/assets/images/eventi-aziendali.jpg" data-object-fit="cover"/>
 				<div class="wp-block-cover__inner-container">
-					<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30","padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"layout":{"type":"constrained","contentSize":"420px","justifyContent":"left"}} -->
+					<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30","padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"layout":{"type":"constrained","contentSize":"400px","justifyContent":"left"}} -->
 					<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)">
 						<!-- wp:paragraph {"className":"vsg-overline vsg-overline--light","fontSize":"small-caps"} -->
 						<p class="vsg-overline vsg-overline--light has-small-caps-font-size">Prestigio e visione</p>

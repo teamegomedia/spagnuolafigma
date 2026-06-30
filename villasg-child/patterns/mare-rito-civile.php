@@ -15,7 +15,7 @@ $vsg_theme = get_stylesheet_directory_uri();
 
 		<!-- wp:column {"verticalAlignment":"top","width":"40%"} -->
 		<div class="wp-block-column is-vertically-aligned-top" style="flex-basis:40%">
-			<!-- wp:group {"className":"vsg-mare-rito__intro","style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"constrained","contentSize":"420px","justifyContent":"left"}} -->
+			<!-- wp:group {"className":"vsg-mare-rito__intro","style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"constrained","contentSize":"400px","justifyContent":"left"}} -->
 			<div class="wp-block-group vsg-mare-rito__intro">
 				<!-- wp:paragraph {"className":"vsg-overline","fontSize":"small-caps"} -->
 				<p class="vsg-overline has-small-caps-font-size">Emozioni a piedi nudi</p>

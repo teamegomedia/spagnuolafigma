@@ -8,7 +8,6 @@
         { "slug": "bg", "name": "Background", "color": "#f8f6f4" },
         { "slug": "text", "name": "Text", "color": "#272727" },
         { "slug": "heading", "name": "Heading", "color": "#17334a" },
-        { "slug": "accent", "name": "Accent", "color": "#649eac" },
         { "slug": "surface", "name": "Surface", "color": "#ffffff" },
         { "slug": "inverse", "name": "Inverse", "color": "#ffffff" },
         { "slug": "seablue1", "name": "Sea Blue", "color": "#005d72" },

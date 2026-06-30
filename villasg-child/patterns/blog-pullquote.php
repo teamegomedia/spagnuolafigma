@@ -6,7 +6,7 @@
  * Description: Citazione in stile editoriale con bordo accent.
  */
 ?>
-<!-- wp:group {"align":"full","className":"vsg-section vsg-blog-pullquote","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"backgroundColor":"bg","layout":{"type":"constrained","contentSize":"720px"}} -->
+<!-- wp:group {"align":"full","className":"vsg-section vsg-blog-pullquote","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"backgroundColor":"bg","layout":{"type":"constrained","contentSize":"672px"}} -->
 <div class="wp-block-group alignfull vsg-section vsg-blog-pullquote has-bg-background-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--50)">
 	<!-- wp:quote {"className":"vsg-pullquote"} -->
 	<blockquote class="wp-block-quote vsg-pullquote">
