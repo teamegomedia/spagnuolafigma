@@ -5,7 +5,7 @@
     "appearanceTools": true,
     "color": {
       "palette": [
-        { "slug": "bg", "name": "Neutral Sand", "color": "#f8f6f4" },
+        { "slug": "bg", "name": "Background", "color": "#ffffff" },
         { "slug": "text", "name": "Text Primary", "color": "#272727" },
         { "slug": "heading", "name": "Brand", "color": "#17334a" },
         { "slug": "inverse", "name": "White", "color": "#ffffff" },
