@@ -37,7 +37,7 @@ b {
 }
 
 .wp-site-blocks {
-  background: var(--wp--preset--color--bg, #f8f6f4);
+  background: var(--wp--preset--color--inverse, #ffffff);
 }
 
 .wp-block-group,
