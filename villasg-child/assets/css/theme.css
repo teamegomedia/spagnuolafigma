@@ -93,9 +93,10 @@ b {
 
 /* Cap 1920px per CONTENUTI a larghezza intera (immagini, video, colonne): va appesa
    direttamente al blocco full (immagine/video/wp:columns), che viene limitato a 1920
-   e centrato. NON va messa sul gruppo-sezione: lo sfondo colorato della sezione deve
-   restare a tutta larghezza (viewport). !important per vincere sul full-bleed di WP. */
-.vsg-maxw-1920 {
+   e centrato. Effetto visibile SOLO su viewport > 1920px. Scoped a .alignfull cosi'
+   su blocchi content/wide non ha effetto (evita di allargarli oltre 672/1344). NON va
+   messa sul gruppo-sezione: lo sfondo colorato deve restare a tutta larghezza. */
+.vsg-maxw-1920.alignfull {
   max-width: 1920px !important;
   margin-inline: auto !important;
 }
