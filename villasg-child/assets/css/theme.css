@@ -98,13 +98,17 @@ b {
 }
 
 /* Cap 1920px per CONTENUTI a larghezza intera (immagini, video, colonne): va appesa
-   direttamente al blocco full (immagine/video/wp:columns), che viene limitato a 1920
-   e centrato. Effetto visibile SOLO su viewport > 1920px. Scoped a .alignfull cosi'
-   su blocchi content/wide non ha effetto (evita di allargarli oltre 672/1344). NON va
-   messa sul gruppo-sezione: lo sfondo colorato deve restare a tutta larghezza. */
-.vsg-maxw-1920.alignfull {
-  max-width: 1920px !important;
-  margin-inline: auto !important;
+   direttamente al blocco full (immagine/video/wp:columns), che resta a tutta larghezza
+   (full-bleed) fino a 1920px e oltre viene limitato a 1920 e centrato. La media query
+   evita di intaccare il full-bleed nativo di WordPress sotto i 1920 (niente vuoti ai lati
+   ne' scrollbar). Scoped a .alignfull cosi' su blocchi content/wide non ha effetto (evita
+   di allargarli oltre 672/1344). NON va messa sul gruppo-sezione: lo sfondo colorato deve
+   restare a tutta larghezza. Effetto visibile SOLO su viewport > 1920px. */
+@media (min-width: 1921px) {
+  .vsg-maxw-1920.alignfull {
+    max-width: 1920px !important;
+    margin-inline: auto !important;
+  }
 }
 
 /* Riempi il contenitore: appesa a un singolo blocco foglia (paragrafo, titolo...)
