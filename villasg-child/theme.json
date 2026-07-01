@@ -126,6 +126,15 @@
       "fontWeight": "300",
       "lineHeight": "1.5"
     },
+    "spacing": {
+      "blockGap": "var:preset|spacing|30",
+      "padding": {
+        "top": "0px",
+        "bottom": "0px",
+        "left": "clamp(32px, 5vw, 48px)",
+        "right": "clamp(32px, 5vw, 48px)"
+      }
+    },
     "elements": {
       "heading": {
         "typography": {
