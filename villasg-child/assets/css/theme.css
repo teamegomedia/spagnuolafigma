@@ -101,6 +101,16 @@ b {
   margin-inline: auto !important;
 }
 
+/* Riempi il contenitore: appesa a un singolo blocco foglia (paragrafo, titolo...)
+   dentro un gruppo WIDE/full, ne annulla il tetto 672 (content) imposto da WordPress
+   e lo fa partire da SINISTRA, riempiendo tutta la larghezza del gruppo (meno padding).
+   Utile quando serve testo a piena larghezza in una fascia colorata alignwide/alignfull.
+   Esclude group/columns per non toccare i contenitori usati dai pattern. */
+.vsg-fill:not(.wp-block-group):not(.wp-block-columns) {
+  max-width: none !important;
+  margin-inline: 0 !important;
+}
+
 /* Guardrail: avoid ultra-narrow column collapse on mixed template/database layouts */
 .wp-block-columns {
   flex-wrap: wrap !important;
