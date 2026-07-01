@@ -70,14 +70,18 @@ b {
 
 /* Uso "diretto" (workflow grafico): la classe appesa a un singolo blocco WIDE/content
    (paragrafo, titolo, immagine, pulsanti, citazione...) ne cappa il max-width e lo
-   allinea a SINISTRA (come nel Figma: i box larghezza sono ancorati al bordo sinistro).
+   allinea a SINISTRA del bordo della COLONNA CONTENUTO (672), non della fascia wide.
+   Nel Figma i box 400/472/864 sono rientrati all'altezza del contenuto, non incollati
+   al bordo pagina: il rientro = mezza differenza tra il contenitore e la content-size
+   (si azzera quando il contenitore e' piu' stretto del contenuto, es. mobile).
    Esclude .wp-block-group/.wp-block-columns (usati col modello contenitore qui sopra) e
    i blocchi full, per non alterare i pattern esistenti. !important per vincere sul
-   max-width e sul margin-inline:auto generati da WordPress per la larghezza WIDE. */
+   max-width e sul margin-inline generati da WordPress per la larghezza WIDE. */
 .vsg-maxw-864:not(.wp-block-group):not(.wp-block-columns):not(.alignfull),
 .vsg-maxw-472:not(.wp-block-group):not(.wp-block-columns):not(.alignfull),
 .vsg-maxw-400:not(.wp-block-group):not(.wp-block-columns):not(.alignfull) {
-  margin-inline: 0 !important;
+  margin-inline-start: max(0px, calc((100% - var(--wp--style--global--content-size, 672px)) / 2)) !important;
+  margin-inline-end: 0 !important;
 }
 
 .vsg-maxw-864:not(.wp-block-group):not(.wp-block-columns):not(.alignfull) {
