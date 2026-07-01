@@ -91,6 +91,15 @@ b {
   max-width: 400px !important;
 }
 
+/* Cap 1920px per CONTENUTI a larghezza intera (immagini, video, colonne): va appesa
+   direttamente al blocco full (immagine/video/wp:columns), che viene limitato a 1920
+   e centrato. NON va messa sul gruppo-sezione: lo sfondo colorato della sezione deve
+   restare a tutta larghezza (viewport). !important per vincere sul full-bleed di WP. */
+.vsg-maxw-1920 {
+  max-width: 1920px !important;
+  margin-inline: auto !important;
+}
+
 /* Guardrail: avoid ultra-narrow column collapse on mixed template/database layouts */
 .wp-block-columns {
   flex-wrap: wrap !important;
