@@ -1276,7 +1276,7 @@ b {
 .vsg-overline{
   font-family:var(--wp--preset--font-family--figtree);
   font-weight:500;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--wp--preset--color--seablue1);line-height:2;margin:0;
+  color:var(--wp--preset--color--seablue-1);line-height:2;margin:0;
 }
 .vsg-overline--light,
 .has-inverse-color .vsg-overline,
@@ -1287,7 +1287,7 @@ b {
 .vsg-cta-link{
   font-family:var(--wp--preset--font-family--figtree);
   font-weight:500;font-size:.875rem;letter-spacing:.08em;
-  text-transform:uppercase;text-decoration:none;color:var(--wp--preset--color--seablue1);
+  text-transform:uppercase;text-decoration:none;color:var(--wp--preset--color--seablue-1);
 }
 .vsg-cta-link a{border-bottom:1px solid currentColor;padding-bottom:.25rem}
 .vsg-cta-link a:hover{color:var(--wp--preset--color--heading)}
@@ -1315,7 +1315,7 @@ b {
 
 /* HERO TITOLO – titoletto + H1 centrati (Matrimoni Desk pattern) */
 .vsg-hero-titolo .vsg-overline{
-  color:var(--wp--preset--color--seablue1, #005d72);
+  color:var(--wp--preset--color--seablue-1, #005d72);
   letter-spacing:.2em;
 }
 .vsg-hero-titolo__title{
@@ -1557,7 +1557,7 @@ b {
 
 /* SCENOGRAFIE – Header allineato a sinistra */
 .vsg-scenografie__head{max-width:672px;margin:0}
-.vsg-scenografie__head .vsg-overline{text-align:left;color:var(--wp--preset--color--seablue1, #005d72)}
+.vsg-scenografie__head .vsg-overline{text-align:left;color:var(--wp--preset--color--seablue-1, #005d72)}
 .vsg-scenografie__title{
   font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
   font-weight:400;font-size:48px;line-height:1.25;
@@ -1678,8 +1678,8 @@ b {
 /* ISPIRAZIONE – sezione full-bleed Morning Mist con bordi seablue3 (Figma 671:8500) */
 .vsg-ispirazione.vsg-section{
   background:var(--wp--preset--color--morning-mist, #e8eef2) !important;
-  border-top:1px solid var(--wp--preset--color--seablue3, #9dcbd7) !important;
-  border-bottom:1px solid var(--wp--preset--color--seablue3, #9dcbd7) !important;
+  border-top:1px solid var(--wp--preset--color--seablue-3, #9dcbd7) !important;
+  border-bottom:1px solid var(--wp--preset--color--seablue-3, #9dcbd7) !important;
   padding-top:var(--wp--preset--spacing--80, 96px) !important;
   padding-bottom:var(--wp--preset--spacing--80, 96px) !important;
   padding-left:0 !important;
@@ -1691,7 +1691,7 @@ b {
   font-size:14px;
   letter-spacing:.2em;
   text-transform:uppercase;
-  color:var(--wp--preset--color--seablue1, #005d72);
+  color:var(--wp--preset--color--seablue-1, #005d72);
   margin:0;
 }
 .vsg-ispirazione__title.has-large-title-font-size{
@@ -1868,7 +1868,7 @@ b {
 .vsg-blog-card .wp-block-image{margin:0 0 .5rem}
 .vsg-blog-card img{aspect-ratio:16/9;object-fit:cover;width:100%;display:block}
 .vsg-blog-card__kicker{
-  color:var(--wp--preset--color--seablue1);
+  color:var(--wp--preset--color--seablue-1);
   letter-spacing:.2em;text-transform:uppercase;font-weight:500;line-height:2;margin:0;
 }
 
@@ -1898,7 +1898,7 @@ b {
 .vsg-servizio__num{
   font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
   font-weight:400;font-size:24px;line-height:1.25;
-  color:var(--wp--preset--color--seablue1, #005d72);
+  color:var(--wp--preset--color--seablue-1, #005d72);
   min-width:36px;flex-shrink:0;
 }
 .vsg-servizio__body{flex:1 1 0;min-width:0;padding-right:1rem;display:flex;flex-direction:column;gap:.5rem}
@@ -1925,13 +1925,13 @@ b {
 .vsg-testimonial.wp-block-quote{
   margin:0;padding:2rem;
   background:var(--wp--preset--color--bg);
-  border-left:3px solid var(--wp--preset--color--seablue1);
+  border-left:3px solid var(--wp--preset--color--seablue-1);
 }
 .vsg-testimonial cite{
   display:block;margin-top:1rem;
   font-family:var(--wp--preset--font-family--figtree);
   font-style:normal;font-weight:500;font-size:.875rem;
-  letter-spacing:.08em;color:var(--wp--preset--color--seablue1);
+  letter-spacing:.08em;color:var(--wp--preset--color--seablue-1);
 }
 
 /* TESTIMONIALS – slider (CPT testimonianze) */
@@ -1963,18 +1963,18 @@ b {
   display:inline-flex;align-items:center;justify-content:center;
   font-size:1.25rem;line-height:1;
   background:var(--wp--preset--color--bg);
-  border:1px solid var(--wp--preset--color--seablue1);
-  color:var(--wp--preset--color--seablue1);
+  border:1px solid var(--wp--preset--color--seablue-1);
+  color:var(--wp--preset--color--seablue-1);
   transition:background .2s ease,color .2s ease,opacity .2s ease;
 }
 .vsg-testimonials__arrow:hover:not(:disabled){
-  background:var(--wp--preset--color--seablue1);color:#fff;
+  background:var(--wp--preset--color--seablue-1);color:#fff;
 }
 .vsg-testimonials__arrow:disabled{opacity:.35;cursor:default}
 .vsg-testimonials__dots{display:flex;align-items:center;gap:.5rem}
 .vsg-testimonials__dot{
   width:9px;height:9px;padding:0;border:0;border-radius:999px;cursor:pointer;
-  background:var(--wp--preset--color--seablue1);opacity:.3;
+  background:var(--wp--preset--color--seablue-1);opacity:.3;
   transition:opacity .2s ease,transform .2s ease;
 }
 .vsg-testimonials__dot.is-active{opacity:1;transform:scale(1.25)}
@@ -2029,7 +2029,7 @@ b {
 .vsg-mare-rito__gallery.wp-block-gallery.has-nested-images figure.wp-block-image{flex-basis:calc(50% - 6px) !important;width:calc(50% - 6px) !important;margin:0}
 .vsg-mare-rito__gallery img{aspect-ratio:4/5;object-fit:cover;width:100%;height:auto;display:block;border-radius:0}
 .vsg-mare-rito__more{margin-top:1.25rem !important;letter-spacing:.15em}
-.vsg-mare-rito__more a{color:var(--wp--preset--color--seablue1);text-decoration:none}
+.vsg-mare-rito__more a{color:var(--wp--preset--color--seablue-1);text-decoration:none}
 .vsg-mare-rito__more a:hover{text-decoration:underline}
 @media (max-width:781px){
   .vsg-mare-rito > .wp-block-columns{flex-direction:column !important}
@@ -2099,7 +2099,7 @@ b {
   color:var(--wp--preset--color--heading, #17334a);
   margin:0 0 .75rem;
 }
-.vsg-blog-pullquote .wp-block-quote{border-left:3px solid var(--wp--preset--color--seablue1);padding:.5rem 0 .5rem 1.5rem;margin:0;background:transparent}
+.vsg-blog-pullquote .wp-block-quote{border-left:3px solid var(--wp--preset--color--seablue-1);padding:.5rem 0 .5rem 1.5rem;margin:0;background:transparent}
 .vsg-blog-pullquote .wp-block-quote p{color:var(--wp--preset--color--heading);font-style:italic}
 .vsg-blog-inline-img{max-width:480px;margin-inline:auto !important}
 .vsg-blog-inline-img img{width:100%;height:auto;display:block}
@@ -2317,7 +2317,7 @@ b {
   font-weight:400 !important;
   font-size:20px !important;
   line-height:1.5 !important;
-  color:var(--wp--preset--color--seablue1, #005d72) !important;
+  color:var(--wp--preset--color--seablue-1, #005d72) !important;
   max-width:864px !important;
   width:100%;
   margin-inline:auto !important;
@@ -2327,7 +2327,7 @@ b {
 
 /* Pullquote inline (blockquote standard nel post) */
 .vsg-blog-body .wp-block-post-content blockquote{
-  border-left:3px solid var(--wp--preset--color--seablue1, #005d72);
+  border-left:3px solid var(--wp--preset--color--seablue-1, #005d72);
   padding:.5rem 0 .5rem 1.5rem;
   margin:2rem auto;
   background:transparent;
