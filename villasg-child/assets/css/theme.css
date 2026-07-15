@@ -508,8 +508,22 @@ b {
   top: 0;
   z-index: 200;
   background: var(--wp--preset--color--inverse, #ffffff);
+}
+
+/* Single hairline divider on the outer header only (avoids a doubled
+   border/background that reads as a drop shadow under the header). */
+.vsg-site-header {
   border-bottom: 1px solid var(--wp--preset--color--morning-mist, #e8eef2);
-  box-shadow: none;
+}
+
+.wp-block-template-part.vsg-site-header > * {
+  border-bottom: 0;
+}
+
+/* Kill any drop shadow inherited from block styles on the header. */
+.vsg-site-header,
+.vsg-site-header * {
+  box-shadow: none !important;
 }
 
 .vsg-header-inner {
