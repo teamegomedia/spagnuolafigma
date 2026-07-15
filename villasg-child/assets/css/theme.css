@@ -624,35 +624,27 @@ b {
   display: none;
 }
 
-/* Hidden by default — toggled via checkbox */
+/* Panel opens BELOW the sticky header, which stays visible (Figma) */
 .vsg-nav-list {
   position: fixed;
-  inset: 0;
+  top: var(--vsg-header-h, 88px);
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: #ffffff;
-  padding: clamp(5rem, 8vw, 6rem) clamp(1.5rem, 3vw, 3rem) 4rem;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 3vw, 3rem) 4rem;
   margin: 0;
   list-style: none;
   display: none;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  z-index: 999;
+  z-index: 190;
   overflow-y: auto;
 }
 
 .vsg-nav-toggle-input:checked ~ .vsg-nav-list {
   display: flex;
-}
-
-.vsg-nav-toggle-input:checked ~ .vsg-nav-toggle {
-  position: fixed;
-  top: 1.25rem;
-  right: clamp(1.5rem, 3vw, 3rem);
-  z-index: 1000;
-}
-
-.vsg-nav-toggle-input:checked ~ .vsg-nav-toggle::before {
-  content: "Chiudi";
 }
 
 .vsg-nav-item {
