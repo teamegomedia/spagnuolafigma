@@ -606,22 +606,43 @@ b {
   content: "Menu";
 }
 
-.vsg-nav-toggle::after {
-  content: "";
+/* Hamburger icon built from 3 spans (morphs into X when open) */
+.vsg-nav-icon {
+  position: relative;
   display: inline-block;
   width: 18px;
   height: 12px;
-  background-image:
-    linear-gradient(currentColor, currentColor),
-    linear-gradient(currentColor, currentColor),
-    linear-gradient(currentColor, currentColor);
-  background-size: 18px 2px;
-  background-position: 0 0, 0 5px, 0 10px;
-  background-repeat: no-repeat;
+  flex: none;
 }
 
-.vsg-nav-toggle > span {
-  display: none;
+.vsg-nav-icon > span {
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.vsg-nav-icon > span:nth-child(1) { top: 0; }
+.vsg-nav-icon > span:nth-child(2) { top: 5px; }
+.vsg-nav-icon > span:nth-child(3) { top: 10px; }
+
+/* Open state → label "Chiudi" + morph hamburger into an X */
+.vsg-nav-toggle-input:checked ~ .vsg-nav-toggle::before {
+  content: "Chiudi";
+}
+
+.vsg-nav-toggle-input:checked ~ .vsg-nav-toggle .vsg-nav-icon > span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.vsg-nav-toggle-input:checked ~ .vsg-nav-toggle .vsg-nav-icon > span:nth-child(2) {
+  opacity: 0;
+}
+
+.vsg-nav-toggle-input:checked ~ .vsg-nav-toggle .vsg-nav-icon > span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
 }
 
 /* Panel opens BELOW the sticky header, which stays visible (Figma) */

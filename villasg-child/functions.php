@@ -420,9 +420,11 @@ function villasg_child_main_menu_shortcode(): string {
     <nav class="vsg-main-nav" aria-label="<?php esc_attr_e( 'Menu principale', 'villasg-child' ); ?>">
         <input type="checkbox" id="vsg-nav-toggle" class="vsg-nav-toggle-input" hidden>
         <label for="vsg-nav-toggle" class="vsg-nav-toggle" aria-label="<?php esc_attr_e( 'Apri menu', 'villasg-child' ); ?>">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
+            <span class="vsg-nav-icon" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
         </label>
         <?php
         if ( has_nav_menu( 'vsg-primary' ) ) {
