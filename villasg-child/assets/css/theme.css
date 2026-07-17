@@ -122,15 +122,9 @@ b {
 }
 
 /* Guardrail: avoid ultra-narrow column collapse on mixed template/database layouts.
-   NB: il wrap forzato vale SOLO su mobile (<782px). Su desktop lasciamo il nowrap nativo
-   di WordPress, altrimenti le colonne affiancate (es. 66%/33% con gap) andavano a capo
-   online pur restando allineate nell'editor. */
-@media (max-width: 781px) {
-  .wp-block-columns {
-    flex-wrap: wrap !important;
-  }
-}
-
+   NB: NON forziamo piu' flex-wrap. Lasciamo il comportamento nativo di WordPress
+   (wrap su mobile, nowrap su desktop >=782px), altrimenti le colonne affiancate
+   andavano a capo online pur restando allineate nell'editor. */
 .wp-block-columns > .wp-block-column {
   min-width: min(100%, 280px);
   overflow-wrap: break-word;
