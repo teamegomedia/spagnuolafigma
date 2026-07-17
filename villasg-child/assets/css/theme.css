@@ -1994,6 +1994,7 @@ b {
 .vsg-home-hero__monogram img{filter:drop-shadow(0 2px 12px rgba(0,0,0,.25))}
 .vsg-home-hero__cta .wp-block-button.is-style-outline .wp-block-button__link{border:1px solid rgba(255,255,255,.9);background:transparent}
 .vsg-home-hero__cta .wp-block-button.is-style-outline .wp-block-button__link:hover{background:rgba(255,255,255,.12)}
+.vsg-hero-stretch .wp-block-cover__inner-container{align-self:stretch}
 
 /* Big card half (Eventi duo) – stesso pattern di .vsg-big-card ma su colonne */
 .vsg-big-card--half{min-height:520px}
