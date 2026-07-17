@@ -1995,6 +1995,11 @@ b {
 .vsg-home-hero__cta .wp-block-button.is-style-outline .wp-block-button__link{border:1px solid rgba(255,255,255,.9);background:transparent}
 .vsg-home-hero__cta .wp-block-button.is-style-outline .wp-block-button__link:hover{background:rgba(255,255,255,.12)}
 .vsg-hero-stretch .wp-block-cover__inner-container{align-self:stretch}
+/* Hero home2 (Gutenberg): il bottone "SCORRI PER SCOPRIRE" deve restare su una riga;
+   il <br> nel testo gestisce solo la freccia sotto. La colonna destra (33%) e' stretta
+   e mandava a capo il testo. */
+.wp-block-button.is-style-outline--1 .wp-block-button__link,
+.wp-block-button.is-style-outline--2 .wp-block-button__link{white-space:nowrap}
 
 /* Big card half (Eventi duo) – stesso pattern di .vsg-big-card ma su colonne */
 .vsg-big-card--half{min-height:520px}
