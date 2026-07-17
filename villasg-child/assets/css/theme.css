@@ -121,6 +121,17 @@ b {
   margin-inline: 0 !important;
 }
 
+/* Utility visibilita' responsive (breakpoint 782px, coerente con WP e le colonne).
+   Da appendere al blocco in Avanzate > Classi CSS aggiuntive.
+   .vsg-hide-mobile  -> nascosto sotto 782px (mobile/tablet)
+   .vsg-hide-desktop -> nascosto da 782px in su (desktop) */
+@media (max-width: 781px) {
+  .vsg-hide-mobile { display: none !important; }
+}
+@media (min-width: 782px) {
+  .vsg-hide-desktop { display: none !important; }
+}
+
 /* Guardrail: avoid ultra-narrow column collapse on mixed template/database layouts.
    NB: NON forziamo piu' flex-wrap. Lasciamo il comportamento nativo di WordPress
    (wrap su mobile, nowrap su desktop >=782px), altrimenti le colonne affiancate
