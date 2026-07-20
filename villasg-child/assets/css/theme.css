@@ -501,6 +501,14 @@ b {
   color: var(--wp--preset--color--heading);
 }
 
+/* Hover Pieno chiaro: sfondo seablue1, testo bianco */
+.wp-block-button.is-style-vsg-btn-light .wp-block-button__link:hover,
+.wp-block-button.is-style-vsg-btn-light .wp-block-button__link:focus-visible {
+  background-color: var(--wp--preset--color--seablue-1);
+  color: var(--wp--preset--color--inverse);
+  opacity: 1;
+}
+
 /* 2) Pieno scuro */
 .wp-block-button.is-style-vsg-btn-dark .wp-block-button__link {
   background-color: var(--wp--preset--color--heading);
