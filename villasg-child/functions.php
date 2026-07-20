@@ -80,7 +80,7 @@ add_action('enqueue_block_editor_assets', 'villasg_child_enqueue_fonts');
  */
 function villasg_child_setup(): void
 {
-    add_editor_style('assets/css/editor.css');
+    add_editor_style( array( 'assets/css/theme.css', 'assets/css/editor.css' ) );
 
     if (function_exists('register_block_pattern_category')) {
         register_block_pattern_category(
