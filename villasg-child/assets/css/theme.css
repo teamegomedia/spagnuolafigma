@@ -507,6 +507,13 @@ b {
   color: var(--wp--preset--color--inverse);
 }
 
+/* Hover Pieno scuro: sfondo blu piu' chiaro (seablue1) */
+.wp-block-button.is-style-vsg-btn-dark .wp-block-button__link:hover,
+.wp-block-button.is-style-vsg-btn-dark .wp-block-button__link:focus-visible {
+  background-color: var(--wp--preset--color--seablue-1);
+  opacity: 1;
+}
+
 /* 3) Trasparente (Solo Testo): niente sfondo/padding, testo brand.
    Il colore è sovrascrivibile dal controllo Testo del blocco (es. bianco su hero scuri). */
 .wp-block-button.is-style-vsg-btn-text .wp-block-button__link {
