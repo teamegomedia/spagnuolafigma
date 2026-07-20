@@ -158,6 +158,10 @@ function villasg_child_register_block_styles(): void {
         'name'  => 'vsg-btn-dark',
         'label' => __( 'Pieno scuro', 'villasg-child' ),
     ) );
+    register_block_style( 'core/button', array(
+        'name'  => 'vsg-btn-text',
+        'label' => __( 'Trasparente', 'villasg-child' ),
+    ) );
 }
 add_action( 'init', 'villasg_child_register_block_styles' );
 

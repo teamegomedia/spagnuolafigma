@@ -457,15 +457,13 @@ b {
    Stili blocco registrati in functions.php:
    - is-style-vsg-btn-light : sfondo bianco, testo brand
    - is-style-vsg-btn-dark  : sfondo brand, testo bianco
+   - is-style-vsg-btn-text  : trasparente (Solo Testo), testo brand
    ========================================================================== */
 .wp-block-button.is-style-vsg-btn-light .wp-block-button__link,
-.wp-block-button.is-style-vsg-btn-dark .wp-block-button__link {
+.wp-block-button.is-style-vsg-btn-dark .wp-block-button__link,
+.wp-block-button.is-style-vsg-btn-text .wp-block-button__link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 16px 24px;
-  border: 0;
-  border-radius: 4px;
   font-family: var(--wp--preset--font-family--figtree);
   font-weight: 500;
   font-size: 0.875rem;      /* 14px */
@@ -474,10 +472,20 @@ b {
   text-transform: uppercase;
 }
 
+/* Filled (con sfondo): padding + radius */
+.wp-block-button.is-style-vsg-btn-light .wp-block-button__link,
+.wp-block-button.is-style-vsg-btn-dark .wp-block-button__link {
+  gap: 8px;
+  padding: 16px 24px;
+  border: 0;
+  border-radius: 4px;
+}
+
 /* Freccia automatica "→" come nel Figma.
    Per un pulsante senza freccia, aggiungi la classe utility .vsg-no-arrow. */
 .wp-block-button.is-style-vsg-btn-light .wp-block-button__link::after,
-.wp-block-button.is-style-vsg-btn-dark .wp-block-button__link::after {
+.wp-block-button.is-style-vsg-btn-dark .wp-block-button__link::after,
+.wp-block-button.is-style-vsg-btn-text .wp-block-button__link::after {
   content: "\2192";
   font-size: 1em;
   line-height: 1;
@@ -497,6 +505,22 @@ b {
 .wp-block-button.is-style-vsg-btn-dark .wp-block-button__link {
   background-color: var(--wp--preset--color--heading);
   color: var(--wp--preset--color--inverse);
+}
+
+/* 3) Trasparente (Solo Testo): niente sfondo/padding, testo brand.
+   Il colore è sovrascrivibile dal controllo Testo del blocco (es. bianco su hero scuri). */
+.wp-block-button.is-style-vsg-btn-text .wp-block-button__link {
+  gap: 16px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--wp--preset--color--heading);
+}
+
+.wp-block-button.is-style-vsg-btn-text .wp-block-button__link:hover,
+.wp-block-button.is-style-vsg-btn-text .wp-block-button__link:focus-visible {
+  opacity: 0.7;
+  transform: none;
 }
 
 .wp-block-quote.is-style-plain p {
