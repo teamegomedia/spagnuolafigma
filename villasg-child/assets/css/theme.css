@@ -501,11 +501,11 @@ b {
   color: var(--wp--preset--color--heading);
 }
 
-/* Hover Pieno chiaro: sfondo seablue1, testo bianco */
+/* Hover Pieno chiaro: sfondo bianco semitrasparente (80%), testo brand */
 .wp-block-button.is-style-vsg-btn-light .wp-block-button__link:hover,
 .wp-block-button.is-style-vsg-btn-light .wp-block-button__link:focus-visible {
-  background-color: var(--wp--preset--color--seablue-1);
-  color: var(--wp--preset--color--inverse);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--wp--preset--color--heading);
   opacity: 1;
 }
 
