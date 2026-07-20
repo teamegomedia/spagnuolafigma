@@ -148,6 +148,16 @@ function villasg_child_register_block_styles(): void {
         'name'  => 'lead',
         'label' => __( 'Testo in evidenza', 'villasg-child' ),
     ) );
+
+    // Pulsanti "Filled" da Figma ("Pulsanti e Link").
+    register_block_style( 'core/button', array(
+        'name'  => 'vsg-btn-light',
+        'label' => __( 'Pieno chiaro', 'villasg-child' ),
+    ) );
+    register_block_style( 'core/button', array(
+        'name'  => 'vsg-btn-dark',
+        'label' => __( 'Pieno scuro', 'villasg-child' ),
+    ) );
 }
 add_action( 'init', 'villasg_child_register_block_styles' );
 

@@ -452,6 +452,53 @@ b {
   opacity: 0.92;
 }
 
+/* ==========================================================================
+   Pulsanti "Filled" (da Figma "Pulsanti e Link")
+   Stili blocco registrati in functions.php:
+   - is-style-vsg-btn-light : sfondo bianco, testo brand
+   - is-style-vsg-btn-dark  : sfondo brand, testo bianco
+   ========================================================================== */
+.wp-block-button.is-style-vsg-btn-light .wp-block-button__link,
+.wp-block-button.is-style-vsg-btn-dark .wp-block-button__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  border: 0;
+  border-radius: 4px;
+  font-family: var(--wp--preset--font-family--figtree);
+  font-weight: 500;
+  font-size: 0.875rem;      /* 14px */
+  line-height: 1;
+  letter-spacing: 0.08em;   /* ~1.12px su 14px */
+  text-transform: uppercase;
+}
+
+/* Freccia automatica "→" come nel Figma.
+   Per un pulsante senza freccia, aggiungi la classe utility .vsg-no-arrow. */
+.wp-block-button.is-style-vsg-btn-light .wp-block-button__link::after,
+.wp-block-button.is-style-vsg-btn-dark .wp-block-button__link::after {
+  content: "\2192";
+  font-size: 1em;
+  line-height: 1;
+}
+
+.wp-block-button.vsg-no-arrow .wp-block-button__link::after {
+  content: none;
+}
+
+/* 1) Pieno chiaro */
+.wp-block-button.is-style-vsg-btn-light .wp-block-button__link {
+  background-color: var(--wp--preset--color--inverse);
+  color: var(--wp--preset--color--heading);
+}
+
+/* 2) Pieno scuro */
+.wp-block-button.is-style-vsg-btn-dark .wp-block-button__link {
+  background-color: var(--wp--preset--color--heading);
+  color: var(--wp--preset--color--inverse);
+}
+
 .wp-block-quote.is-style-plain p {
   font-family: "Lora", Georgia, serif;
   font-size: 1.25rem;
