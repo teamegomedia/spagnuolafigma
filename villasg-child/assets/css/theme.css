@@ -511,7 +511,7 @@ b {
    Il colore è sovrascrivibile dal controllo Testo del blocco (es. bianco su hero scuri). */
 .wp-block-button.is-style-vsg-btn-text .wp-block-button__link {
   gap: 16px;
-  padding: 0;
+  padding: 16px 24px;
   border: 0;
   background: transparent;
   color: var(--wp--preset--color--heading);
