@@ -7,6 +7,23 @@
 	}
 
 	ready(function(){
+		// Keep --vsg-header-h in sync with the real header height so the mobile
+		// menu panel (position:fixed; top:var(--vsg-header-h)) attaches flush
+		// under the header instead of relying on a hardcoded 88px fallback.
+		(function(){
+			var headerEl = document.querySelector('.vsg-site-header, header.wp-block-template-part, header');
+			if (!headerEl) return;
+			function setHeaderH(){
+				document.documentElement.style.setProperty('--vsg-header-h', headerEl.offsetHeight + 'px');
+			}
+			setHeaderH();
+			window.addEventListener('resize', setHeaderH);
+			window.addEventListener('load', setHeaderH);
+			if (window.ResizeObserver){
+				try { new ResizeObserver(setHeaderH).observe(headerEl); } catch (e) {}
+			}
+		})();
+
 		// All storia-dark bands on the page (the pattern can appear multiple times).
 		var blocks = Array.prototype.slice.call(
 			document.querySelectorAll('.vsg-storia-dark')
