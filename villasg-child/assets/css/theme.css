@@ -2544,3 +2544,230 @@ main:has(> .vsg-hero-titolo:first-child) > .vsg-hero-titolo:first-child{
 	.vsg-home-hero__cta{flex-direction:column;align-items:center}
 	.vsg-big-card--half{min-height:420px}
 }
+
+/* ==========================================================
+   CONTACT FORM 7 — Stile coerente col resto del sito
+   (nessuna indicazione dal grafico: palette + font del tema)
+   ========================================================== */
+.wpcf7 {
+  font-family: var(--wp--preset--font-family--figtree, "Museo Sans", sans-serif);
+}
+
+.wpcf7 .wpcf7-form-control-wrap {
+  display: block;
+}
+
+/* Campi in griglia: Nome + E-mail affiancati, Telefono e Messaggio full */
+.wpcf7 .fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.wpcf7 .fields > [data-name="your-phone"],
+.wpcf7 .fields > [data-name="your-message"] {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 640px) {
+  .wpcf7 .fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Input e textarea */
+.wpcf7 input.wpcf7-text,
+.wpcf7 input.wpcf7-email,
+.wpcf7 textarea.wpcf7-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--wp--preset--color--heading, #17334a);
+  background: var(--wp--preset--color--inverse, #ffffff);
+  border: 1px solid var(--wp--preset--color--morning-mist, #e8eef2);
+  border-radius: 4px;
+  padding: 0.9rem 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wpcf7 textarea.wpcf7-textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+.wpcf7 input.wpcf7-text::placeholder,
+.wpcf7 input.wpcf7-email::placeholder,
+.wpcf7 textarea.wpcf7-textarea::placeholder {
+  color: var(--wp--preset--color--text-secondary, #6b6f74);
+  opacity: 1;
+}
+
+.wpcf7 input.wpcf7-text:focus,
+.wpcf7 input.wpcf7-email:focus,
+.wpcf7 textarea.wpcf7-textarea:focus {
+  outline: none;
+  border-color: var(--wp--preset--color--seablue-1, #005d72);
+  box-shadow: 0 0 0 3px rgba(0, 93, 114, 0.12);
+}
+
+/* Blocco consensi + nota "necessario" */
+.wpcf7 .sub {
+  margin-top: 1.75rem;
+}
+
+.wpcf7 .acceptances {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.wpcf7 .acceptances .wpcf7-form-control-wrap {
+  margin: 0;
+}
+
+.wpcf7 .wpcf7-acceptance .wpcf7-list-item,
+.wpcf7 .wpcf7-checkbox .wpcf7-list-item {
+  display: block;
+  margin: 0;
+}
+
+.wpcf7 .wpcf7-acceptance label,
+.wpcf7 .wpcf7-checkbox label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--wp--preset--color--text-secondary, #6b6f74);
+}
+
+/* Checkbox custom */
+.wpcf7 .wpcf7-acceptance input[type="checkbox"],
+.wpcf7 .wpcf7-checkbox input[type="checkbox"] {
+  position: relative;
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0.1rem 0 0;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 1px solid var(--wp--preset--color--sand-dark, #d8cfc4);
+  border-radius: 3px;
+  background: var(--wp--preset--color--inverse, #ffffff);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.wpcf7 .wpcf7-acceptance input[type="checkbox"]:checked,
+.wpcf7 .wpcf7-checkbox input[type="checkbox"]:checked {
+  background: var(--wp--preset--color--seablue-1, #005d72);
+  border-color: var(--wp--preset--color--seablue-1, #005d72);
+}
+
+.wpcf7 .wpcf7-acceptance input[type="checkbox"]:checked::after,
+.wpcf7 .wpcf7-checkbox input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.wpcf7 .wpcf7-acceptance input[type="checkbox"]:focus-visible,
+.wpcf7 .wpcf7-checkbox input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--wp--preset--color--seablue-1, #005d72);
+  outline-offset: 2px;
+}
+
+.wpcf7 .acceptances a {
+  color: var(--wp--preset--color--seablue-1, #005d72);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.wpcf7 .nec {
+  font-size: 0.75rem;
+  color: var(--wp--preset--color--text-secondary, #6b6f74);
+  margin: 0.9rem 0 0;
+}
+
+/* Pulsante invio — stesso stile del bottone "Pieno scuro" */
+.wpcf7 .sender {
+  margin-top: 1.75rem;
+}
+
+.wpcf7 input.wpcf7-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--wp--preset--color--inverse, #ffffff);
+  background: var(--wp--preset--color--heading, #17334a);
+  border: 0;
+  border-radius: 4px;
+  padding: 16px 24px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: background-color 0.2s ease, transform 0.18s ease;
+}
+
+.wpcf7 input.wpcf7-submit:hover {
+  background-color: var(--wp--preset--color--seablue-1, #005d72);
+  transform: translateY(-1px);
+}
+
+.wpcf7 input.wpcf7-submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+
+/* Validazione e messaggi di risposta */
+.wpcf7 .wpcf7-not-valid-tip {
+  color: #b3261e;
+  font-size: 0.75rem;
+  margin-top: 0.35rem;
+}
+
+.wpcf7 .wpcf7-form-control.wpcf7-not-valid {
+  border-color: #b3261e;
+}
+
+.wpcf7 .wpcf7-response-output {
+  margin: 1.5rem 0 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.unaccepted .wpcf7-response-output,
+.wpcf7 form.spam .wpcf7-response-output,
+.wpcf7 form.failed .wpcf7-response-output {
+  border-color: #e0b4b0;
+  background: #fbeceb;
+  color: #8a2b23;
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+  border-color: var(--wp--preset--color--seablue-3, #9dcbd7);
+  background: rgba(157, 203, 215, 0.18);
+  color: var(--wp--preset--color--seablue-1, #005d72);
+}
