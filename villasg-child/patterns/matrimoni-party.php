@@ -15,19 +15,13 @@ $vsg_theme = get_stylesheet_directory_uri();
 
 		<!-- wp:column {"verticalAlignment":"center","className":"vsg-party__media"} -->
 		<div class="wp-block-column is-vertically-aligned-center vsg-party__media">
+			<!-- wp:html -->
 			<div class="vsg-party__collage">
-				<!-- wp:image {"sizeSlug":"large","className":"vsg-party__img vsg-party__img--1"} -->
-				<figure class="wp-block-image size-large vsg-party__img vsg-party__img--1"><img src="<?php echo esc_url( $vsg_theme ); ?>/assets/images/gallery-6.jpg" alt="Vista mare dalla terrazza"/></figure>
-				<!-- /wp:image -->
-
-				<!-- wp:image {"sizeSlug":"large","className":"vsg-party__img vsg-party__img--2"} -->
-				<figure class="wp-block-image size-large vsg-party__img vsg-party__img--2"><img src="<?php echo esc_url( $vsg_theme ); ?>/assets/images/gallery-2.jpg" alt="Vista dal giardino"/></figure>
-				<!-- /wp:image -->
-
-				<!-- wp:image {"sizeSlug":"large","className":"vsg-party__img vsg-party__img--3"} -->
-				<figure class="wp-block-image size-large vsg-party__img vsg-party__img--3"><img src="<?php echo esc_url( $vsg_theme ); ?>/assets/images/gallery-4.jpg" alt="Camera padronale"/></figure>
-				<!-- /wp:image -->
+				<figure class="vsg-party__img vsg-party__img--1"><img src="<?php echo esc_url( $vsg_theme ); ?>/assets/images/gallery-6.jpg" alt="Vista mare dalla terrazza"/></figure>
+				<figure class="vsg-party__img vsg-party__img--2"><img src="<?php echo esc_url( $vsg_theme ); ?>/assets/images/gallery-2.jpg" alt="Vista dal giardino"/></figure>
+				<figure class="vsg-party__img vsg-party__img--3"><img src="<?php echo esc_url( $vsg_theme ); ?>/assets/images/gallery-4.jpg" alt="Camera padronale"/></figure>
 			</div>
+			<!-- /wp:html -->
 		</div>
 		<!-- /wp:column -->
 

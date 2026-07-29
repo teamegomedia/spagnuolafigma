@@ -27,6 +27,7 @@
 		<!-- wp:column {"className":"vsg-eccellenza__list"} -->
 		<div class="wp-block-column vsg-eccellenza__list">
 
+			<!-- wp:html -->
 			<div class="vsg-eccellenza__grid">
 
 				<div class="vsg-servizio">
@@ -78,6 +79,7 @@
 				</div>
 
 			</div>
+			<!-- /wp:html -->
 
 		</div>
 		<!-- /wp:column -->
