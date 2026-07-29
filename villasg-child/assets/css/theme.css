@@ -1484,12 +1484,6 @@ b {
   padding-top:var(--wp--preset--spacing--60, 56px) !important;
   padding-bottom:var(--wp--preset--spacing--60, 56px) !important;
 }
-.vsg-testimonials{
-  background:var(--wp--preset--color--bg, #f8f6f4) !important;
-  padding-top:var(--wp--preset--spacing--60, 56px) !important;
-  padding-bottom:var(--wp--preset--spacing--80, 96px) !important;
-}
-
 .vsg-hero-strip__grid.wp-block-gallery,
 .vsg-hero-strip__grid{
   display:grid !important;
@@ -2019,8 +2013,7 @@ b {
 
 /* TESTIMONIAL – decoro bordo sinistro */
 .vsg-testimonial.wp-block-quote{
-  margin:0;padding:2rem;
-  background:var(--wp--preset--color--bg);
+  margin:0;
   border-left:3px solid var(--wp--preset--color--seablue-1);
 }
 .vsg-testimonial cite{
