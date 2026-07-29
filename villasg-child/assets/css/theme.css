@@ -950,7 +950,7 @@ b {
   color: #17334a !important;
   border-radius: 4px !important;
   font-size: 0.875rem !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
   transition: background-color 0.2s, color 0.2s, transform 0.2s;
@@ -1078,7 +1078,7 @@ b {
   display: inline-block;
   border-radius: 4px;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 0.75rem 1.5rem;
@@ -1582,7 +1582,7 @@ b {
      node. Styling the container guarantees the label keeps its grey uppercase
      look (instead of inheriting the white inverse text of the dark band). */
   font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
-  font-weight:600;
+  font-weight:500;
   font-size:14px;
   line-height:1.25;
   letter-spacing:.085em;
@@ -1591,7 +1591,7 @@ b {
 }
 .vsg-storia-pill__label{
   font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
-  font-weight:600;
+  font-weight:500;
   font-size:14px;
   line-height:1.25;
   letter-spacing:.085em;
@@ -1610,7 +1610,7 @@ b {
   border-radius:4px;
   padding:1rem 1.5rem;
   font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
-  font-weight:600;
+  font-weight:500;
   font-size:14px;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -1703,7 +1703,7 @@ b {
   color:var(--wp--preset--color--heading, #17334a) !important;
   border-radius:4px;padding:1rem 1.5rem;
   font-family:var(--wp--preset--font-family--figtree, 'Museo Sans', sans-serif);
-  font-weight:600;font-size:14px;letter-spacing:.08em;
+  font-weight:500;font-size:14px;letter-spacing:.08em;
   text-transform:uppercase;line-height:1;
 }
 .vsg-big-card .vsg-card-btn .wp-block-button__link:hover{opacity:.9}
@@ -2239,7 +2239,7 @@ b {
   color:var(--wp--preset--color--heading, #17334a) !important;
   padding:16px 24px !important;
   border-radius:4px !important;
-  font-weight:600 !important;
+  font-weight:500 !important;
   font-size:14px !important;
   letter-spacing:.08em !important;
 }
@@ -2361,7 +2361,7 @@ b {
   padding:.5rem .75rem;
 }
 .vsg-blog-archive__pagination .current{
-  font-weight:600;
+  font-weight:500;
   border-bottom:1px solid var(--wp--preset--color--heading, #17334a);
 }
 @media (max-width:1024px){
