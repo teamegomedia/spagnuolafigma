@@ -470,6 +470,7 @@ b {
   line-height: 1;
   letter-spacing: 0.08em;   /* ~1.12px su 14px */
   text-transform: uppercase;
+  transition: background-color .2s ease, color .2s ease, opacity .2s ease;
 }
 
 /* Filled (con sfondo): padding + radius */
@@ -489,6 +490,17 @@ b {
   content: "\2192";
   font-size: 1em;
   line-height: 1;
+  transition: transform .2s ease;
+}
+
+/* Freccia che scorre a destra all'hover (come .vsg-storia-pill__btn) */
+.wp-block-button.is-style-vsg-btn-light .wp-block-button__link:hover::after,
+.wp-block-button.is-style-vsg-btn-light .wp-block-button__link:focus-visible::after,
+.wp-block-button.is-style-vsg-btn-dark .wp-block-button__link:hover::after,
+.wp-block-button.is-style-vsg-btn-dark .wp-block-button__link:focus-visible::after,
+.wp-block-button.is-style-vsg-btn-text .wp-block-button__link:hover::after,
+.wp-block-button.is-style-vsg-btn-text .wp-block-button__link:focus-visible::after {
+  transform: translateX(3px);
 }
 
 .wp-block-button.vsg-no-arrow .wp-block-button__link::after {
