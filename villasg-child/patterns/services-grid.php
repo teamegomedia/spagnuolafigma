@@ -15,7 +15,7 @@ $vsg_theme = get_stylesheet_directory_uri();
     <div class="vsg-matrimoni-text">
       <h2 class="vsg-matrimoni-heading">Matrimoni</h2>
       <p class="vsg-matrimoni-desc">La Spagnuola Gavotti offre infiniti sfondi per il Vostro matrimonio unico ed esclusivo.</p>
-      <a href="/matrimoni" class="vsg-cta-btn vsg-cta-btn--white">Scopri di più →</a>
+      <a href="/matrimoni" class="vsg-cta-btn vsg-cta-btn--white">Scopri di più <span class="vsg-cta-btn__arrow">→</span></a>
     </div>
   </div>
 </div>

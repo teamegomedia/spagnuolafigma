@@ -18,7 +18,7 @@ $vsg_theme = get_stylesheet_directory_uri();
     <h2 class="vsg-soggiorni-heading">L'arte della<br><em>villeggiatura</em></h2>
     <p class="vsg-soggiorni-desc">L'esperienza di vivere la Riviera negli appartamenti delle Foresterie dei Marchesi Gavotti.</p>
     <p class="vsg-soggiorni-desc">Comfort contemporaneo immerso in un parco del XVI secolo, con il privilegio della spiaggia privata a pochi passi. Il ritiro perfetto per il vostro relax o lo smart working sul mare.</p>
-    <a href="/soggiorni" class="vsg-cta-btn vsg-cta-btn--brand">Scopri di più →</a>
+    <a href="/soggiorni" class="vsg-cta-btn vsg-cta-btn--brand">Scopri di più <span class="vsg-cta-btn__arrow">→</span></a>
   </div>
 </div>
 <!-- /wp:html -->

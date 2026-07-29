@@ -1107,6 +1107,16 @@ b {
   text-decoration: none;
 }
 
+/* Freccia che scorre a destra all'hover (come .vsg-storia-pill__btn) */
+.vsg-cta-btn__arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.vsg-cta-btn:hover .vsg-cta-btn__arrow,
+.vsg-cta-btn:focus-visible .vsg-cta-btn__arrow {
+  transform: translateX(3px);
+}
+
 .vsg-cta-btn--white {
   background-color: #ffffff;
   color: #17334a;

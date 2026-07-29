@@ -16,7 +16,7 @@ $vsg_theme = get_stylesheet_directory_uri();
       <p class="vsg-event-label">L'estetica dell'esclusività</p>
       <h2 class="vsg-event-heading">Eventi Eleganti</h2>
       <p class="vsg-event-desc">Dalle cene di gala ai ricevimenti privati. Saloni affrescati e giardini sul mare per accogliere fino a 250 ospiti in una cornice senza tempo.</p>
-      <a href="/eventi-eleganti" class="vsg-cta-btn vsg-cta-btn--white">Scopri di più →</a>
+      <a href="/eventi-eleganti" class="vsg-cta-btn vsg-cta-btn--white">Scopri di più <span class="vsg-cta-btn__arrow">→</span></a>
     </div>
   </div>
   <div class="vsg-event-col vsg-event-right">
@@ -26,7 +26,7 @@ $vsg_theme = get_stylesheet_directory_uri();
       <p class="vsg-event-label">Prestigio e visione</p>
       <h2 class="vsg-event-heading">Eventi Aziendali</h2>
       <p class="vsg-event-desc">Convention, offsite e presentazioni. Un contesto autorevole dove la storia del XVI secolo ispira i vostri traguardi futuri.</p>
-      <a href="/eventi-aziendali" class="vsg-cta-btn vsg-cta-btn--white">Scopri di più →</a>
+      <a href="/eventi-aziendali" class="vsg-cta-btn vsg-cta-btn--white">Scopri di più <span class="vsg-cta-btn__arrow">→</span></a>
     </div>
   </div>
 </div>
