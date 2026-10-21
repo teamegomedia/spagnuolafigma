@@ -567,7 +567,7 @@ add_action( 'save_post_post', 'villasg_child_save_sottotitolo_meta' );
 /**
  * Register the "FAQ" custom post type and its category taxonomy.
  * The post title holds the question and the post content holds the answer.
- * Order inside a category follows "Ordine" (menu_order), then date.
+ * Order follows menu_order, set by drag & drop in the admin list.
  */
 function villasg_child_register_faq(): void {
     register_post_type( 'faq', array(
@@ -590,7 +590,7 @@ function villasg_child_register_faq(): void {
         'show_in_rest'       => true,
         'menu_icon'          => 'dashicons-editor-help',
         'menu_position'      => 26,
-        'supports'           => array( 'title', 'editor', 'page-attributes' ),
+        'supports'           => array( 'title', 'editor' ),
         'has_archive'        => false,
         'rewrite'            => false,
     ) );
@@ -618,7 +618,9 @@ function villasg_child_register_faq(): void {
 add_action( 'init', 'villasg_child_register_faq' );
 
 /**
- * FAQ list in admin: sort by "Ordine" like the front end, and show it as a column.
+ * FAQ list in admin: drag & drop ordering.
+ * The list is sorted by menu_order like the front end and shows every FAQ on one page;
+ * dragging a row saves the new order via AJAX. Filter by category to order one group.
  */
 function villasg_child_faq_admin_order( WP_Query $query ): void {
     if ( ! is_admin() || ! $query->is_main_query() || 'faq' !== $query->get( 'post_type' ) || $query->get( 'orderby' ) ) {
@@ -628,18 +630,120 @@ function villasg_child_faq_admin_order( WP_Query $query ): void {
 }
 add_action( 'pre_get_posts', 'villasg_child_faq_admin_order' );
 
+// All FAQ on one page, otherwise rows can't be dragged across pages.
+add_filter( 'edit_faq_per_page', function () { return 500; } );
+
 function villasg_child_faq_admin_columns( array $columns ): array {
-    $columns['menu_order'] = __( 'Ordine', 'villasg-child' );
-    return $columns;
+    return array_merge( array( 'vsg_drag' => '<span class="screen-reader-text">' . esc_html__( 'Ordina', 'villasg-child' ) . '</span>' ), $columns );
 }
 add_filter( 'manage_faq_posts_columns', 'villasg_child_faq_admin_columns' );
 
 function villasg_child_faq_admin_column_value( string $column, int $post_id ): void {
-    if ( 'menu_order' === $column ) {
-        echo (int) get_post_field( 'menu_order', $post_id );
+    if ( 'vsg_drag' === $column ) {
+        echo '<span class="dashicons dashicons-menu vsg-faq-drag" title="' . esc_attr__( 'Trascina per ordinare', 'villasg-child' ) . '"></span>';
     }
 }
 add_action( 'manage_faq_posts_custom_column', 'villasg_child_faq_admin_column_value', 10, 2 );
+
+// Category filter above the list.
+function villasg_child_faq_category_filter( string $post_type ): void {
+    if ( 'faq' !== $post_type ) {
+        return;
+    }
+    wp_dropdown_categories( array(
+        'taxonomy'        => 'faq_categoria',
+        'name'            => 'faq_categoria',
+        'value_field'     => 'slug',
+        'selected'        => isset( $_GET['faq_categoria'] ) ? sanitize_title( wp_unslash( $_GET['faq_categoria'] ) ) : '',
+        'show_option_all' => __( 'Tutte le categorie', 'villasg-child' ),
+        'hide_empty'      => false,
+        'hierarchical'    => true,
+    ) );
+}
+add_action( 'restrict_manage_posts', 'villasg_child_faq_category_filter' );
+
+function villasg_child_faq_sortable_assets( string $hook ): void {
+    $screen = get_current_screen();
+    if ( 'edit.php' !== $hook || ! $screen || 'faq' !== $screen->post_type ) {
+        return;
+    }
+    // Sorting by a column header or searching gives a list in another order: no dragging there.
+    if ( isset( $_GET['orderby'] ) || ! empty( $_GET['s'] ) ) {
+        return;
+    }
+    wp_enqueue_script( 'jquery-ui-sortable' );
+    wp_add_inline_script( 'jquery-ui-sortable', 'window.vsgFaqSort=' . wp_json_encode( array(
+        'ajax'  => admin_url( 'admin-ajax.php' ),
+        'nonce' => wp_create_nonce( 'vsg_faq_reorder' ),
+        'saved' => __( 'Ordine salvato', 'villasg-child' ),
+        'error' => __( 'Ordine non salvato, ricarica la pagina', 'villasg-child' ),
+        'hint'  => __( 'Trascina le righe per cambiare l\'ordine in cui le FAQ compaiono sul sito.', 'villasg-child' ),
+    ) ) . ';' . <<<'JS'
+jQuery(function ($) {
+  var $list = $('#the-list');
+  if (!$list.length || !$list.find('tr[id^="post-"]').length) return;
+  var $msg = $('<p class="vsg-faq-sort-msg"></p>').text(vsgFaqSort.hint);
+  $('.wp-header-end').after($msg);
+  $list.sortable({
+    items: 'tr[id^="post-"]',
+    handle: '.vsg-faq-drag, .column-title',
+    axis: 'y',
+    distance: 5,
+    cursor: 'grabbing',
+    placeholder: 'vsg-faq-placeholder',
+    helper: function (e, tr) {
+      var $cells = tr.children();
+      return tr.clone().children().each(function (i) { $(this).width($cells.eq(i).width()); }).end();
+    },
+    start: function (e, ui) { ui.placeholder.html('<td colspan="' + ui.item.children().length + '"></td>'); },
+    update: function () {
+      var ids = $list.find('tr[id^="post-"]').map(function () { return this.id.replace('post-', ''); }).get();
+      $msg.text('…');
+      $.post(vsgFaqSort.ajax, { action: 'vsg_faq_reorder', nonce: vsgFaqSort.nonce, ids: ids })
+        .done(function (r) { $msg.text(r && r.success ? vsgFaqSort.saved : vsgFaqSort.error); })
+        .fail(function () { $msg.text(vsgFaqSort.error); });
+    }
+  });
+});
+JS
+    );
+    wp_add_inline_style( 'list-tables', '
+        .post-type-faq .column-vsg_drag{width:28px}
+        .post-type-faq .vsg-faq-drag{cursor:grab;color:#8c8f94}
+        .post-type-faq #the-list .column-title{cursor:grab}
+        .post-type-faq .vsg-faq-placeholder td{height:44px;background:#f0f6fc;border:1px dashed #72aee6}
+        .post-type-faq .ui-sortable-helper{background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.15);display:table}
+        .vsg-faq-sort-msg{margin:8px 0 0;color:#646970}
+    ' );
+}
+add_action( 'admin_enqueue_scripts', 'villasg_child_faq_sortable_assets' );
+
+function villasg_child_faq_reorder_ajax(): void {
+    check_ajax_referer( 'vsg_faq_reorder', 'nonce' );
+    if ( ! current_user_can( 'edit_posts' ) ) {
+        wp_send_json_error( null, 403 );
+    }
+    $ids = isset( $_POST['ids'] ) ? array_map( 'absint', (array) wp_unslash( $_POST['ids'] ) ) : array();
+    global $wpdb;
+    foreach ( array_values( array_filter( $ids ) ) as $i => $id ) {
+        if ( 'faq' === get_post_type( $id ) && current_user_can( 'edit_post', $id ) ) {
+            $wpdb->update( $wpdb->posts, array( 'menu_order' => $i + 1 ), array( 'ID' => $id ) );
+            clean_post_cache( $id );
+        }
+    }
+    wp_send_json_success();
+}
+add_action( 'wp_ajax_vsg_faq_reorder', 'villasg_child_faq_reorder_ajax' );
+
+// A new FAQ goes to the bottom of the list instead of the top.
+function villasg_child_faq_new_at_bottom( array $data, array $postarr ): array {
+    if ( 'faq' === $data['post_type'] && empty( $postarr['ID'] ) && empty( $data['menu_order'] ) ) {
+        global $wpdb;
+        $data['menu_order'] = 1 + (int) $wpdb->get_var( "SELECT MAX(menu_order) FROM {$wpdb->posts} WHERE post_type = 'faq'" );
+    }
+    return $data;
+}
+add_filter( 'wp_insert_post_data', 'villasg_child_faq_new_at_bottom', 10, 2 );
 
 /**
  * Categorie FAQ in admin: a "Shortcode" column with the ready-to-paste code.
