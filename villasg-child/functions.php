@@ -787,7 +787,10 @@ function villasg_child_contact_dialog(): void {
     }
     // WPML: use the translated form when it exists, otherwise the Italian one.
     $form_id = (int) apply_filters( 'wpml_object_id', VILLASG_CHILD_CONTACT_FORM_ID, 'wpcf7_contact_form', true );
+    // No CF7 autop here: its <p>/<br> would break the .fields grid of theme.css.
+    add_filter( 'wpcf7_autop_or_not', '__return_false' );
     $form    = do_shortcode( '[contact-form-7 id="' . $form_id . '"]' );
+    remove_filter( 'wpcf7_autop_or_not', '__return_false' );
     $wa_url  = 'https://wa.me/' . preg_replace( '/\D/', '', VILLASG_CHILD_WHATSAPP );
 
     $out  = '<dialog class="vsg-contact-dialog" id="vsg-contact-dialog" aria-labelledby="vsg-contact-dialog-title">';
