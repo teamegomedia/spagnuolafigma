@@ -772,3 +772,50 @@ function villasg_child_faq_schema_print(): void {
     echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
 }
 add_action( 'wp_footer', 'villasg_child_faq_schema_print' );
+
+/**
+ * Contact lightbox: a <dialog> with WhatsApp and the CF7 form, printed in the footer.
+ * Any link to "#contatti" (e.g. a CONTATTACI button with that URL) opens it;
+ * without JS the link just does nothing harmful.
+ */
+const VILLASG_CHILD_WHATSAPP = '+39 337 125 6193';
+const VILLASG_CHILD_CONTACT_FORM_ID = 595; // CF7 "Modulo generico ITA"
+
+function villasg_child_contact_dialog(): void {
+    if ( is_admin() || ! shortcode_exists( 'contact-form-7' ) ) {
+        return;
+    }
+    // WPML: use the translated form when it exists, otherwise the Italian one.
+    $form_id = (int) apply_filters( 'wpml_object_id', VILLASG_CHILD_CONTACT_FORM_ID, 'wpcf7_contact_form', true );
+    $form    = do_shortcode( '[contact-form-7 id="' . $form_id . '"]' );
+    $wa_url  = 'https://wa.me/' . preg_replace( '/\D/', '', VILLASG_CHILD_WHATSAPP );
+
+    $out  = '<dialog class="vsg-contact-dialog" id="vsg-contact-dialog" aria-labelledby="vsg-contact-dialog-title">';
+    $out .= '<div class="vsg-contact-dialog__inner">';
+    $out .= '<button type="button" class="vsg-contact-dialog__close" data-vsg-contact-close aria-label="' . esc_attr__( 'Chiudi', 'villasg-child' ) . '"></button>';
+    $out .= '<p class="vsg-overline has-small-caps-font-size">' . esc_html__( 'Contattaci', 'villasg-child' ) . '</p>';
+    $out .= '<h2 class="vsg-contact-dialog__title" id="vsg-contact-dialog-title">' . esc_html__( 'Parliamo del vostro evento', 'villasg-child' ) . '</h2>';
+    $out .= '<div class="vsg-contact-dialog__whatsapp">';
+    $out .= '<p>' . esc_html__( 'Scriveteci su WhatsApp', 'villasg-child' ) . '<br><a class="vsg-contact-dialog__number" href="' . esc_url( $wa_url ) . '" target="_blank" rel="noopener">' . esc_html( VILLASG_CHILD_WHATSAPP ) . '</a></p>';
+    $out .= '<div class="wp-block-button is-style-vsg-btn-dark"><a class="wp-block-button__link wp-element-button" href="' . esc_url( $wa_url ) . '" target="_blank" rel="noopener">' . esc_html__( 'Apri WhatsApp', 'villasg-child' ) . '</a></div>';
+    $out .= '</div>';
+    $out .= '<p class="vsg-contact-dialog__or"><span>' . esc_html__( 'oppure compilate il modulo', 'villasg-child' ) . '</span></p>';
+    $out .= '<div class="vsg-contact-dialog__form">' . $form . '</div>';
+    $out .= '</div>';
+    $out .= '</dialog>';
+
+    echo $out; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above, $form is CF7 output.
+}
+add_action( 'wp_footer', 'villasg_child_contact_dialog', 5 );
+
+function villasg_child_enqueue_contact_dialog(): void {
+    $path = get_stylesheet_directory() . '/assets/js/contact-dialog.js';
+    wp_enqueue_script(
+        'villasg-contact-dialog',
+        get_stylesheet_directory_uri() . '/assets/js/contact-dialog.js',
+        array(),
+        file_exists( $path ) ? filemtime( $path ) : wp_get_theme()->get( 'Version' ),
+        true
+    );
+}
+add_action( 'wp_enqueue_scripts', 'villasg_child_enqueue_contact_dialog' );
