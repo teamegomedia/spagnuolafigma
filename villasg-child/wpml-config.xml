@@ -1,0 +1,11 @@
+<wpml-config>
+    <!-- translate="2": traducibili, e dove manca la traduzione WPML mostra l'originale italiano -->
+    <custom-types>
+        <custom-type translate="2">faq</custom-type>
+        <custom-type translate="2">testimonianza</custom-type>
+    </custom-types>
+    <taxonomies>
+        <taxonomy translate="2">faq_categoria</taxonomy>
+        <taxonomy translate="2">testimonianza_categoria</taxonomy>
+    </taxonomies>
+</wpml-config>
