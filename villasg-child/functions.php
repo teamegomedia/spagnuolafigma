@@ -797,7 +797,7 @@ function villasg_child_contact_dialog(): void {
     $out .= '<div class="vsg-contact-dialog__inner">';
     $out .= '<button type="button" class="vsg-contact-dialog__close" data-vsg-contact-close aria-label="' . esc_attr__( 'Chiudi', 'villasg-child' ) . '"></button>';
     $out .= '<p class="vsg-overline has-small-caps-font-size">' . esc_html__( 'Contattaci', 'villasg-child' ) . '</p>';
-    $out .= '<h2 class="vsg-contact-dialog__title" id="vsg-contact-dialog-title">' . esc_html__( 'Parliamo del vostro evento', 'villasg-child' ) . '</h2>';
+    $out .= '<h2 class="vsg-contact-dialog__title" id="vsg-contact-dialog-title">' . esc_html__( 'Parliamo del vostro matrimonio', 'villasg-child' ) . '</h2>';
     $out .= '<div class="vsg-contact-dialog__whatsapp">';
     $out .= '<p>' . esc_html__( 'Scriveteci su WhatsApp', 'villasg-child' ) . '<br><a class="vsg-contact-dialog__number" href="' . esc_url( $wa_url ) . '" target="_blank" rel="noopener">' . esc_html( VILLASG_CHILD_WHATSAPP ) . '</a></p>';
     $out .= '<div class="wp-block-button is-style-vsg-btn-dark"><a class="wp-block-button__link wp-element-button" href="' . esc_url( $wa_url ) . '" target="_blank" rel="noopener">' . esc_html__( 'Apri WhatsApp', 'villasg-child' ) . '</a></div>';
