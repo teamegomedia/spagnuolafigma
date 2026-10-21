@@ -563,3 +563,212 @@ function villasg_child_save_sottotitolo_meta( int $post_id ): void {
     }
 }
 add_action( 'save_post_post', 'villasg_child_save_sottotitolo_meta' );
+
+/**
+ * Register the "FAQ" custom post type and its category taxonomy.
+ * The post title holds the question and the post content holds the answer.
+ * Order inside a category follows "Ordine" (menu_order), then date.
+ */
+function villasg_child_register_faq(): void {
+    register_post_type( 'faq', array(
+        'labels' => array(
+            'name'               => __( 'FAQ', 'villasg-child' ),
+            'singular_name'      => __( 'FAQ', 'villasg-child' ),
+            'add_new'            => __( 'Aggiungi nuova', 'villasg-child' ),
+            'add_new_item'       => __( 'Aggiungi nuova FAQ', 'villasg-child' ),
+            'edit_item'          => __( 'Modifica FAQ', 'villasg-child' ),
+            'new_item'           => __( 'Nuova FAQ', 'villasg-child' ),
+            'view_item'          => __( 'Vedi FAQ', 'villasg-child' ),
+            'search_items'       => __( 'Cerca FAQ', 'villasg-child' ),
+            'not_found'          => __( 'Nessuna FAQ trovata', 'villasg-child' ),
+            'menu_name'          => __( 'FAQ', 'villasg-child' ),
+        ),
+        'public'             => false,
+        'publicly_queryable' => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'show_in_rest'       => true,
+        'menu_icon'          => 'dashicons-editor-help',
+        'menu_position'      => 26,
+        'supports'           => array( 'title', 'editor', 'page-attributes' ),
+        'has_archive'        => false,
+        'rewrite'            => false,
+    ) );
+
+    register_taxonomy( 'faq_categoria', 'faq', array(
+        'labels' => array(
+            'name'          => __( 'Categorie FAQ', 'villasg-child' ),
+            'singular_name' => __( 'Categoria FAQ', 'villasg-child' ),
+            'search_items'  => __( 'Cerca categorie', 'villasg-child' ),
+            'all_items'     => __( 'Tutte le categorie', 'villasg-child' ),
+            'edit_item'     => __( 'Modifica categoria', 'villasg-child' ),
+            'update_item'   => __( 'Aggiorna categoria', 'villasg-child' ),
+            'add_new_item'  => __( 'Aggiungi nuova categoria', 'villasg-child' ),
+            'new_item_name' => __( 'Nome nuova categoria', 'villasg-child' ),
+            'menu_name'     => __( 'Categorie', 'villasg-child' ),
+        ),
+        'public'            => false,
+        'show_ui'           => true,
+        'show_in_rest'      => true,
+        'show_admin_column' => true,
+        'hierarchical'      => true,
+        'rewrite'           => false,
+    ) );
+}
+add_action( 'init', 'villasg_child_register_faq' );
+
+/**
+ * FAQ list in admin: sort by "Ordine" like the front end, and show it as a column.
+ */
+function villasg_child_faq_admin_order( WP_Query $query ): void {
+    if ( ! is_admin() || ! $query->is_main_query() || 'faq' !== $query->get( 'post_type' ) || $query->get( 'orderby' ) ) {
+        return;
+    }
+    $query->set( 'orderby', array( 'menu_order' => 'ASC', 'date' => 'DESC' ) );
+}
+add_action( 'pre_get_posts', 'villasg_child_faq_admin_order' );
+
+function villasg_child_faq_admin_columns( array $columns ): array {
+    $columns['menu_order'] = __( 'Ordine', 'villasg-child' );
+    return $columns;
+}
+add_filter( 'manage_faq_posts_columns', 'villasg_child_faq_admin_columns' );
+
+function villasg_child_faq_admin_column_value( string $column, int $post_id ): void {
+    if ( 'menu_order' === $column ) {
+        echo (int) get_post_field( 'menu_order', $post_id );
+    }
+}
+add_action( 'manage_faq_posts_custom_column', 'villasg_child_faq_admin_column_value', 10, 2 );
+
+/**
+ * Categorie FAQ in admin: a "Shortcode" column with the ready-to-paste code.
+ */
+function villasg_child_faq_term_columns( array $columns ): array {
+    $columns['vsg_shortcode'] = __( 'Shortcode', 'villasg-child' );
+    return $columns;
+}
+add_filter( 'manage_edit-faq_categoria_columns', 'villasg_child_faq_term_columns' );
+
+function villasg_child_faq_term_column_value( string $content, string $column, int $term_id ): string {
+    if ( 'vsg_shortcode' !== $column ) {
+        return $content;
+    }
+    $term = get_term( $term_id, 'faq_categoria' );
+    if ( ! $term || is_wp_error( $term ) ) {
+        return $content;
+    }
+    return '<code style="user-select:all">[vsg_faq category="' . esc_html( $term->slug ) . '"]</code>';
+}
+add_filter( 'manage_faq_categoria_custom_column', 'villasg_child_faq_term_column_value', 10, 3 );
+
+/**
+ * Shortcode [vsg_faq] – renders FAQ as an accordion (native <details>, no JS).
+ *
+ * Attributes:
+ *   category="slug"   Limit to one or more category slugs (comma separated).
+ *   limit="-1"        Max number of FAQ (default -1 = all).
+ *   open="none"       "first" to open the first answer on load.
+ *   multiple="no"     "yes" lets several answers stay open at once.
+ *   schema="yes"      "no" to leave these FAQ out of the FAQPage JSON-LD.
+ */
+function villasg_child_faq_shortcode( $atts ): string {
+    static $instance = 0;
+    $instance++;
+
+    $atts = shortcode_atts( array(
+        'category' => '',
+        'limit'    => -1,
+        'open'     => 'none',
+        'multiple' => 'no',
+        'schema'   => 'yes',
+    ), $atts, 'vsg_faq' );
+
+    $query_args = array(
+        'post_type'      => 'faq',
+        'post_status'    => 'publish',
+        'posts_per_page' => (int) $atts['limit'],
+        'orderby'        => array( 'menu_order' => 'ASC', 'date' => 'DESC' ),
+        'no_found_rows'  => true,
+    );
+
+    if ( '' !== trim( (string) $atts['category'] ) ) {
+        $slugs = array_filter( array_map( 'sanitize_title', array_map( 'trim', explode( ',', $atts['category'] ) ) ) );
+        if ( ! empty( $slugs ) ) {
+            $query_args['tax_query'] = array(
+                array(
+                    'taxonomy' => 'faq_categoria',
+                    'field'    => 'slug',
+                    'terms'    => $slugs,
+                ),
+            );
+        }
+    }
+
+    $query = new WP_Query( $query_args );
+
+    if ( ! $query->have_posts() ) {
+        return '';
+    }
+
+    // Same name on every <details> = only one open at a time (native exclusive accordion).
+    $name_attr = 'yes' === strtolower( (string) $atts['multiple'] ) ? '' : ' name="vsg-faq-' . $instance . '"';
+    $open_first = 'first' === strtolower( (string) $atts['open'] );
+    $add_schema = 'no' !== strtolower( (string) $atts['schema'] );
+
+    $items = '';
+    $index = 0;
+    while ( $query->have_posts() ) {
+        $query->the_post();
+        $question = get_the_title();
+        $answer   = apply_filters( 'the_content', get_the_content() );
+
+        $items .= '<details class="vsg-faq__item"' . $name_attr . ( $open_first && 0 === $index ? ' open' : '' ) . '>';
+        $items .= '<summary class="vsg-faq__question">' . esc_html( $question ) . '</summary>';
+        $items .= '<div class="vsg-faq__answer">' . wp_kses_post( $answer ) . '</div>';
+        $items .= '</details>';
+
+        if ( $add_schema ) {
+            villasg_child_faq_schema_collect( get_the_ID(), $question, $answer );
+        }
+        $index++;
+    }
+    wp_reset_postdata();
+
+    // No whitespace between tags: wpautop would add <br>/<p> inside template parts.
+    return '<div class="vsg-faq">' . $items . '</div>';
+}
+add_shortcode( 'vsg_faq', 'villasg_child_faq_shortcode' );
+
+/**
+ * Collect the FAQ rendered on the page; printed once as a single FAQPage
+ * JSON-LD in the footer, even with several [vsg_faq] on the same page.
+ */
+function villasg_child_faq_schema_collect( ?int $post_id = null, string $question = '', string $answer = '' ): array {
+    static $entities = array();
+    if ( null !== $post_id && ! isset( $entities[ $post_id ] ) ) {
+        $entities[ $post_id ] = array(
+            '@type'          => 'Question',
+            'name'           => wp_strip_all_tags( $question ),
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text'  => trim( wp_kses( $answer, array( 'a' => array( 'href' => true ), 'br' => array(), 'p' => array(), 'ul' => array(), 'ol' => array(), 'li' => array(), 'strong' => array(), 'em' => array() ) ) ),
+            ),
+        );
+    }
+    return $entities;
+}
+
+function villasg_child_faq_schema_print(): void {
+    $entities = villasg_child_faq_schema_collect();
+    if ( empty( $entities ) ) {
+        return;
+    }
+    $data = array(
+        '@context'   => 'https://schema.org',
+        '@type'      => 'FAQPage',
+        'mainEntity' => array_values( $entities ),
+    );
+    echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+}
+add_action( 'wp_footer', 'villasg_child_faq_schema_print' );
