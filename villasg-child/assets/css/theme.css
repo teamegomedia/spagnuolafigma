@@ -2070,7 +2070,7 @@ b {
 .vsg-testimonials__track{display:flex;gap:var(--vsg-ts-gap);width:100%}
 .vsg-testimonials__slide{
   flex:0 0 calc((100% - var(--vsg-ts-gap)) / 2);
-  scroll-snap-align:start;display:flex;
+  scroll-snap-align:start;display:flex;align-items:flex-start;
 }
 .vsg-testimonials__slide > .vsg-testimonial{width:100%}
 /* When the set fits without scrolling, center it like the old 2-col layout. */
