@@ -907,6 +907,27 @@ const VILLASG_CHILD_FORM_GENERIC_EN  = 1614; // "Modulo generico EN"   [Lead3ENG
 const VILLASG_CHILD_FORM_OPENDAY_IT  = 1616; // "Modulo open day ITA"  [LEAD3O], not used by the lightbox
 const VILLASG_CHILD_PAGE_WEDDINGS    = 38;   // "Matrimoni": it and its sub-pages use the weddings form
 
+const VILLASG_CHILD_PAGES_EVENTS = array( 869, 890 ); // "Evento elegante", "Eventi aziendali"
+const VILLASG_CHILD_PAGE_STAY     = 895;               // "Soggiornare alla Spagnuola"
+
+/**
+ * Section of the current page, for the lightbox title: wedding / event / stay / generic.
+ * Works on English pages too, through the Italian original (WPML).
+ */
+function villasg_child_contact_section(): string {
+    if ( ! is_page() ) {
+        return 'generic';
+    }
+    $id = (int) apply_filters( 'wpml_object_id', get_queried_object_id(), 'page', true, 'it' );
+    if ( VILLASG_CHILD_PAGE_WEDDINGS === $id || in_array( VILLASG_CHILD_PAGE_WEDDINGS, array_map( 'intval', get_post_ancestors( $id ) ), true ) ) {
+        return 'wedding';
+    }
+    if ( in_array( $id, VILLASG_CHILD_PAGES_EVENTS, true ) ) {
+        return 'event';
+    }
+    return VILLASG_CHILD_PAGE_STAY === $id ? 'stay' : 'generic';
+}
+
 /**
  * Form for the contact lightbox on the current page: English pages get the EN form,
  * "Matrimoni" and its sub-pages the weddings form, everything else the generic one.
@@ -931,9 +952,17 @@ function villasg_child_contact_dialog(): void {
     $form_id = villasg_child_contact_form_id();
     $form    = do_shortcode( '[contact-form-7 id="' . $form_id . '"]' );
     $wa_url  = 'https://wa.me/' . preg_replace( '/\D/', '', VILLASG_CHILD_WHATSAPP );
-    $t = 'en' === apply_filters( 'wpml_current_language', null )
-        ? array( 'close' => 'Close', 'overline' => 'Contact us', 'title' => "Let's talk about your wedding", 'wa' => 'Message us on WhatsApp', 'wa_btn' => 'Open WhatsApp', 'or' => 'or fill in the form' )
-        : array( 'close' => 'Chiudi', 'overline' => 'Contattaci', 'title' => 'Parliamo del vostro matrimonio', 'wa' => 'Scriveteci su WhatsApp', 'wa_btn' => 'Apri WhatsApp', 'or' => 'oppure compilate il modulo' );
+    $en      = 'en' === apply_filters( 'wpml_current_language', null );
+    $titles  = array(
+        'wedding' => $en ? "Let's talk about your wedding" : 'Parliamo del vostro matrimonio',
+        'event'   => $en ? "Let's talk about your event" : 'Parliamo del vostro evento',
+        'stay'    => $en ? "Let's talk about your stay" : 'Parliamo del vostro soggiorno',
+        'generic' => $en ? 'How can we help?' : 'Come possiamo aiutarvi?',
+    );
+    $t = $en
+        ? array( 'close' => 'Close', 'overline' => 'Contact us', 'wa' => 'Message us on WhatsApp', 'wa_btn' => 'Open WhatsApp', 'or' => 'or fill in the form' )
+        : array( 'close' => 'Chiudi', 'overline' => 'Contattaci', 'wa' => 'Scriveteci su WhatsApp', 'wa_btn' => 'Apri WhatsApp', 'or' => 'oppure compilate il modulo' );
+    $t['title'] = $titles[ villasg_child_contact_section() ];
 
     $out  = '<dialog class="vsg-contact-dialog" id="vsg-contact-dialog" aria-labelledby="vsg-contact-dialog-title">';
     $out .= '<div class="vsg-contact-dialog__inner">';

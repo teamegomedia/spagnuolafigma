@@ -16,7 +16,7 @@
 		</div>
 		<div class="vsg-storia-dark__cta-col">
 			<div class="vsg-storia-pill">
-				<a class="vsg-storia-pill__btn" href="/contatti">
+				<a class="vsg-storia-pill__btn" href="#contatti">
 					<span class="vsg-storia-pill__btn-text">Richiedi informazioni</span>
 					<span class="vsg-storia-pill__arrow" aria-hidden="true">&rarr;</span>
 				</a>

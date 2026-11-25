@@ -18,7 +18,7 @@
 		<div class="vsg-storia-dark__cta-col">
 			<div class="vsg-storia-pill">
 				<span class="vsg-storia-pill__label">Parliamo del vostro matrimonio</span>
-				<a class="vsg-storia-pill__btn" href="/contatti">
+				<a class="vsg-storia-pill__btn" href="#contatti">
 					<span>Contattaci</span>
 					<span class="vsg-storia-pill__arrow" aria-hidden="true">→</span>
 				</a>
