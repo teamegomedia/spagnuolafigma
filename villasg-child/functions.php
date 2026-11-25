@@ -240,6 +240,33 @@ function villasg_child_register_testimonianze(): void {
 add_action( 'init', 'villasg_child_register_testimonianze' );
 
 /**
+ * Split a testimonial into review text and signature (Figma 671:8489: text, then "— NAMES, DATE").
+ * The content ends with lines like "Marco e Chiara · Maggio 2022" and "Source: Google ★5",
+ * separated by <br> or paragraphs: the names/date line becomes the signature, the source line
+ * is not shown. Without a names/date line the post title is the signature.
+ */
+function villasg_child_testimonial_parts( string $content, string $title ): array {
+    $text  = preg_replace( '#<br\s*/?>|</p>#i', "\n", $content );
+    $lines = array_filter( array_map( 'trim', explode( "\n", html_entity_decode( wp_strip_all_tags( $text ), ENT_QUOTES, 'UTF-8' ) ) ) );
+    $quote = array();
+    $cite  = '';
+    foreach ( $lines as $line ) {
+        if ( preg_match( '/^(source|da|fonte)\s*:/i', $line ) ) {
+            continue;
+        }
+        if ( '' === $cite && mb_strlen( $line ) < 90 && false !== strpos( $line, '·' ) && preg_match( '/\b(19|20)\d{2}\b/', $line ) ) {
+            $cite = str_replace( ' · ', ', ', $line );
+            continue;
+        }
+        $quote[] = $line;
+    }
+    return array(
+        'quote' => trim( implode( ' ', $quote ), " \t\"“”" ),
+        'cite'  => '' !== $cite ? $cite : html_entity_decode( $title, ENT_QUOTES, 'UTF-8' ),
+    );
+}
+
+/**
  * Shortcode [vsg_testimonianze] – renders the testimonials as a slider.
  *
  * Attributes:
@@ -286,12 +313,13 @@ function villasg_child_testimonianze_shortcode( $atts ): string {
     $slides = '';
     while ( $query->have_posts() ) {
         $query->the_post();
-        $cite  = get_the_title();
-        $quote = trim( wp_strip_all_tags( get_the_content() ) );
+        $parts = villasg_child_testimonial_parts( get_the_content(), get_the_title() );
+        $cite  = $parts['cite'];
+        $quote = $parts['quote'];
 
         $slides .= '<div class="vsg-testimonials__slide" role="group" aria-roledescription="' . esc_attr__( 'testimonianza', 'villasg-child' ) . '">';
         $slides .= '<blockquote class="wp-block-quote vsg-testimonial">';
-        $slides .= '<p class="has-quote-font-size" style="font-style:italic;font-weight:400">' . esc_html( $quote ) . '</p>';
+        $slides .= '<p>' . esc_html( $quote ) . '</p>';
         if ( '' !== $cite ) {
             $slides .= '<cite>— ' . esc_html( $cite ) . '</cite>';
         }

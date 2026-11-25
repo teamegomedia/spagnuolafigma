@@ -2033,22 +2033,33 @@ b {
 /* ECCELLENZA dark (legacy) – lede italic */
 .vsg-eccellenza-dark__lede{font-family:var(--wp--preset--font-family--lora);font-style:italic}
 
-/* TESTIMONIAL – decoro bordo sinistro */
+/* TESTIMONIAL – Figma 671:8489: testo dritto Museo Sans 300, filetto sottile seablue3,
+   firma "— NOMI, DATA" in maiuscolo spaziato seablue1 */
 .vsg-testimonial.wp-block-quote{
   margin:0;
-  border-left:3px solid var(--wp--preset--color--seablue-1);
+  padding:0 0 0 1.25rem;
+  border-left:1px solid var(--wp--preset--color--seablue-3);
+}
+.vsg-testimonial.wp-block-quote p{
+  margin:0;
+  font-family:var(--wp--preset--font-family--figtree, "Museo Sans", sans-serif);
+  font-style:normal;font-weight:300;
+  font-size:1rem;line-height:1.65;
+  color:var(--wp--preset--color--text);
 }
 .vsg-testimonial cite{
-  display:block;margin-top:1rem;
-  font-family:var(--wp--preset--font-family--figtree);
-  font-style:normal;font-weight:500;font-size:.875rem;
-  letter-spacing:.08em;color:var(--wp--preset--color--seablue-1);
+  display:block;margin-top:.9rem;
+  font-family:var(--wp--preset--font-family--figtree, "Museo Sans", sans-serif);
+  font-style:normal;font-weight:500;font-size:.75rem;line-height:1.5;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--wp--preset--color--seablue-1);
 }
 
 /* TESTIMONIALS – slider (CPT testimonianze) */
 .vsg-testimonials__slider{
-  --vsg-ts-gap:var(--wp--preset--spacing--40, 32px);
-  display:flex;flex-direction:column;gap:2rem;width:100%;
+  --vsg-ts-gap:clamp(2rem, 5vw, 4.5rem);
+  display:flex;flex-direction:column;gap:2.5rem;width:100%;
+  max-width:864px;margin-inline:auto;
 }
 .vsg-testimonials__viewport{
   display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
