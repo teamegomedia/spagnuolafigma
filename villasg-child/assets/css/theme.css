@@ -2944,4 +2944,4 @@ html.vsg-dialog-open{overflow:hidden}
   font-weight:400;line-height:1.2;
   color:var(--wp--preset--color--heading);
 }
-.vsg-faq-groups > .vsg-faq__group-title:first-child{margin-top:0}
+.vsg-faq-groups > .vsg-faq__group-title:first-child{margin-top:1.5rem}
