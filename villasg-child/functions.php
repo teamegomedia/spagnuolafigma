@@ -133,7 +133,16 @@ function villasg_child_breadcrumb_post_title( $block_content, $block ) {
     if ( '' === $title ) {
         return $block_content;
     }
-    return str_replace( 'Articolo corrente', esc_html( $title ), $block_content );
+    $block_content = str_replace( 'Articolo corrente', esc_html( $title ), $block_content );
+    if ( 'en' === apply_filters( 'wpml_current_language', null ) ) {
+        // No English "Storie" page: the last crumb points to the Italian one.
+        $block_content = strtr( $block_content, array(
+            '<a href="/figma/">Home</a>'                     => '<a href="/figma/en/">Home</a>',
+            '<a href="/figma/matrimoni/">Matrimoni</a>'      => '<a href="/figma/en/weddings/">Weddings</a>',
+            '<a href="/figma/matrimoni/storie/">Storie</a>' => '<a href="/figma/matrimoni/storie/">Stories</a>',
+        ) );
+    }
+    return $block_content;
 }
 add_filter( 'render_block_core/paragraph', 'villasg_child_breadcrumb_post_title', 10, 2 );
 
