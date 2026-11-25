@@ -883,14 +883,36 @@ add_action( 'wp_footer', 'villasg_child_faq_schema_print' );
  * without JS the link just does nothing harmful.
  */
 const VILLASG_CHILD_WHATSAPP = '+39 337 125 6193';
-const VILLASG_CHILD_CONTACT_FORM_ID = 595; // CF7 "Modulo generico ITA"
+// CF7 forms. The tag in the email subject ([LEAD3G], [LEAD3M], [Lead3ENGL], [LEAD3O]) is how the
+// company's CRM sorts the leads: same subjects as the forms of the current production site.
+const VILLASG_CHILD_FORM_GENERIC_IT  = 595;  // "Modulo generico ITA"  [LEAD3G]
+const VILLASG_CHILD_FORM_WEDDINGS_IT = 1612; // "Modulo matrimoni ITA" [LEAD3M]
+const VILLASG_CHILD_FORM_GENERIC_EN  = 1614; // "Modulo generico EN"   [Lead3ENGL]
+const VILLASG_CHILD_FORM_OPENDAY_IT  = 1616; // "Modulo open day ITA"  [LEAD3O], not used by the lightbox
+const VILLASG_CHILD_PAGE_WEDDINGS    = 38;   // "Matrimoni": it and its sub-pages use the weddings form
+
+/**
+ * Form for the contact lightbox on the current page: English pages get the EN form,
+ * "Matrimoni" and its sub-pages the weddings form, everything else the generic one.
+ */
+function villasg_child_contact_form_id(): int {
+    if ( 'en' === apply_filters( 'wpml_current_language', null ) ) {
+        return VILLASG_CHILD_FORM_GENERIC_EN;
+    }
+    if ( is_page() ) {
+        $id = get_queried_object_id();
+        if ( VILLASG_CHILD_PAGE_WEDDINGS === $id || in_array( VILLASG_CHILD_PAGE_WEDDINGS, array_map( "intval", get_post_ancestors( $id ) ), true ) ) {
+            return VILLASG_CHILD_FORM_WEDDINGS_IT;
+        }
+    }
+    return VILLASG_CHILD_FORM_GENERIC_IT;
+}
 
 function villasg_child_contact_dialog(): void {
     if ( is_admin() || ! shortcode_exists( 'contact-form-7' ) ) {
         return;
     }
-    // WPML: use the translated form when it exists, otherwise the Italian one.
-    $form_id = (int) apply_filters( 'wpml_object_id', VILLASG_CHILD_CONTACT_FORM_ID, 'wpcf7_contact_form', true );
+    $form_id = villasg_child_contact_form_id();
     // No CF7 autop here: its <p>/<br> would break the .fields grid of theme.css.
     add_filter( 'wpcf7_autop_or_not', '__return_false' );
     $form    = do_shortcode( '[contact-form-7 id="' . $form_id . '"]' );
