@@ -926,3 +926,15 @@ function villasg_child_enqueue_contact_dialog(): void {
     );
 }
 add_action( 'wp_enqueue_scripts', 'villasg_child_enqueue_contact_dialog' );
+
+function villasg_child_enqueue_koalendar_link(): void {
+    $path = get_stylesheet_directory() . '/assets/js/koalendar-link.js';
+    wp_enqueue_script(
+        'villasg-koalendar-link',
+        get_stylesheet_directory_uri() . '/assets/js/koalendar-link.js',
+        array(),
+        file_exists( $path ) ? filemtime( $path ) : wp_get_theme()->get( 'Version' ),
+        true
+    );
+}
+add_action( 'wp_enqueue_scripts', 'villasg_child_enqueue_koalendar_link' );
