@@ -883,6 +883,9 @@ add_action( 'wp_footer', 'villasg_child_faq_schema_print' );
  * without JS the link just does nothing harmful.
  */
 const VILLASG_CHILD_WHATSAPP = '+39 337 125 6193';
+// No CF7 autop on any form: its <p>/<br> break the .fields grid of theme.css.
+add_filter( 'wpcf7_autop_or_not', '__return_false' );
+
 // CF7 forms. The tag in the email subject ([LEAD3G], [LEAD3M], [Lead3ENGL], [LEAD3O]) is how the
 // company's CRM sorts the leads: same subjects as the forms of the current production site.
 const VILLASG_CHILD_FORM_GENERIC_IT  = 595;  // "Modulo generico ITA"  [LEAD3G]
@@ -913,10 +916,7 @@ function villasg_child_contact_dialog(): void {
         return;
     }
     $form_id = villasg_child_contact_form_id();
-    // No CF7 autop here: its <p>/<br> would break the .fields grid of theme.css.
-    add_filter( 'wpcf7_autop_or_not', '__return_false' );
     $form    = do_shortcode( '[contact-form-7 id="' . $form_id . '"]' );
-    remove_filter( 'wpcf7_autop_or_not', '__return_false' );
     $wa_url  = 'https://wa.me/' . preg_replace( '/\D/', '', VILLASG_CHILD_WHATSAPP );
 
     $out  = '<dialog class="vsg-contact-dialog" id="vsg-contact-dialog" aria-labelledby="vsg-contact-dialog-title">';
