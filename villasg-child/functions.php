@@ -799,11 +799,24 @@ function villasg_child_faq_shortcode( $atts ): string {
     if ( '' !== trim( (string) $atts['category'] ) ) {
         $slugs = array_filter( array_map( 'sanitize_title', array_map( 'trim', explode( ',', $atts['category'] ) ) ) );
         if ( ! empty( $slugs ) ) {
+            // Slugs are the Italian ones: on English pages use the translated terms (WPML).
+            $term_ids = array();
+            foreach ( $slugs as $slug ) {
+                $term = get_term_by( 'slug', $slug, 'faq_categoria' );
+                if ( ! $term ) {
+                    do_action( 'wpml_switch_language', apply_filters( 'wpml_default_language', 'it' ) );
+                    $term = get_term_by( 'slug', $slug, 'faq_categoria' );
+                    do_action( 'wpml_switch_language', null );
+                }
+                if ( $term ) {
+                    $term_ids[] = (int) apply_filters( 'wpml_object_id', $term->term_id, 'faq_categoria', true );
+                }
+            }
             $query_args['tax_query'] = array(
                 array(
                     'taxonomy' => 'faq_categoria',
-                    'field'    => 'slug',
-                    'terms'    => $slugs,
+                    'field'    => 'term_id',
+                    'terms'    => $term_ids ? $term_ids : array( 0 ),
                 ),
             );
         }
@@ -918,17 +931,20 @@ function villasg_child_contact_dialog(): void {
     $form_id = villasg_child_contact_form_id();
     $form    = do_shortcode( '[contact-form-7 id="' . $form_id . '"]' );
     $wa_url  = 'https://wa.me/' . preg_replace( '/\D/', '', VILLASG_CHILD_WHATSAPP );
+    $t = 'en' === apply_filters( 'wpml_current_language', null )
+        ? array( 'close' => 'Close', 'overline' => 'Contact us', 'title' => "Let's talk about your wedding", 'wa' => 'Message us on WhatsApp', 'wa_btn' => 'Open WhatsApp', 'or' => 'or fill in the form' )
+        : array( 'close' => 'Chiudi', 'overline' => 'Contattaci', 'title' => 'Parliamo del vostro matrimonio', 'wa' => 'Scriveteci su WhatsApp', 'wa_btn' => 'Apri WhatsApp', 'or' => 'oppure compilate il modulo' );
 
     $out  = '<dialog class="vsg-contact-dialog" id="vsg-contact-dialog" aria-labelledby="vsg-contact-dialog-title">';
     $out .= '<div class="vsg-contact-dialog__inner">';
-    $out .= '<button type="button" class="vsg-contact-dialog__close" data-vsg-contact-close aria-label="' . esc_attr__( 'Chiudi', 'villasg-child' ) . '"></button>';
-    $out .= '<p class="vsg-overline has-small-caps-font-size">' . esc_html__( 'Contattaci', 'villasg-child' ) . '</p>';
-    $out .= '<h2 class="vsg-contact-dialog__title" id="vsg-contact-dialog-title">' . esc_html__( 'Parliamo del vostro matrimonio', 'villasg-child' ) . '</h2>';
+    $out .= '<button type="button" class="vsg-contact-dialog__close" data-vsg-contact-close aria-label="' . esc_attr( $t['close'] ) . '"></button>';
+    $out .= '<p class="vsg-overline has-small-caps-font-size">' . esc_html( $t['overline'] ) . '</p>';
+    $out .= '<h2 class="vsg-contact-dialog__title" id="vsg-contact-dialog-title">' . esc_html( $t['title'] ) . '</h2>';
     $out .= '<div class="vsg-contact-dialog__whatsapp">';
-    $out .= '<p>' . esc_html__( 'Scriveteci su WhatsApp', 'villasg-child' ) . '<br><a class="vsg-contact-dialog__number" href="' . esc_url( $wa_url ) . '" target="_blank" rel="noopener">' . esc_html( VILLASG_CHILD_WHATSAPP ) . '</a></p>';
-    $out .= '<div class="wp-block-button is-style-vsg-btn-dark"><a class="wp-block-button__link wp-element-button" href="' . esc_url( $wa_url ) . '" target="_blank" rel="noopener">' . esc_html__( 'Apri WhatsApp', 'villasg-child' ) . '</a></div>';
+    $out .= '<p>' . esc_html( $t['wa'] ) . '<br><a class="vsg-contact-dialog__number" href="' . esc_url( $wa_url ) . '" target="_blank" rel="noopener">' . esc_html( VILLASG_CHILD_WHATSAPP ) . '</a></p>';
+    $out .= '<div class="wp-block-button is-style-vsg-btn-dark"><a class="wp-block-button__link wp-element-button" href="' . esc_url( $wa_url ) . '" target="_blank" rel="noopener">' . esc_html( $t['wa_btn'] ) . '</a></div>';
     $out .= '</div>';
-    $out .= '<p class="vsg-contact-dialog__or"><span>' . esc_html__( 'oppure compilate il modulo', 'villasg-child' ) . '</span></p>';
+    $out .= '<p class="vsg-contact-dialog__or"><span>' . esc_html( $t['or'] ) . '</span></p>';
     $out .= '<div class="vsg-contact-dialog__form">' . $form . '</div>';
     $out .= '</div>';
     $out .= '</dialog>';
@@ -975,6 +991,15 @@ function villasg_child_translate_navigation_ref( array $block ): array {
     return $block;
 }
 add_filter( 'render_block_data', 'villasg_child_translate_navigation_ref' );
+
+// Synced patterns (core/block) used inside pages: English translation on English pages.
+function villasg_child_translate_synced_block_ref( array $block ): array {
+    if ( 'core/block' === $block['blockName'] && ! empty( $block['attrs']['ref'] ) ) {
+        $block['attrs']['ref'] = (int) apply_filters( 'wpml_object_id', (int) $block['attrs']['ref'], 'wp_block', true );
+    }
+    return $block;
+}
+add_filter( 'render_block_data', 'villasg_child_translate_synced_block_ref' );
 
 function villasg_child_footer_english( string $html, array $block ): string {
     if ( 'core/template-part' !== $block['blockName'] || 'footer-vsg' !== ( $block['attrs']['slug'] ?? '' )
