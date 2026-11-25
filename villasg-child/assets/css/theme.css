@@ -2054,6 +2054,11 @@ b {
   letter-spacing:.15em;text-transform:uppercase;
   color:var(--wp--preset--color--seablue-1);
 }
+.vsg-testimonial__source{
+  margin-left:.6em;font-weight:300;font-size:.6875rem;
+  letter-spacing:.04em;text-transform:none;white-space:nowrap;
+  color:var(--wp--preset--color--text-secondary);
+}
 
 /* TESTIMONIALS – slider (CPT testimonianze) */
 .vsg-testimonials__slider{

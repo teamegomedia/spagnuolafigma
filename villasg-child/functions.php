@@ -243,15 +243,20 @@ add_action( 'init', 'villasg_child_register_testimonianze' );
  * Split a testimonial into review text and signature (Figma 671:8489: text, then "— NAMES, DATE").
  * The content ends with lines like "Marco e Chiara · Maggio 2022" and "Source: Google ★5",
  * separated by <br> or paragraphs: the names/date line becomes the signature, the source line
- * is not shown. Without a names/date line the post title is the signature.
+ * is shown small next to it. Without a names/date line the post title is the signature.
  */
 function villasg_child_testimonial_parts( string $content, string $title ): array {
     $text  = preg_replace( '#<br\s*/?>|</p>#i', "\n", $content );
     $lines = array_filter( array_map( 'trim', explode( "\n", html_entity_decode( wp_strip_all_tags( $text ), ENT_QUOTES, 'UTF-8' ) ) ) );
-    $quote = array();
-    $cite  = '';
+    $quote  = array();
+    $cite   = '';
+    $source = '';
     foreach ( $lines as $line ) {
-        if ( preg_match( '/^(source|da|fonte)\s*:/i', $line ) ) {
+        if ( preg_match( '/^(?:source|da|fonte)\s*:\s*(.+)$/iu', $line, $m ) ) {
+            // "Matrimonio.com ★5" → "Matrimonio.com ★★★★★"
+            $source = preg_replace_callback( '/★\s*([1-5])\b/u', static function ( $s ) {
+                return str_repeat( '★', (int) $s[1] );
+            }, trim( $m[1] ) );
             continue;
         }
         if ( '' === $cite && mb_strlen( $line ) < 90 && false !== strpos( $line, '·' ) && preg_match( '/\b(19|20)\d{2}\b/', $line ) ) {
@@ -262,7 +267,8 @@ function villasg_child_testimonial_parts( string $content, string $title ): arra
     }
     return array(
         'quote' => trim( implode( ' ', $quote ), " \t\"“”" ),
-        'cite'  => '' !== $cite ? $cite : html_entity_decode( $title, ENT_QUOTES, 'UTF-8' ),
+        'cite'   => '' !== $cite ? $cite : html_entity_decode( $title, ENT_QUOTES, 'UTF-8' ),
+        'source' => $source,
     );
 }
 
@@ -321,7 +327,11 @@ function villasg_child_testimonianze_shortcode( $atts ): string {
         $slides .= '<blockquote class="wp-block-quote vsg-testimonial">';
         $slides .= '<p>' . esc_html( $quote ) . '</p>';
         if ( '' !== $cite ) {
-            $slides .= '<cite>— ' . esc_html( $cite ) . '</cite>';
+            $slides .= '<cite>— ' . esc_html( $cite );
+            if ( '' !== $parts['source'] ) {
+                $slides .= ' <span class="vsg-testimonial__source">' . esc_html( $parts['source'] ) . '</span>';
+            }
+            $slides .= '</cite>';
         }
         $slides .= '</blockquote>';
         $slides .= '</div>';
