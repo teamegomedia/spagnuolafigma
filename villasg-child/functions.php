@@ -966,6 +966,7 @@ add_action( 'wp_enqueue_scripts', 'villasg_child_enqueue_koalendar_link' );
  * GA4 turns the page views of /grazie/ and /en/thank-you/ into the key events
  * form_nuovo_sito / form_nuovo_sito_inglese, imported as lead conversions in Google Ads
  * (account 759-602-1186): the thank-you URLs must stay the same.
+ * It also sends click_telefono / click_whatsapp on clicks on tel: and WhatsApp links.
  * Printed only when the site is no longer under /figma, so the staging copy doesn't
  * add test visits to the statistics; it turns on by itself after the migration.
  */
@@ -983,6 +984,17 @@ function villasg_child_google_tag(): void {
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', '<?php echo esc_js( $id ); ?>', { 'anonymize_ip': true });
+  // Clicks on phone and WhatsApp links, whatever the number: GA4 events click_telefono / click_whatsapp.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href*="wa.me/"], a[href*="api.whatsapp.com/"]');
+    if (!a) return;
+    var tel = a.getAttribute('href').indexOf('tel:') === 0;
+    gtag('event', tel ? 'click_telefono' : 'click_whatsapp', {
+      link_url: a.href,
+      phone_number: tel ? a.getAttribute('href').slice(4) : (a.href.match(/\d{6,}/) || [''])[0],
+      transport_type: 'beacon'
+    });
+  });
 </script>
     <?php
 }
