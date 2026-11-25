@@ -3,6 +3,11 @@
     <custom-types>
         <custom-type translate="2">faq</custom-type>
         <custom-type translate="2">testimonianza</custom-type>
+        <!-- FSE: English pages fall back to the Italian header/footer/templates saved in the DB,
+             instead of the theme files. Menus: English translations exist for 926 and 927. -->
+        <custom-type translate="2">wp_template_part</custom-type>
+        <custom-type translate="2">wp_template</custom-type>
+        <custom-type translate="2">wp_navigation</custom-type>
     </custom-types>
     <taxonomies>
         <taxonomy translate="2">faq_categoria</taxonomy>

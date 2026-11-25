@@ -962,3 +962,33 @@ function villasg_child_enqueue_koalendar_link(): void {
 add_action( 'wp_enqueue_scripts', 'villasg_child_enqueue_koalendar_link' );
 
 // Google tag, Consent Mode and cookie banner: plugin "Egomedia Cookie Consent" (not in the theme).
+
+/**
+ * Footer on English pages (WPML). The footer template part (DB post 40) is shared by both
+ * languages: its navigation menus are swapped for their English translations and its few
+ * fixed texts are translated here, so the inline scripts of the footer exist only once.
+ */
+function villasg_child_translate_navigation_ref( array $block ): array {
+    if ( 'core/navigation' === $block['blockName'] && ! empty( $block['attrs']['ref'] ) ) {
+        $block['attrs']['ref'] = (int) apply_filters( 'wpml_object_id', (int) $block['attrs']['ref'], 'wp_navigation', true );
+    }
+    return $block;
+}
+add_filter( 'render_block_data', 'villasg_child_translate_navigation_ref' );
+
+function villasg_child_footer_english( string $html, array $block ): string {
+    if ( 'core/template-part' !== $block['blockName'] || 'footer-vsg' !== ( $block['attrs']['slug'] ?? '' )
+        || 'en' !== apply_filters( 'wpml_current_language', null ) ) {
+        return $html;
+    }
+    return strtr( $html, array(
+        '>Esplora</h3>'           => '>Explore</h3>',
+        '>Area Legale</h3>'       => '>Legal</h3>',
+        '>Contatti e Social</h3>' => '>Contacts &amp; Social</h3>',
+        '>Telefono | <a'          => '>Phone | <a',
+        'Spesa cofinanziata con risorse del PR FESR Liguria 2021/2027 del bando Azione 1.2.3. Supporto allo sviluppo di progetti di digitalizzazione nelle MPMI 2024'
+            => 'Expenditure co-financed by the ERDF Regional Programme Liguria 2021/2027, call Action 1.2.3 – Support for digitalisation projects in micro, small and medium-sized enterprises 2024',
+        'alt="Loghi co-finanziamento"' => 'alt="Co-financing logos"',
+    ) );
+}
+add_filter( 'render_block', 'villasg_child_footer_english', 10, 2 );
