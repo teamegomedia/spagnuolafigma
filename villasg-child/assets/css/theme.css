@@ -2934,3 +2934,14 @@ html.vsg-dialog-open{overflow:hidden}
 @media (max-width:781px){
   .vsg-contact-dialog__whatsapp{flex-direction:column;align-items:flex-start}
 }
+
+/* FAQ page: one titled group per category — [vsg_faq group="yes"] */
+.vsg-faq-groups{display:flex;flex-direction:column;gap:.75rem}
+.vsg-faq__group-title{
+  margin:2.5rem 0 .5rem;
+  font-family:var(--wp--preset--font-family--lora, 'Lora', serif);
+  font-size:var(--wp--preset--font-size--medium-title, 2rem);
+  font-weight:400;line-height:1.2;
+  color:var(--wp--preset--color--heading);
+}
+.vsg-faq-groups > .vsg-faq__group-title:first-child{margin-top:0}

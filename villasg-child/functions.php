@@ -775,6 +775,7 @@ add_filter( 'manage_faq_categoria_custom_column', 'villasg_child_faq_term_column
  *   open="none"       "first" to open the first answer on load.
  *   multiple="no"     "yes" lets several answers stay open at once.
  *   schema="yes"      "no" to leave these FAQ out of the FAQPage JSON-LD.
+ *   group="no"        "yes" (without category) shows every category with its own title.
  */
 function villasg_child_faq_shortcode( $atts ): string {
     static $instance = 0;
@@ -786,7 +787,20 @@ function villasg_child_faq_shortcode( $atts ): string {
         'open'     => 'none',
         'multiple' => 'no',
         'schema'   => 'yes',
+        'group'    => 'no',
     ), $atts, 'vsg_faq' );
+
+    // group="yes": one titled accordion per category, in the language of the page.
+    if ( 'yes' === strtolower( (string) $atts['group'] ) && '' === trim( (string) $atts['category'] ) ) {
+        $out = '';
+        foreach ( get_terms( array( 'taxonomy' => 'faq_categoria', 'hide_empty' => true, 'orderby' => 'name' ) ) as $term ) {
+            $list = villasg_child_faq_shortcode( array_merge( $atts, array( 'category' => $term->slug, 'group' => 'no' ) ) );
+            if ( '' !== $list ) {
+                $out .= '<h2 class="vsg-faq__group-title">' . esc_html( $term->name ) . '</h2>' . $list;
+            }
+        }
+        return '' === $out ? '' : '<div class="vsg-faq-groups">' . $out . '</div>';
+    }
 
     $query_args = array(
         'post_type'      => 'faq',
