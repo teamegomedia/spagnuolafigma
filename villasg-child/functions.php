@@ -1098,3 +1098,57 @@ function villasg_child_footer_english( string $html, array $block ): string {
     ) );
 }
 add_filter( 'render_block', 'villasg_child_footer_english', 10, 2 );
+
+/**
+ * Blog cards (Storie template): the "Leggi articolo →" paragraph is static text with href="#",
+ * inside the query loop it gets the current post's permalink.
+ */
+function villasg_child_blog_card_cta_link( string $html, array $block ): string {
+    if ( 'core/paragraph' !== $block['blockName'] || false === strpos( $html, 'vsg-blog-card__cta' ) || ! get_the_ID() ) {
+        return $html;
+    }
+    return str_replace( 'href="#"', 'href="' . esc_url( get_permalink() ) . '"', $html );
+}
+add_filter( 'render_block', 'villasg_child_blog_card_cta_link', 10, 2 );
+
+/**
+ * Footer part "footer-villa-sg-con-galleria" (photo strip + footer-vsg) and synced block 648 on English pages:
+ * strip heading, button label and gallery link in English.
+ */
+function villasg_child_gallery_footer_english( string $html, array $block ): string {
+    $is_strip = ( 'core/template-part' === $block['blockName'] && 'footer-villa-sg-con-galleria' === ( $block['attrs']['slug'] ?? '' ) )
+        || ( 'core/block' === $block['blockName'] && 648 === (int) ( $block['attrs']['ref'] ?? 0 ) ); // synced "galleria280"
+    if ( ! $is_strip || 'en' !== apply_filters( 'wpml_current_language', null ) ) {
+        return $html;
+    }
+    return strtr( $html, array(
+        '>Istantanee</h2>'        => '>Snapshots</h2>',
+        '>ESPLORA LA GALLERY</a>' => '>EXPLORE THE GALLERY</a>',
+        '/figma/matrimoni/galleria/' => '/figma/en/weddings/gallery/',
+    ) );
+}
+add_filter( 'render_block', 'villasg_child_gallery_footer_english', 10, 2 );
+
+/**
+ * Anti-spam for every CF7 form: a hidden field that people leave empty (bots fill it)
+ * and a minimum time between page load and submit.
+ */
+function villasg_child_cf7_honeypot_field( string $html ): string {
+    $field = '<span class="vsg-hp" aria-hidden="true"><label>Website<input type="text" name="vsg_website" value="" tabindex="-1" autocomplete="off"></label>'
+        . '<input type="hidden" name="vsg_ts" value="' . time() . '"></span>';
+    return $html . $field;
+}
+add_filter( 'wpcf7_form_elements', 'villasg_child_cf7_honeypot_field' );
+
+function villasg_child_cf7_honeypot_check( $spam ) {
+    if ( $spam ) {
+        return $spam;
+    }
+    if ( ! empty( $_POST['vsg_website'] ) ) {
+        return true;
+    }
+    $ts = isset( $_POST['vsg_ts'] ) ? (int) $_POST['vsg_ts'] : 0;
+    // Under 3 seconds from page load: a script, not a person. A cached page only makes $ts older.
+    return $ts > 0 && ( time() - $ts ) < 3;
+}
+add_filter( 'wpcf7_spam', 'villasg_child_cf7_honeypot_check', 10, 1 );
