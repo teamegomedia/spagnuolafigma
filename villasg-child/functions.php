@@ -961,41 +961,4 @@ function villasg_child_enqueue_koalendar_link(): void {
 }
 add_action( 'wp_enqueue_scripts', 'villasg_child_enqueue_koalendar_link' );
 
-/**
- * Google tag (GA4 "La Spagnuola - GA4", property 377919694), as on the production site.
- * GA4 turns the page views of /grazie/ and /en/thank-you/ into the key events
- * form_nuovo_sito / form_nuovo_sito_inglese, imported as lead conversions in Google Ads
- * (account 759-602-1186): the thank-you URLs must stay the same.
- * It also sends click_telefono / click_whatsapp on clicks on tel: and WhatsApp links.
- * Printed only when the site is no longer under /figma, so the staging copy doesn't
- * add test visits to the statistics; it turns on by itself after the migration.
- */
-const VILLASG_CHILD_GA4_ID = 'G-29MR5MPK50';
-
-function villasg_child_google_tag(): void {
-    if ( is_admin() || false !== strpos( (string) wp_parse_url( home_url(), PHP_URL_PATH ), '/figma' ) ) {
-        return;
-    }
-    $id = VILLASG_CHILD_GA4_ID;
-    ?>
-<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr( $id ); ?>"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', '<?php echo esc_js( $id ); ?>', { 'anonymize_ip': true });
-  // Clicks on phone and WhatsApp links, whatever the number: GA4 events click_telefono / click_whatsapp.
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href*="wa.me/"], a[href*="api.whatsapp.com/"]');
-    if (!a) return;
-    var tel = a.getAttribute('href').indexOf('tel:') === 0;
-    gtag('event', tel ? 'click_telefono' : 'click_whatsapp', {
-      link_url: a.href,
-      phone_number: tel ? a.getAttribute('href').slice(4) : (a.href.match(/\d{6,}/) || [''])[0],
-      transport_type: 'beacon'
-    });
-  });
-</script>
-    <?php
-}
-add_action( 'wp_head', 'villasg_child_google_tag', 1 );
+// Google tag, Consent Mode and cookie banner: plugin "Egomedia Cookie Consent" (not in the theme).
